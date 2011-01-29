@@ -275,14 +275,14 @@ void  screenCap(Mat &img) {
 }
 
 void password() { //don't forget your shifts and ctrls
-    sc.keyPress('h',XK_Shift_L);
-    sc.keyPress('i');
-    sc.keyPress('i');
-    sc.keyPress('g');
-    sc.keyPress('a');
-    sc.keyPress('r');
-    sc.keyPress('a');
-    sc.keyPress('9');
+    sc.keyPress('',XK_Shift_L);
+    sc.keyPress('');
+    sc.keyPress('');
+    sc.keyPress('');
+    sc.keyPress('');
+    sc.keyPress('');
+    sc.keyPress('');
+    sc.keyPress('');
     sc.keyPress(XK_Return);
 }
 
