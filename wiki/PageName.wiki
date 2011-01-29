@@ -1,0 +1,8 @@
+#summary SVN password
+
+You might come across some issues committing your data back into the repo, and before anyone else has any problems you might want to read this.
+
+
+= Details =
+
+Spoilers: Don't use your gmail password. You have a googlecode password assigned to you.  To get this click the 'Profile' in the upper right corner, then settings, and it is right there staring you in the face.
