@@ -1,58 +1,43 @@
-#include <stdio.h>
-#include <opencv/cv.h>
-#include <opencv/highgui.h>
+#include <iostream>
+#include <cv.h>
+#include <highgui.h>
 
-struct _rgb {
-  unsigned char b,g,r;
-  _rgb(int r, int g, int b) : r(r), g(g), b(b) {}
-};
+using namespace std;
+using namespace cv;
 
-IplImage *getRedPixels(IplImage *src, unsigned char intensity);
+Mat getRedPixels(Mat src, unsigned char intensity);
 
-int main() {
-  char c;
-  int X=100,Y=100;
-  _rgb *pixel;
-  cvNamedWindow("BEER");
-  cvNamedWindow("ICECHEST");
-  CvCapture *capture= cvCaptureFromCAM(0);
-  IplImage *img = cvQueryFrame(capture);
-  img = cvQueryFrame(capture);
-  IplImage *rd = cvCreateImage(cvGetSize(img),img->depth,img->nChannels);
-  img = cvQueryFrame(capture);
-  while (cvWaitKey(10)!=27){
-    img = cvQueryFrame(capture);
-    rd = img;
-    getRedPixels(rd,150);
-    pixel = (_rgb*)img->imageData + Y*img->width + X;
-    printf("RGB = %d:%d:%d\n",pixel->r,pixel->g,pixel->b);
-    cvShowImage("ICECHEST", img);
-    cvShowImage("BEER", rd);
+int main(int argv, char **argc) {
+  Mat img,red;
+  VideoCapture cap(0);
+  if (argv > 1) 
+      img = imread(argc[1]);
+  else {
+      if (!cap.isOpened()) {
+          cout << "Error opening video. Exiting" << endl;
+          return -1;
+      }
   }
-//  cvReleaseImage(&img);
-//  cvReleaseImage(&rd);
-  cvReleaseCapture(&capture);
-  cvDestroyWindow("BEER");
-  cvDestroyWindow("ICECHEST");
+  namedWindow("BEER",CV_WINDOW_NORMAL);
+  namedWindow("ICECHEST",CV_WINDOW_NORMAL);
+  cvResizeWindow("BEER",640,480);
+  cvResizeWindow("ICECHEST",640,480);
+  if (argv == 1) cap >> img;
+  while (cvWaitKey(10)!=27){
+      if (argv == 1) cap >> img;
+    red = getRedPixels(img,150);
+    imshow("ICECHEST", img);
+    imshow("BEER", red);
+  }
   return 0;
 }
 
 
-IplImage *getRedPixels(IplImage *src, unsigned char intensity) {
-  _rgb *pixel;
-  _rgb black(0,0,0);
-  _rgb red(255,0,0);
-  for (int i=0;i<src->height;i++) {
-    for (int j=0;j<src->width;j++) { 
-      pixel = (_rgb*)src->imageData + j + i*src->width;
-      float ratioA = pixel->r/(pixel->g+1);
-      float ratioB = pixel->r/(pixel->b+1);
-      if (ratioA < 2 || ratioB < 2) {
-        *pixel = black;  
-      }
-      else
-        *pixel = red;
-    }
-  }
-  return src;
+Mat getRedPixels(Mat src, unsigned char intensity) {
+  vector<Mat> planes;
+  split(src,planes);
+  Mat red(src.rows,src.cols,CV_8UC1);
+  subtract(planes[2],planes[1],red);
+  subtract(red,planes[0],red);
+  return red;
 }
