@@ -1,0 +1,48 @@
+#summary Install Linux, get OpenCV working
+
+= Introduction =
+
+You are going to need a non-essential computer.  That, or either *back up all your important information* before you choose to install Linux.  Usually it goes fairly smoothly, but bad things can happen and I don't want to be blamed for it.
+
+You may question why I want you to just go ahead an install Linux, instead of trying out something like Cygwin in windows.  Being able to use Linux looks great on your resume' and can probably get you a job. 
+
+= Installation =
+
+The easiest way to do this is to just install Ubuntu.  There are millions of Linux distributions out there, and I encourage you guys to check them out.  But for now, just install Ubuntu.
+  * [http://www.ubuntu.com/desktop/get-ubuntu/download]
+10.10 works, 10.04 does, too.  If you don't know if you are 64-bit or 32-bit, go with 32.  
+
+Make a USB boot stick (read the directions) and install it to the drive.  You can also make a CD, but I find that is A) faster and B) cheaper and more reliable to go the USB route.
+
+Either way, when you reboot you're going to need to go into your BIOS.  This usually entails hitting DEL, F2, F8, F10, or F12 as fast as you can after your computer reboots.  Go find your boot devices and boot drive ordering.  In your boot drive ordering, just move your USB to the top position in the list.  If you have multiple drives remember which one was previously at the top.  Now if you are using a CD (or if you can't boot from USB, now you need to make a CD) you might want to make sure that your CD drive is above your HDD's in the device ordering.
+
+Now it should boot into Ubuntu and you can follow the directions from there.  
+
+= Basic Linux Stuff =
+All good Linux distros usually come with a package manager.  What this means is you do not search for .exe files on the internet to install, you simply type into terminal what program you want and it will install it, and all the dependencies for you.
+  sudo aptitude install build-essential libhighgui-dev subversion
+That is all you really need to do to get working with OpenCV and our repository.
+
+If you have issues random linux related stuff, you can most often find the solution on the Ubuntu Forums.
+[http://ubuntuforums.org/]
+
+Basic terminal operation, googling "linux terminal beginners guide":
+[http://www.freesoftwaremagazine.com/articles/command_line_intro?page=0,0]
+
+Actually working with the code, open up a terminal and type:
+  svn checkout https://ieee-lsu-robotics.googlecode.com/svn/trunk/ ieee-lsu-robotics --username your@email.com
+Wait a second while it downloads all the information, then type:
+  cd ieee-lsu-robotics
+  ls 
+This should display everything in the directory.  As of now that is cameratest.cpp and compile.sh.  Try executing the script, by typing:
+  ./compile.sh cameratest
+  ./cameratest
+This should run the program, however you actually need a camera plugged up for it to work.  You can get around this by giving it a sample image:
+  ./cameratest sampleimage.png
+Press escape to get the windows to close.
+
+If you want to edit the code, type:
+  gedit cameratest.cpp &
+This will start gedit, a text editor, and fork to the background which allows you to continue using that terminal.  Using a text editor and a terminal you can pretty much do everything you need to do on this project.  If you're a pro, you can use the text editor in the terminal.
+
+Familiarize yourself with [SVNCommands]
