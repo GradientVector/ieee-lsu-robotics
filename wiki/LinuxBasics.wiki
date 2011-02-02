@@ -6,6 +6,17 @@ You are going to need a non-essential computer.  That, or either *back up all yo
 
 You may question why I want you to just go ahead an install Linux, instead of trying out something like Cygwin in windows.  Being able to use Linux looks great on your resume' and can probably get you a job. 
 
+*Update*
+
+If you have a fast enough computer (i.e. NOT a netbook) then you can install Oracle VirtualBox. This is a virtual machine which will allow you to install another operating system in a sandbox without messing up your current system. The new operating system will run in a window like any other program on your computer.
+
+[http://www.virtualbox.org/]
+
+<img src="http://www.virtualbox.org/attachment/wiki/Screenshots/FreeBSD_win.png?format=raw" alt="virtualbox screenshot" width="600" height="450"/>
+
+If you want to go this route, then contact me and I can show you what to do. - John Harvey
+
+
 = Installation =
 
 The easiest way to do this is to just install Ubuntu.  There are millions of Linux distributions out there, and I encourage you guys to check them out.  But for now, just install Ubuntu.
@@ -23,7 +34,7 @@ All good Linux distros usually come with a package manager.  What this means is 
   sudo aptitude install build-essential libhighgui-dev subversion
 That is all you really need to do to get working with OpenCV and our repository.
 
-If you have issues random linux related stuff, you can most often find the solution on the Ubuntu Forums.
+If you have issues with random linux related stuff, you can most often find the solution on the Ubuntu Forums.
 [http://ubuntuforums.org/]
 
 Basic terminal operation, googling "linux terminal beginners guide":
@@ -55,3 +66,5 @@ It'll ask you to edit the log, but that isn't mandatory.  The real deal is that 
 Read that, then commit your stuff.
 
 But if you break the code or commit something stupid or something that breaks the code, it will be in the change logs.  I will find it, and I will *hunt you down*.
+
+<img src="http://www.seattlepartybusrentals.com/wp-content/uploads/2010/09/dog-the-bounty-hunter.jpg" alt="Del the Bounty Hunter" title="Del the Bounty Hunter"/>
