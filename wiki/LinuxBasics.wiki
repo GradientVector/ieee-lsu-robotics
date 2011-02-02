@@ -32,10 +32,10 @@ Basic terminal operation, googling "linux terminal beginners guide":
 Actually working with the code, open up a terminal and type:
   svn checkout https://ieee-lsu-robotics.googlecode.com/svn/trunk/ ieee-lsu-robotics --username your@email.com
 Wait a second while it downloads all the information, then type:
-  cd ieee-lsu-robotics
+  cd ieee-lsu-robotics<p>
   ls 
 This should display everything in the directory.  As of now that is cameratest.cpp and compile.sh.  Try executing the script, by typing:
-  ./compile.sh cameratest
+  ./compile.sh cameratest<p>
   ./cameratest
 This should run the program, however you actually need a camera plugged up for it to work.  You can get around this by giving it a sample image:
   ./cameratest sampleimage.png
