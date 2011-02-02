@@ -1,11 +1,9 @@
 #summary Basic stuff to use SVN
 
-For now type this in a terminal:
-  man svn
-or
-  svn help
-or 
-  svn command help
+For now type one or all of these in a terminal:
+  man svn <p>
+  svn help <p>
+  svn *command* help <p>
 
 Important commands are 
   * checkout <p>
@@ -14,6 +12,8 @@ Important commands are
   * remove <p>
   * commit <p>
 
+
+==Explanation==
 
   svn checkout url directory <p>
 You should only do this once, as it will create a directory and fill it with the svn repository.
