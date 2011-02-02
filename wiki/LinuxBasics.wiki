@@ -8,13 +8,13 @@ You may question why I want you to just go ahead an install Linux, instead of tr
 
 *Update*
 
-If you have a fast enough computer (i.e. NOT a netbook) then you can install Oracle VirtualBox. This is a virtual machine which will allow you to install another operating system in a sandbox without messing up your current system. The new operating system will run in a window like any other program on your computer.
+If you have a fast enough computer (i.e. NOT a netbook) then you can install Oracle Virtualbox. This is a virtual machine which will allow you to install another operating system in a sandbox without messing up your current system. The new operating system will run in a window like any other program on your computer.
 
 [http://www.virtualbox.org/]
 
 <img src="http://www.virtualbox.org/attachment/wiki/Screenshots/FreeBSD_win.png?format=raw" alt="VirtualBox Screenshot" title="VirtualBox Screenshot" width="600" height="450"/>
 
-If you want to go this route, then contact me and I can show you what to do. - John Harvey
+If you want to go this route, then contact me and I can show you what to do. _- John Harvey_
 
 
 = Installation =
