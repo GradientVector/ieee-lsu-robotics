@@ -45,4 +45,13 @@ If you want to edit the code, type:
   gedit cameratest.cpp &
 This will start gedit, a text editor, and fork to the background which allows you to continue using that terminal.  Using a text editor and a terminal you can pretty much do everything you need to do on this project.  If you're a pro, you can use the text editor in the terminal.
 
-Familiarize yourself with [SVNCommands]
+Familiarize yourself with [SVNCommands].
+
+When you make a change to the SVN repository, you can commit that change by typing:
+  svn commit
+It'll ask you to edit the log, but that isn't mandatory.  The real deal is that it will ask you for your login and password, because this repository is encrypted.
+
+[SVNPassword]
+Read that, then commit your stuff.
+
+But if you break the code or commit something stupid or something that breaks the code, it will be in the change logs.  I will find it, and I will *hunt you down*.
