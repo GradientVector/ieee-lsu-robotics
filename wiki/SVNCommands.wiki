@@ -1,6 +1,35 @@
-#summary Not Written Yet
+#summary Basic stuff to use SVN
 
 For now type this in a terminal:
   man svn
 or
   svn help
+or 
+  svn command help
+
+Important commands are 
+  * checkout <p>
+  * update <p>
+  * add <p>
+  * remove <p>
+  * commit <p>
+
+
+  svn checkout url directory <p>
+You should only do this once, as it will create a directory and fill it with the svn repository.
+
+  svn update <p>
+This is used whenever you need to update your directory.  Do this whenever you are getting ready to write code, or if you need to be sure you have the latest revision.
+
+  svn add file
+This adds a new file into the version control system.  *Putting a file in the svn directory does not put it in version control*.  You must svn add it first.
+
+  svn remove file
+Kind of like add. But it removes things.
+
+  svn commit
+This is used whenever you have made changes to your local directory that need to be committed to the repository.  Commit often, but if you break something make sure to fix it soon.  Before you start working, svn update.  When you finish, svn commit. <p>
+The first time you commit you might require a password. [SVNPassword]
+
+  svn revert
+This is for when you screw stuff up, and you want to change your directory back to a previous version.
