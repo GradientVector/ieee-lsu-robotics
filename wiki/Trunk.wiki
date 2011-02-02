@@ -1,0 +1,5 @@
+#summary Trunk Contents and Data
+
+Right now in the trunk directory, we have two files:
+* cameratest.cpp
+* compile.sh
