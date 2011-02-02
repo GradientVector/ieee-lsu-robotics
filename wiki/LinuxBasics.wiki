@@ -68,3 +68,5 @@ Read that, then commit your stuff.
 But if you break the code or commit something stupid or something that breaks the code, it will be in the change logs.  I will find it, and I will *hunt you down*.
 
 <img src="http://www.seattlepartybusrentals.com/wp-content/uploads/2010/09/dog-the-bounty-hunter.jpg" alt="Del the Bounty Hunter" title="Del the Bounty Hunter"/>
+
+_"Del the Bounty Hunter"_
