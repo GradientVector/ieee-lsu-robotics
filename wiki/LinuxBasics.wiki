@@ -12,7 +12,7 @@ If you have a fast enough computer (i.e. NOT a netbook) then you can install Ora
 
 [http://www.virtualbox.org/]
 
-<img src="http://www.virtualbox.org/attachment/wiki/Screenshots/FreeBSD_win.png?format=raw" alt="virtualbox screenshot" width="600" height="450"/>
+<img src="http://www.virtualbox.org/attachment/wiki/Screenshots/FreeBSD_win.png?format=raw" alt="VirtualBox Screenshot" title="VirtualBox Screenshot" width="600" height="450"/>
 
 If you want to go this route, then contact me and I can show you what to do. - John Harvey
 
