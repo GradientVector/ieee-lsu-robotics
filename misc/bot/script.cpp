@@ -1,3 +1,7 @@
+//guys: we need to start putting documentation on our source files. This file, for example, needs a header with a purpose and an author tag.
+//Also, the filename gives no information about what this file does. Presumably it's a testing file, but that needs to be stated somewhere.
+//sincerely, AndrewE
+
 #include <qbytearray.h>
 #include <qapplication.h>
 #include <qpixmap.h>
