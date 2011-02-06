@@ -1,0 +1,8 @@
+#summary A place for q&a on how to use Google Code repository and wiki pages.
+#labels Featured
+
+
+
+*Q*: Is there a way to have our name displayed on our posts/edits instead of our email addresses? Some of the addresses are cryptic, and I can't tell who is doing the posting.
+
+*A*: ?
