@@ -2,7 +2,7 @@
 
 = Introduction =
 
-This page explains the steps needed in order to get Ubuntu running on a virtual machine on your home computer. Our virtual machine of choice will be Oracle VirtualBox, a very stable and well-supported virtual machine program. 
+This page explains the steps needed in order to get Ubuntu running on a virtual machine on your home computer. Our virtual machine of choice will be Oracle !VirtualBox, a very stable and well-supported virtual machine program. 
 
 In order to do this you will first need to download three things:
 
