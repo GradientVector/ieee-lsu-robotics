@@ -6,9 +6,9 @@ This page explains the steps needed in order to get Ubuntu running on a virtual 
 
 In order to do this you will first need to download three things:
 
-* Oracle VirtualBox  http://www.virtualbox.org/wiki/Downloads
-* Ubuntu Linux       http://www.ubuntu.com/desktop/get-ubuntu/download
-* DAEMON Tools Lite  http://www.daemon-tools.cc/eng/products/dtLite  (Not necessary if you are willing to burn the Ubuntu image to a DVD)
+ * Oracle VirtualBox  http://www.virtualbox.org/wiki/Downloads
+ * Ubuntu Linux       http://www.ubuntu.com/desktop/get-ubuntu/download
+ * DAEMON Tools Lite  http://www.daemon-tools.cc/eng/products/dtLite  (Not necessary if you are willing to burn the Ubuntu image to a DVD)
 
 Once you have these downloaded you are ready to begin. Please note that I assumed you are running some version of Microsoft Windows on your home computer when I wrote these instructions. It would be a bit pointless for our purposes for me to write instructions on installing an Ubuntu virtual machine if you are already running some version of Linux.
 
@@ -26,7 +26,11 @@ Once you have these downloaded you are ready to begin. Please note that I assume
   # Select _Dynamically expanding storage_ for the Storage Type. Click the *Next* button.
   # Select a location on your hard drive to store the virtual hard disk file (the standard location should be fine). Select the size of the virtual disk (8 GB is the standard option. I would recommend increasing this slightly based upon how much disk space you have on your real hard disk). Click the *Next* button.
   # Review your choices and click the *Next* button to create the new virtual disk.
-  # Click the *Finish* button. Congratulations, you should now have a virtual machine listed on the left hand side of the VirtualBox window. <img src="https://lh5.googleusercontent.com/_OYJ8fj3PJrU/TU59Ez5r9FI/AAAAAAAAABY/cfYRDpouswg/s400/VirtualBox%20Hard%20Disk%20Completed.png" alt="Create New Virtual Disk" title="Create New Virtual Disk"/>
+  # Click the *Finish* button. You should now have a virtual machine listed on the left hand side of the VirtualBox window. <img src="https://lh5.googleusercontent.com/_OYJ8fj3PJrU/TU59Ez5r9FI/AAAAAAAAABY/cfYRDpouswg/s400/VirtualBox%20Hard%20Disk%20Completed.png" alt="Create New Virtual Disk" title="Create New Virtual Disk"/>
   # Double click the newly created virtual machine. A _First Run Wizard_ window should pop up. Before continuing, you must either insert a DVD containing the Ubuntu image or mount the image using DAEMON Tools Lite. Install DAEMON Tools by double clicking its installer if you want to go this route. Then ensure that DAEMON Tools is running by selecting it from the Start menu. You should see a lightning bolt symbol in the bottom right corner of the task bar. Right click this icon, select Virtual Devices, then Device 0, then Mount Image. Navigate to the .iso Ubuntu image that you downloaded and select it. You should now have Ubuntu mounted and ready to go. <img src="https://lh3.googleusercontent.com/_OYJ8fj3PJrU/TU59E-0hchI/AAAAAAAAABU/H3uLuCOhfV8/s400/First%20Run%20Wizard.png" alt="First Run Wizard" title="First Run Wizard"/>
   # Continue with the VirtualBox installation. You should see Ubuntu loading. Eventually the Ubuntu installer should appear. Follow the directions for installing Ubuntu as if you were installing it directly on a new computer. <img src="http://www.ubuntu.com/sites/default/files/active/maverick/U2.1_start_fast_medium.jpg" alt="Ubuntu Loading Screen" title="Ubuntu Loading Screen"/>
-  # After a possible reset of the virtual machine, you should eventually reach the login screen. At this point you have completed your installation of Ubuntu onto your virtual machine. However, for maximum benefit you should now install the VirtualBox "Guest Additions" to allow for automatic resizing of your virtual machine window and better mouse integration.
+  # You will eventually be asked to remove the installation media. Please eject the CD from the tray or unmount the .iso image from DAEMON Tools and then press *Enter*. The virtual machine should restart and you will be brought to the login screen. At this point you have completed your installation of Ubuntu onto your virtual machine. However, for maximum benefit you should now install the VirtualBox "Guest Additions" to allow for automatic resizing of your virtual machine window and better mouse integration.
+  # Login using your username and password. Then, under the _Devices_ menu of the VirtualBox window, select _Install Guest Additions..._.
+  # Under the _Places_ menu of Ubuntu, select the VBOXADDITIONS CD. The contents of the virtual CD should be displayed. Double click autorun.sh and select _Run in Terminal_. Type in your password and let the script run. Hit *Return* when the installations is complete. Note that you may have to restart the virtual machine in order for the changes to take effect.
+
+Congratulations! You now have a fully functioning Ubuntu virtual machine installed on your computer!
