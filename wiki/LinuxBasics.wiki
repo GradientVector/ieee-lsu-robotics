@@ -7,7 +7,7 @@ You are going to need a non-essential computer.  That, or either *back up all yo
 
 You may question why I want you to just go ahead an install Linux, instead of trying out something like Cygwin in windows.  Being able to use Linux looks great on your resume' and can probably get you a job. 
 
-*Update*
+*Alternative to installing directly to your computer*
 
 If you have a fast enough computer (i.e. NOT a netbook) then you can install Oracle Virtualbox. This is a virtual machine which will allow you to install another operating system in a sandbox without messing up your current system. The new operating system will run in a window like any other program on your computer.
 
