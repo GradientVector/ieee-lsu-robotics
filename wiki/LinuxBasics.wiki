@@ -1,4 +1,5 @@
 #summary Install Linux, get OpenCV working
+#labels Featured
 
 = Introduction =
 
