@@ -2,8 +2,10 @@
 
 
 goTo(Point destination) {
-    if(destination is imaginary) deadReckonTo(destination);
-        else honeInOn(destination);
+    if(destination is imaginary) 
+-------deadReckonTo(destination);
+        else 
+----honeInOn(destination);
 }
 
 
