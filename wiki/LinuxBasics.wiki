@@ -15,7 +15,7 @@ If you have a fast enough computer (i.e. NOT a netbook) then you can install Ora
 
 <img src="http://www.virtualbox.org/attachment/wiki/Screenshots/FreeBSD_win.png?format=raw" alt="VirtualBox Screenshot" title="VirtualBox Screenshot" width="600" height="450"/>
 
-If you want to go this route, then contact me and I can show you what to do. _- John Harvey_
+If you want to go this route, then follow the instructions on this [http://code.google.com/p/ieee-lsu-robotics/wiki/VirtualBoxInstallation page].
 
 
 = Installation =
