@@ -16,7 +16,7 @@ Once you have these downloaded you are ready to begin. Please note that I assume
 = Details =
 
   # Install Oracle !VirtualBox. This should be a relatively straightforward installation. Just double click the installer you downloaded from Oracle's website and follow the directions.
-  # Run !VirtualBox. https://lh5.googleusercontent.com/_OYJ8fj3PJrU/TU59FJc-WXI/AAAAAAAAABg/CVL30SNqW-E/s400/VirtualBox%20Startup.png
+  # Run !VirtualBox.
   # Click the *New* Icon on the left side of the window. A _Create New Virtual Machine_ window should open up. <img src="https://lh5.googleusercontent.com/_OYJ8fj3PJrU/TU59Eny4EhI/AAAAAAAAABQ/gf8mnuqi7M0/s400/Create%20Ubuntu%20VM.png" alt="Create New Virtual Machine Window" title="Create New Virtual Machine Window"/>
   # Click the *Next* button.
   # Give your virtual machine a name. Something like "Ubuntu" or "My Super Crazy Awesome Robotics Team Virtual Machine" should be fine. Make sure that the OS Type is set to Ubuntu Linux. Click the *Next* button.
