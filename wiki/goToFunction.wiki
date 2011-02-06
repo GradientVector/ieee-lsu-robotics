@@ -1,10 +1,10 @@
 #summary the high-level function encompassing what the execution phase does
 
 
-goTo(Point destination) {{{
+goTo(Point destination) {
     if(destination is imaginary) deadReckonTo(destination);
         else honeInOn(destination);
-}}}
+}
 
 
 
