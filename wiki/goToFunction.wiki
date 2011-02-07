@@ -8,7 +8,13 @@ goTo(Point destination) {
       honeInOn(destination);
 }
 
+deadReckonTo(Point destination) {
 
+}
+
+honeInOn(Point destination) {
+
+}
 
 
 
