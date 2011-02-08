@@ -47,10 +47,10 @@ Wait a second while it downloads all the information, then type:
   cd ieee-lsu-robotics<p>
   ls 
 This should display everything in the directory.  As of now that is cameratest.cpp and compile.sh.  Try executing the script, by typing:
-  ./compile.sh cameratest<p>
-  ./cameratest
+  make
+  ./bin/cameratest
 This should run the program, however you actually need a camera plugged up for it to work.  You can get around this by giving it a sample image:
-  ./cameratest sampleimage.png
+  ./bin/cameratest (something.png)
 Press escape to get the windows to close.
 
 If you want to edit the code, type:
@@ -66,7 +66,7 @@ It'll ask you to edit the log, but that isn't mandatory.  The real deal is that 
 [SVNPassword]
 Read that, then commit your stuff.
 
-But if you break the code or commit something stupid or something that breaks the code, it will be in the change logs.  I will find it, and I will *hunt you down*.
+But if you break the code or commit something stupid, it will be in the change logs.  I will find it, and I will *hunt you down*.
 
 <img src="http://www.seattlepartybusrentals.com/wp-content/uploads/2010/09/dog-the-bounty-hunter.jpg" alt="Del the Bounty Hunter" title="Del the Bounty Hunter"/>
 
