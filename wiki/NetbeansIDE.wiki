@@ -1,0 +1,75 @@
+#How to set up the Netbeans IDE for our project.
+
+= Introduction =
+
+Netbeans is a very robust and full-featured integrated development environment that can be used with multiple programming languages, such as C, C++, and Java (http://www.netbeans.org/). This page will explain how to get Netbeans installed on Ubuntu, and how to the built-in version control features to checkout the Google Code project to your computer.
+
+*Note*
+I may write a similar wiki page in the future for using the Eclipse IDE, but for now Netbeans will be our IDE of choice.
+
+
+= Installing and Configuring Netbeans =
+
+The Linux computers in the lab should already have Netbeans installed and configured, but if you are working from home then you will need to follow these steps.
+
+ # The first thing you need to do is install Netbeans using the synaptic package manager (or using apt-get at the command line if you're linux-savvy). Go to *System -> Administration -> Synaptic Package Manager*. Ubuntu will request that you type in your password so that you can make administrative changes. <img src="https://lh3.googleusercontent.com/_OYJ8fj3PJrU/TVMSG5bocdI/AAAAAAAAABw/BW5Jn3z7o0E/s640/menu.png"/>
+ # Using the quick search in the upper right corner of the window, search for Netbeans. Select the package that just says Netbeans, and check *Mark for Installation* from the drop-down menu. <img src="https://lh4.googleusercontent.com/_OYJ8fj3PJrU/TVMSlghqLBI/AAAAAAAAAC0/EUCUBnagYnA/s640/Screenshot-Synaptic%20Package%20Manager%20.png"/>
+ # Search for OpenCV in the quick search. There will be several packages you need to install here. *Check libhighgui-dev* first, as this package will probably automatically check a few of the other packages. You should at least have libcv-dev, libcvaux-dev, and libhighgui-dev checked. You can also check the documentation package if you wish. <img src="https://lh6.googleusercontent.com/_OYJ8fj3PJrU/TVMSlj_UgcI/AAAAAAAAAC4/vG5YT2yZ6fs/s640/Screenshot-Synaptic%20Package%20Manager%20-1.png"/>
+ # Once you have checked all of the packages you want to install, click the apply button to actually download and install everything.
+ # Open the Netbeans IDE. You can find it under *Applications -> Programming -> Netbeans IDE 6.9*. <img src="https://lh6.googleusercontent.com/_OYJ8fj3PJrU/TVMSHqR4dqI/AAAAAAAAAB0/ygoEg-kPVYc/s640/Menu-Open-Netbeans.png"/>
+ # We need to install the C/C++ plugin to allow Netbeans to work with C++ programs. Go to the plugin menu at **. <img src="https://lh4.googleusercontent.com/_OYJ8fj3PJrU/TVMSh-Q1MbI/AAAAAAAAACs/GEz1pfy_zcE/s640/Screenshot-Robotics%20-%20NetBeans%20IDE%206.9-2.png"/>
+ # Check the C/C++ plugin under the _Downloadable Plugins_ tab and click install. Once it is finished you should see the plugin under the _Installed_ tab. <img src="https://lh4.googleusercontent.com/_OYJ8fj3PJrU/TVMSV_fJcaI/AAAAAAAAACU/hF6VizAe-rU/s640/Screenshot-Plugins.png"/>
+
+
+= Checking Out the Source Code =
+
+Netbeans makes it very easy to check out the source code from our Google Code Repository.
+
+ # The first step is to go to the Checkout menu at *Team -> Subversion -> Checkout... *.
+
+<img src="https://lh5.googleusercontent.com/_OYJ8fj3PJrU/TVMSVfS0hbI/AAAAAAAAACQ/GYwM87hEzbY/s640/Screenshot-NetBeans%20IDE%206.9.png"/>
+
+
+<img src="https://lh6.googleusercontent.com/_OYJ8fj3PJrU/TVMSIIPmHHI/AAAAAAAAAB4/MHEJ3YFo_fY/s640/Screenshot-Checkout.png"/>
+
+
+<img src="https://lh6.googleusercontent.com/_OYJ8fj3PJrU/TVMSIWgFX9I/AAAAAAAAAB8/fvQpXlf8tTU/s640/Screenshot-Checkout-1.png"/>
+
+
+<img src="https://lh3.googleusercontent.com/_OYJ8fj3PJrU/TVMSIbb-3aI/AAAAAAAAACA/nBqxZrlkRJo/s800/Screenshot-Checkout%20Completed.png"/>
+
+
+<img src="https://lh3.googleusercontent.com/_OYJ8fj3PJrU/TVMSVVyi8MI/AAAAAAAAACM/ApecuAOpCLE/s640/Screenshot-Debug%20-%20Libraries-1.png"/>
+
+
+
+<img src="https://lh6.googleusercontent.com/_OYJ8fj3PJrU/TVMSVGKKPFI/AAAAAAAAACI/tJr3JQBbOJI/s640/Screenshot-Debug%20-%20Libraries.png"/>
+
+
+
+
+
+
+
+
+<img src="https://lh3.googleusercontent.com/_OYJ8fj3PJrU/TVMSWDiXo4I/AAAAAAAAACY/jfRT8plhgF8/s640/Screenshot-Project%20Properties%20-%20Robotics.png"/>
+
+
+<img src="https://lh6.googleusercontent.com/_OYJ8fj3PJrU/TVMSg3SX4FI/AAAAAAAAACc/1dmXJvwVuNE/s640/Screenshot-Project%20Properties%20-%20Robotics-1.png"/>
+
+
+
+<img src="https://lh6.googleusercontent.com/_OYJ8fj3PJrU/TVMShD-ecOI/AAAAAAAAACg/CitpcBvN50I/s640/Screenshot-Robotics%20-%20NetBeans%20IDE%206.9.png"/>
+
+
+<img src="https://lh3.googleusercontent.com/_OYJ8fj3PJrU/TVMShTjyAXI/AAAAAAAAACo/qDgmjAcpbWg/s640/Screenshot-Robotics%20-%20NetBeans%20IDE%206.9-1.png"/>
+
+
+
+
+
+<img src="https://lh6.googleusercontent.com/_OYJ8fj3PJrU/TVMSiMKC_pI/AAAAAAAAACw/3K8eftRJdVg/s400/Screenshot-Select%20Library.png"/>
+
+
+
+
