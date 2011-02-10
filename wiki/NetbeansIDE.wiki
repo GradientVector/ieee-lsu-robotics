@@ -1,4 +1,5 @@
 #summary How to set up the Netbeans IDE for our project.
+#labels Featured
 
 = Introduction =
 
