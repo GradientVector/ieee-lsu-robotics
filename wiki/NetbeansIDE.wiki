@@ -19,7 +19,8 @@ The Linux computers in the lab should already have Netbeans installed and config
  # Open the Netbeans IDE. You can find it under *Applications -> Programming -> Netbeans IDE 6.9*. <img src="https://lh6.googleusercontent.com/_OYJ8fj3PJrU/TVMSHqR4dqI/AAAAAAAAAB0/ygoEg-kPVYc/s640/Menu-Open-Netbeans.png"/>
  # We need to install the C/C++ plugin to allow Netbeans to work with C++ programs. Go to the plugin menu at **. <img src="https://lh4.googleusercontent.com/_OYJ8fj3PJrU/TVMSh-Q1MbI/AAAAAAAAACs/GEz1pfy_zcE/s640/Screenshot-Robotics%20-%20NetBeans%20IDE%206.9-2.png"/>
  # Check the C/C++ plugin under the _Downloadable Plugins_ tab and click install. Once it is finished you should see the plugin under the _Installed_ tab. <img src="https://lh4.googleusercontent.com/_OYJ8fj3PJrU/TVMSV_fJcaI/AAAAAAAAACU/hF6VizAe-rU/s640/Screenshot-Plugins.png"/>
-
+ # Go to the options menu under *Tools -> Options*. <img src="https://lh5.googleusercontent.com/_OYJ8fj3PJrU/TVMxJ1quu7I/AAAAAAAAADM/iTfMPyyfqFg/s640/Screenshot-Robotics%20-%20NetBeans%20IDE%206.9-3.png"/>
+ # Make sure that your options under the C/C++ tab are the same as the window displayed below. Otherwise Netbeans will not be able to compile C++ files. *COMMON PROBLEM:* You may have to install _g++_ on your computer, as it does not always come pre-installed on Ubuntu. Use the synaptic package manager if you need to download it. <img src="https://lh3.googleusercontent.com/_OYJ8fj3PJrU/TVMxKO-HGeI/AAAAAAAAADQ/0rDhit8EV3U/s640/Screenshot-Options.png"/>
 
 = Checking Out the Source Code =
 
@@ -52,4 +53,3 @@ For our project we will probably use the OpenCV dynamic libaries (libhighgui.so,
  # Click on the _Libraries_ box. A window should pop up for adding additional libraries to your project. <img src="https://lh3.googleusercontent.com/_OYJ8fj3PJrU/TVMSVVyi8MI/AAAAAAAAACM/ApecuAOpCLE/s640/Screenshot-Debug%20-%20Libraries-1.png"/> 
  # Click the *Add Library* button to bring up another window for selecting library files. Navigate to *libhighgui.so* in the _/usr/lib_ folder and click *OK*. I had trouble getting the .a files to work, so make sure _Files of Type_ on the bottom is set to dynamic library (.so) or else you might not see the .so files.<img src="https://lh6.googleusercontent.com/_OYJ8fj3PJrU/TVMSiMKC_pI/AAAAAAAAACw/3K8eftRJdVg/s400/Screenshot-Select%20Library.png"/>
  # You can additional libraries by clicking the *Add Library* button again. I believe that *highgui* is the only library we need to include for our project, but you can try adding others (such as cv, cvaux, and cxcore) just to be sure it works. <img src="https://lh6.googleusercontent.com/_OYJ8fj3PJrU/TVMSVGKKPFI/AAAAAAAAACI/tJr3JQBbOJI/s640/Screenshot-Debug%20-%20Libraries.png"/>
-
