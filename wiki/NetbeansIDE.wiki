@@ -2,7 +2,7 @@
 
 = Introduction =
 
-Netbeans is a very robust and full-featured integrated development environment that can be used with multiple programming languages, such as C, C++, and Java (http://www.netbeans.org/). This page will explain how to get Netbeans installed on Ubuntu, and how to the built-in version control features to checkout the Google Code project to your computer.
+Netbeans is a very robust and full-featured integrated development environment that can be used with multiple programming languages, such as C, C++, and Java (http://www.netbeans.org/). This page will explain how to get Netbeans installed on Ubuntu, and how to use the built-in version control features to checkout the Google Code project to your computer.
 
 *Note*
 I may write a similar wiki page in the future for using the Eclipse IDE, but for now Netbeans will be our IDE of choice.
