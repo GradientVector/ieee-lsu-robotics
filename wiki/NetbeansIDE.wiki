@@ -1,4 +1,4 @@
-#How to set up the Netbeans IDE for our project.
+#summary How to set up the Netbeans IDE for our project.
 
 = Introduction =
 
