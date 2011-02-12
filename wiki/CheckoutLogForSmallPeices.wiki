@@ -2,8 +2,7 @@ This is the list of functions we can begin writing. Next to each is a list of th
 To work on a function, write "//checked out by YOUR NAME" above it. Then write pseudocode or full C++, remembering to put a 
 title block comment. To check the code back in, erase your comment and put your code in the code repository on Google Code.
 Title your source files functionNameHere.cpp and your pseudocode files function name here.txt. For now just put them 
-somewhere in the 'misc' branch on Google Code; we'll talk about an organizational system at the next meeting. 
-
+somewhere in the 'misc' branch on Google Code; we'll talk about an organizational system at the next meeting. PS if you have an idea of a function to add to this list, or a modification to one of these functions, write it in a wiki-comment, and I'll modify the wiki page itself.
 
 
 
@@ -61,5 +60,3 @@ MAIN
 
 //checked out by Andrew Elias
 main()                    //uses... everything.
-
-
