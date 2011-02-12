@@ -1,62 +1,39 @@
 This is the list of functions we can begin writing. Next to each is a list of the functions that the function will call upon.
-To work on a function, write "//checked out by YOUR NAME" above it. Then write pseudocode or full C++, remembering to put a 
+To work on a function, write *"{{{*}}}- Checked out by _YOUR_NAME_{{{*}}}"* above it (include the asterisks to have the wiki page make it *bold*). Then write pseudocode or full C++, remembering to put a 
 title block comment. To check the code back in, erase your comment and put your code in the code repository on Google Code.
 Title your source files functionNameHere.cpp and your pseudocode files functionNameHere.txt. For now just put them 
 somewhere in the 'misc' branch on Google Code; we'll talk about an organizational system at the next meeting. PS if you have an idea of a function to add to this list, or a modification to one of these functions, write it in a wiki-comment, and I'll modify the wiki page itself.
 
 
 
-EXECUTION 
-
-void setVel(double)		//sets velocity. highly dependent on our motor controllers
-
-void setRotVel(double) 		//sets rotational velocity. highly dependent on our motor controllers
-
-class Bot                       //holds our x,y position as a "Point", and the angle(degrees) in which the robot is pointing in a double. instantiated only
+ * EXECUTION 
+  * _void setVel(double)_		//sets velocity. highly dependent on our motor controllers
+  * _void setRotVel(double)_ 		//sets rotational velocity. highly dependent on our motor controllers
+  * _class Bot_                         //holds our x,y position as a "Point", and the angle(degrees) in which the robot is pointing in a double. instantiated only
 
 
 
-
-VARIOUS INPUTS
-
-getVoltage()               //OR: bool isFull(). monitors the charge on the capacitor
-
-bool isCharging()          //to see if contact has been made and charge is flowing. this may just be a few calls to getVoltage() and a comparison to see if it's increasing
+ * VARIOUS INPUTS
+  * _getVoltage()_               //OR: bool isFull(). monitors the charge on the capacitor
+  * _bool isCharging()_          //to see if contact has been made and charge is flowing. this may just be a few calls to getVoltage() and a comparison to see if it's increasing
 
 
-
-
-
-VISION
-
-//checked out by John West
-Point findObject(Cylinder)  	     //finds one of the colored cylinder shapes in the image, and returns the x,y (pixels) location of the base of the object
-
-class Point                          //an x and y coordinate. Can be used to represent a pixel-based location or a geographical/cartesian location.
-
-class RelativePosition               //another ordered pair, but by convention this will hold r and theta (see below)
-
-RelativePosition placeObject(Point)  //interprets the findObject() output (which is a Point), translating the Point (i.e. x,y coordinates) into an ordered pair representing: r, the distance from the camera to object, and theta, the angle of of rotation we WOULD have to do to point at the object. (positive angle mean turning left)
-
-class Cylinder                       //contains 
+ * VISION *- Checked out by John West*
+  * _Point findObject(Cylinder)_  	     //finds one of the colored cylinder shapes in the image, and returns the x,y (pixels) location of the base of the object
+  * _class Point_                          //an x and y coordinate. Can be used to represent a pixel-based location or a geographical/cartesian location.
+  * _class RelativePosition_               //another ordered pair, but by convention this will hold r and theta (see below)
+  * _RelativePosition placeObject(Point)_  //interprets the findObject() output (which is a Point), translating the Point (i.e. x,y coordinates) into an ordered pair representing: r, the distance from the camera to object, and theta, the angle of of rotation we WOULD have to do to point at the object. (positive angle mean turning left)
+  * _class Cylinder_                       //contains 
 
 
 
-NAVIGATION
-
-void honeInOn(Cylinder)          //uses setVeloctiy(), setRotationalVel(), findObject(), placeObject()
-
-void pointTo(Point)              //uses our own x,y coordinates, our own angle, the the point's x,y coords to see how much we need to turn
-
-void moveTo(Cylinder)            //moves until it gets close enough to where the bot is almost touching the cylinder, but is still free to rotate. uses setVel(), setRotVel(), findObject(), and placeObject()
-
-void pressUpAgainst(Cylinder)    //similar to honeInOn() 
+ * NAVIGATION
+  * _void honeInOn(Cylinder)_          //uses setVeloctiy(), setRotationalVel(), findObject(), placeObject()
+  * _void pointTo(Point)_              //uses our own x,y coordinates, our own angle, the the point's x,y coords to see how much we need to turn
+  * _void moveTo(Cylinder)_            //moves until it gets close enough to where the bot is almost touching the cylinder, but is still free to rotate. uses setVel(), setRotVel(), findObject(), and placeObject()
+  * _void pressUpAgainst(Cylinder)_    //similar to honeInOn() 
 
 
 
-
-
-MAIN
-
-//checked out by Andrew Elias
-main()                    //uses... everything.
+ * MAIN *- Checked out by Andrew Elias*
+  * _main()_                    //uses... everything.
