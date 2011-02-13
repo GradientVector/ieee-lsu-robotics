@@ -18,8 +18,8 @@ somewhere in the 'misc' branch on Google Code; we'll talk about an organizationa
   * _bool isCharging()_          //to see if contact has been made and charge is flowing. this may just be a few calls to getVoltage() and a comparison to see if it's increasing
 
 
- * VISION *- Checked out by John West*
-  * _Point findObject(Cylinder)_  	     //finds one of the colored cylinder shapes in the image, and returns the x,y (pixels) location of the base of the object
+ * VISION 
+  *  *- Checked out by John West*  _Point findObject(Cylinder)_  	     //finds one of the colored cylinder shapes in the image, and returns the x,y (pixels) location of the base of the object
   * _class Point_                          //an x and y coordinate. Can be used to represent a pixel-based location or a geographical/cartesian location.
   * _class RelativePosition_               //another ordered pair, but by convention this will hold r and theta (see below)
   * _RelativePosition placeObject(Point)_  //interprets the findObject() output (which is a Point), translating the Point (i.e. x,y coordinates) into an ordered pair representing: r, the distance from the camera to object, and theta, the angle of of rotation we WOULD have to do to point at the object. (positive angle mean turning left)
@@ -35,5 +35,5 @@ somewhere in the 'misc' branch on Google Code; we'll talk about an organizationa
 
 
 
- * MAIN *- Checked out by Andrew Elias*
-  * _main()_                    //uses... everything.
+ * MAIN 
+  * *- Checked out by Andrew Elias*  _main()_                    //uses... everything.
