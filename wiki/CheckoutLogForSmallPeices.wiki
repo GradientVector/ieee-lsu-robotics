@@ -16,6 +16,8 @@ somewhere in the 'misc' branch on Google Code; we'll talk about an organizationa
  * VARIOUS INPUTS *- Checked out by RAVI*
   * _getVoltage()_               //OR: bool isFull(). monitors the charge on the capacitor
   * _bool isCharging()_          //to see if contact has been made and charge is flowing. this may just be a few calls to getVoltage() and a comparison to see if it's increasing
+  * _bool isCharged()_           //to see if charge is at/near max capacity
+  * _double voltageDerivative()_ //to see how fast the voltage is increasing. used to verify that we've made a connection.
 
 
  * VISION *- Checked out by John West*  
