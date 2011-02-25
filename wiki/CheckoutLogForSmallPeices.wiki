@@ -20,8 +20,8 @@ somewhere in the 'misc' branch on Google Code; we'll talk about an organizationa
   * _double voltageDerivative()_ //to see how fast the voltage is increasing. used to verify that we've made a connection.
 
 
- * VISION *- Checked out by John West*  
-  * _PixelPoint findObject(Cylinder)_  	     //finds one of the colored cylinder shapes in the image, and returns the x,y (pixels) location of the base of the object
+ * VISION   
+  * _PixelPoint findObject(Cylinder)_  	     //finds one of the colored cylinder shapes in the image, and returns the x,y (pixels) location of the base of the object * - Checked out by John West*
   * _class PixelPoint_                          //an x and y coordinate. Can be used to represent a pixel-based location or a geographical/cartesian location.
   * _class CartesianPoint_              //will hold our location on the map
   * _class PolarPosition_               //another ordered pair, but by convention this will hold r and theta (see below) relative to our own position and direction
@@ -37,5 +37,5 @@ somewhere in the 'misc' branch on Google Code; we'll talk about an organizationa
 
 
 
- * MAIN *- Checked out by Andrew Elias* 
-  * _main()_                    //uses... everything.
+  * MAIN  
+   _main()_                    //uses... everything. * - Checked out by Andrew Elias*
