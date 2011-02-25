@@ -31,10 +31,9 @@ somewhere in the 'misc' branch on Google Code; we'll talk about an organizationa
 
 
  * NAVIGATION
-  * _void honeInOn(Cylinder)_          //uses setVeloctiy(), setRotationalVel(), findObject(), placeObject()
-  * _void pointTo(Point)_              //uses our own x,y coordinates, our own angle, the the point's x,y coords to see how much we need to turn
+  * _void homeInOn(Cylinder, double distance)_          //homes in on an object until it gets to a certain distance away from the object. uses setVeloctiy(), setRotationalVel(), findObject(), placeObject()
+  * _void pointTo(CartesianPoint)_              //uses our own x,y coordinates, our own angle, the the point's x,y coords to see how much we need to turn
   * _void moveTo(Cylinder)_            //moves until it gets close enough to where the bot is almost touching the cylinder, but is still free to rotate. uses setVel(), setRotVel(), findObject(), and placeObject()
-  * _void pressUpAgainst(Cylinder)_    //similar to honeInOn() 
 
 
 
