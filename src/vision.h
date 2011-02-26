@@ -1,4 +1,6 @@
 /**
+Filename:	vision.h
+
 This, along with vision.cpp, contain all functionality necessary for using the camera.
 
 LOG:
@@ -22,8 +24,6 @@ class PixelPoint {
 		int x;	//x pixel coordinate, defining x=0 to be the ?top? of image
 		int y; 	//y pixel coordinate, defining y=0 to be the left of image
 };
-
-
 
 
 //holds an absolute direction. the value is protected, so that it never leaves the range 0-360 (degrees).
