@@ -37,8 +37,7 @@ class PolarPoint {
 				//note: 'th' indicates 'theta'
 };
 
-void homeInOn(Cylinder, double distance) {
-	//TODO
+void homeInOn(Cylinder, double distance);
 }
 
 #endif
