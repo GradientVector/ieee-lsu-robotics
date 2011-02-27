@@ -4,6 +4,7 @@
 author - Del Spangler
 
 TODO: rename this with the naming convention "serialException.h", which we decided on at the Feb 15 meeting
+NOPE: This is the normal naming convention for exceptions.
 */
 
 #ifndef _SERIAL_EXCEPTION_H_
