@@ -1,5 +1,13 @@
-#ifndef SERIAL_EXCEPTION
-#define SERIAL_EXCEPTION
+/**
+[TODO: documentation goes here]
+
+author - Del Spangler
+
+TODO: rename this with the naming convention "serialException.h", which we decided on at the Feb 15 meeting
+*/
+
+#ifndef _SERIAL_EXCEPTION_H_
+#define _SERIAL_EXCEPTION_H_
 class serial_exception {
     public:
         serial_exception(const char *str = "An exception has occured.\n") : msg(str) {};
