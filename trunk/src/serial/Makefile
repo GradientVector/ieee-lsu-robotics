@@ -1,3 +1,5 @@
+#TODO: document this
+
 CXX	:= g++
 AR  := ar
 CP  := cp

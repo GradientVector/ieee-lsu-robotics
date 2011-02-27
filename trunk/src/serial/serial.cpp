@@ -1,3 +1,9 @@
+/**
+[TODO: Documentation goes here]
+
+author - Del Spangler
+*/
+
 #include "serial.h"
 
 serial::serial() {
