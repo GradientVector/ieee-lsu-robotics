@@ -20,12 +20,6 @@ void setVel(double vel);
 
 void setRotVel(double rotVel);
 
-//will only be instantiated once. represents the robot itself.
-//Holds location and angle information.
-class Bot {
-	public:
-		CartesianPoint location;
-		Angle angle;
-};
+
 
 #endif
