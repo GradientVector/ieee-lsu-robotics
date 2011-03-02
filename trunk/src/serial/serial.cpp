@@ -45,7 +45,10 @@ int serial::recv(char *buf, int size, bool blocking = false) {
     int x = 0;
     if (fd < 0) throw serial_exception("File descriptor has not been opened.\n");
     if (blocking) 
-        while (x == 0) { usleep(10000); x=read(fd,buf,size); }
+        while (x == 0) { 
+		usleep(10000); 
+		x=read(fd,buf,size); 
+	}
     else
         x = read(fd,buf,size);
     return x;
