@@ -2,6 +2,7 @@
 Filename:	Bot.h
 
 Bot class. represents our robot. holds the location and angle info.
+Also includes "execution" methods for talking to the motor controller.
 Will only be instantiated once.
 
 author:		Andrew Elias
@@ -16,4 +17,6 @@ class Bot {
 	public:
 		CartesianPoint location;
 		Angle angle;
+		void setVel(double vel);
+		void setRotVel(double rotVel);
 };
