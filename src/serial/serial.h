@@ -1,6 +1,6 @@
 /**
-[TODO: Documentation goes here]
-
+Basic serial communication class that handles the opening and closing of a serial port.
+Allows for easy send/recv of data across the serial line. (/dev/ttyUSB0 for beagleboard)
 author - Del Spangler
 */
 
@@ -28,10 +28,10 @@ class serial {
         serial();
         serial(const char *portName, int baud);
         ~serial();
-        int openPort(const char *portName, int baud);
+        virtual int openPort(const char *portName, int baud);
 	bool isOpen();
-        int closePort();
-        int recv(char *buf,int size,bool blocking);
-        int send(char *buf,int size,bool blocking);
+        virtual int closePort();
+        virtual int recv(char *buf,int size,bool blocking=false);
+        virtual int send(char *buf,int size=-1,bool blocking=true);
 };
 #endif
