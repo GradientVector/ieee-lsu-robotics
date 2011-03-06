@@ -1,8 +1,7 @@
 This is the list of functions we can begin writing. Next to each is a list of the functions that the function will call upon.
 To work on a function, write *"{{{*}}}- Checked out by _YOUR_NAME_{{{*}}}"* above it (include the asterisks to have the wiki page make it *bold*). Then write pseudocode or full C++, remembering to put a 
 title block comment. To check the code back in, erase your comment and put your code in the code repository on Google Code.
-Title your source files functionNameHere.cpp and your pseudocode files functionNameHere.txt. For now just put them 
-somewhere in the 'misc' branch on Google Code; we'll talk about an organizational system at the next meeting. PS if you have an idea of a function to add to this list, or a modification to one of these functions, write it in a wiki-comment, and I'll modify the wiki page itself.
+Title your source files functionNameHere.cpp and your pseudocode files functionNameHere.txt. For now all classes need their own folder in trunk/src/<classname> on Google Code; PS if you have an idea of a function to add to this list, or a modification to one of these functions, write it in a wiki-comment, and I'll modify the wiki page itself.
 
 
 
