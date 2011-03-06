@@ -1,3 +1,5 @@
+#TODO: document this
+
 CXX	:= g++
 AR  := ar
 CP  := cp
@@ -7,18 +9,16 @@ INCLUDES := -I include/ `pkg-config --cflags opencv`
 LIBS     := -L lib/ `pkg-config --libs opencv`
 LIBDIR := ../../lib
 INCLUDEDIR := ../../include
-BINDIR := bin
 
-DIRS  := src
+all:  
 
-all: descend 
-
-cameratest: cameratest.o
-	$(CXX) $< -o $(BINDIR)/$@ $(LIBS)
+libserial.a: serial.o
+	$(AR) rcs $(LIBDIR)/$@ $< 
+	$(CP) *.h $(INCLUDEDIR)/.
 	$(RM) $<
 
 descend:
-	for x in $(DIRS); do \
+	for x in `ls -d */`; do \
 		make -C $$x; \
 	done;
 
