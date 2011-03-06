@@ -1,6 +1,6 @@
 /**
 [TODO: Documentation goes here]
-
+.cpp file for the serial comm class
 author - Del Spangler
 */
 
@@ -49,7 +49,7 @@ int serial::closePort() {
     return 0;
 }
 
-int serial::recv(char *buf, int size, bool blocking = false) {
+int serial::recv(char *buf, int size, bool blocking) {
     int x = 0;
     if (fd < 0) throw serial_exception("File descriptor has not been opened.\n");
     if (blocking) 
@@ -62,7 +62,7 @@ int serial::recv(char *buf, int size, bool blocking = false) {
     return x;
 }
 
-int serial::send(char *buf, int size = -1,bool blocking = true) {
+int serial::send(char *buf, int size,bool blocking) {
     int temp = size<0?strlen(buf):size;
     int x = 0;
     if (fd < 0) throw serial_exception("File descriptor has not been opened.\n");
@@ -75,12 +75,12 @@ int serial::send(char *buf, int size = -1,bool blocking = true) {
 
 void serial::selectBaudRate(int baud) {
     switch (baud) {
-        case 115200:
+        case 57600:
         default:
-            tio.c_cflag = B115200 | CS8 | CLOCAL | CREAD;
-            tio.c_ospeed = B115200;
-            tio.c_ispeed = B115200;
-            cfsetispeed(&tio,B115200);
-            cfsetospeed(&tio,B115200);
+            tio.c_cflag = B57600 | CS8 | CLOCAL | CREAD;
+            tio.c_ospeed = B57600;
+            tio.c_ispeed = B57600;
+            cfsetispeed(&tio,B57600);
+            cfsetospeed(&tio,B57600);
     }
 }
