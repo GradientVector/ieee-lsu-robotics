@@ -17,28 +17,36 @@ serial::serial(const char *portName, int baud) {
 
 serial::~serial() {
     closePort();
+    fd = -1;
 }
 
 int serial::openPort(const char *portName, int baud) {
     if (fd > 0) closePort();
-    fd = open(portName, O_RDWR | O_NOCTTY | O_NONBLOCK );
+    fd = open(portName, O_RDWR | O_NOCTTY | O_NDELAY );
     if (fd < 0) throw serial_exception("Error opening serial port\n");
     
-    bzero(&tio,sizeof(tio));
+    tcgetattr(fd,&tio);
+    //bzero(&tio,sizeof(tio));
     serial::selectBaudRate(baud);
     tio.c_iflag = IGNPAR;
     tio.c_oflag = 0;
     tio.c_lflag = 0;
-    tio.c_cc[VTIME] = 1; // inter-character timer used
-    tio.c_cc[VMIN] = 1; //blocking read until 1 read
-
-    tcflush(fd,TCIFLUSH);
+    tio.c_cc[VTIME] = 0; // inter-character timer used
+    tio.c_cc[VMIN] = 0; //blocking read until 1 read
     tcsetattr(fd,TCSANOW,&tio);
+    tcflush(fd,TCIFLUSH);
+    return 0;
+}
+
+bool serial::isOpen() {
+    if (fd != -1) return true;
+    return false;
 }
 
 int serial::closePort() {
     close(fd);
     fd = -1;
+    return 0;
 }
 
 int serial::recv(char *buf, int size, bool blocking = false) {
@@ -69,6 +77,10 @@ void serial::selectBaudRate(int baud) {
     switch (baud) {
         case 115200:
         default:
-            tio.c_cflag = B115200 | CRTSCTS | CS8 | CLOCAL | CREAD;
+            tio.c_cflag = B115200 | CS8 | CLOCAL | CREAD;
+            tio.c_ospeed = B115200;
+            tio.c_ispeed = B115200;
+            cfsetispeed(&tio,B115200);
+            cfsetospeed(&tio,B115200);
     }
 }

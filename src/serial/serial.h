@@ -29,6 +29,7 @@ class serial {
         serial(const char *portName, int baud);
         ~serial();
         int openPort(const char *portName, int baud);
+	bool isOpen();
         int closePort();
         int recv(char *buf,int size,bool blocking);
         int send(char *buf,int size,bool blocking);
