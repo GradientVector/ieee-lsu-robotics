@@ -1,31 +1,33 @@
-/**
-Filename:	execution.h
+#ifndef _MCI_H_
+#define _MCI_H_
 
-This, along with execution.cpp, will hold functionality for talking to our motor controllers.
+#include "serial.h"
 
-Log:	2011 Feb 25 - document created by Andrew Elias
+enum { MCI_OPEN_LOOP, MCI_CLOSED_LOOP };
+enum { MCI_MIXED_MODE, MCI_STANDARD_MODE };
 
-TODO list:
-	
-
-*/
-
-#ifndef _EXECUTION_H_
-#define _EXECUTION_H_
-
-#include "vision.h"
-using namespace std;
-
-void setVel(double vel);
-
-void setRotVel(double rotVel);
-
-//will only be instantiated once. represents the robot itself.
-//Holds location and angle information.
-class Bot {
+class MCI {
+	protected:
+		Serial *io;
+		int modeStatus;
+		int loopStatus;	
+		float P,I,D;
 	public:
-		CartesianPoint location;
-		Angle angle;
+		MCI();
+		MCI(const char *portName,int baudRate);
+		~MCI();
+		void reset();
+		void resetEncoders();
+		void getEncVal(int &left,int &right);
+		void setPIDVal(float P, float I, float D);
+		void getPIDVal(float &P, float &I, float &D);
+		void setLoopStatus(int status);
+		int getLoopStatus();
+		void setModeStatus(int status);
+		int getModeStatus();
+		void setVelocity(int a, int b);
+		void getVelocity(int &a, int &b);
+		
 };
 
 #endif

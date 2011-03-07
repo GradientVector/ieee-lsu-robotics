@@ -10,7 +10,7 @@ using namespace std;
 int main() {
 	char buf[255];
 	int size = 0;
-	serial io("/dev/ttyUSB0",57600);
+	Serial io("/dev/ttyUSB0",57600);
 	if (!io.isOpen()) return -1;
   	sprintf(buf,"Echo test, checking maximum line length. Results so far are looking pretty good.\n");
 	size = io.send(buf);

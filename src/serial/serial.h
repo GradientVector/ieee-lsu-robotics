@@ -19,15 +19,15 @@ author - Del Spangler
 
 #define BUF_SIZE 255
 
-class serial {
+class Serial {
     protected:
         int fd;
         struct termios tio;
         void selectBaudRate(int baud);
     public:
-        serial();
-        serial(const char *portName, int baud);
-        ~serial();
+        Serial();
+        Serial(const char *portName, int baud);
+        ~Serial();
         virtual int openPort(const char *portName, int baud);
 	bool isOpen();
         virtual int closePort();

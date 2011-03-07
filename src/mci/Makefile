@@ -5,17 +5,16 @@ AR  := ar
 CP  := cp
 RM  := rm
 CXXFLAGS := -g -O2 -Wall
-INCLUDES := -I include/ `pkg-config --cflags opencv`
-LIBS     := -L lib/ `pkg-config --libs opencv`
 LIBDIR := ../../lib
 INCLUDEDIR := ../../include
+INCLUDES := -I $(INCLUDEDIR) `pkg-config --cflags opencv`
+LIBS     := -L $(LIBDIR) `pkg-config --libs opencv`
 
-all:  
+all: libmci.a 
 
-libserial.a: serial.o
+libmci.a: mci.o
 	$(AR) rcs $(LIBDIR)/$@ $< 
 	$(CP) *.h $(INCLUDEDIR)/.
-	$(RM) $<
 
 descend:
 	for x in `ls -d */`; do \
