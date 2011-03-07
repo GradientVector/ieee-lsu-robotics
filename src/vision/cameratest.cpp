@@ -11,6 +11,10 @@ Mat getRedPixels(Mat src, unsigned char intensity);
 int main(int argv, char **argc) {
   Mat img,red;
   VideoCapture cap(0);
+  //cap.set(CV_CAP_PROP_FPS,60);
+  cap.set(CV_CAP_PROP_FRAME_WIDTH,640);
+  cap.set(CV_CAP_PROP_FRAME_HEIGHT,480);
+  cap.set(CV_CAP_PROP_GAIN,0);
   if (argv > 1) 
       img = imread(argc[1]);
   else {
@@ -23,13 +27,13 @@ int main(int argv, char **argc) {
   namedWindow("ICECHEST",CV_WINDOW_NORMAL);
   //cvResizeWindow("BEER",640,480);
   cvResizeWindow("ICECHEST",640,480);
-  if (argv == 1) cap >> img;
+  for (int i=0;i<50;i++) 
+    if (argv == 1) cap >> img;
   while (cvWaitKey(10)!=27){
       if (argv == 1) cap >> img;
     //red = getRedPixels(img,150);
     imshow("ICECHEST", img);
     //imshow("BEER", red);
-    sleep(1);
   }
   return 0;
 }
