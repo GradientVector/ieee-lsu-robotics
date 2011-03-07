@@ -6,28 +6,28 @@ author - Del Spangler
 
 #include "serial.h"
 
-serial::serial() {
+Serial::Serial() {
     fd = -1;
 }
 
-serial::serial(const char *portName, int baud) {
-    serial();
+Serial::Serial(const char *portName, int baud) {
+    Serial();
     openPort(portName,baud);
 }
 
-serial::~serial() {
+Serial::~Serial() {
     closePort();
     fd = -1;
 }
 
-int serial::openPort(const char *portName, int baud) {
+int Serial::openPort(const char *portName, int baud) {
     if (fd > 0) closePort();
     fd = open(portName, O_RDWR | O_NOCTTY | O_NDELAY );
     if (fd < 0) throw serial_exception("Error opening serial port\n");
     
     tcgetattr(fd,&tio);
     //bzero(&tio,sizeof(tio));
-    serial::selectBaudRate(baud);
+    Serial::selectBaudRate(baud);
     tio.c_iflag = IGNPAR;
     tio.c_oflag = 0;
     tio.c_lflag = 0;
@@ -38,18 +38,18 @@ int serial::openPort(const char *portName, int baud) {
     return 0;
 }
 
-bool serial::isOpen() {
+bool Serial::isOpen() {
     if (fd != -1) return true;
     return false;
 }
 
-int serial::closePort() {
+int Serial::closePort() {
     close(fd);
     fd = -1;
     return 0;
 }
 
-int serial::recv(char *buf, int size, bool blocking) {
+int Serial::recv(char *buf, int size, bool blocking) {
     int x = 0;
     if (fd < 0) throw serial_exception("File descriptor has not been opened.\n");
     if (blocking) 
@@ -62,7 +62,7 @@ int serial::recv(char *buf, int size, bool blocking) {
     return x;
 }
 
-int serial::send(char *buf, int size,bool blocking) {
+int Serial::send(char *buf, int size,bool blocking) {
     int temp = size<0?strlen(buf):size;
     int x = 0;
     if (fd < 0) throw serial_exception("File descriptor has not been opened.\n");
@@ -73,7 +73,7 @@ int serial::send(char *buf, int size,bool blocking) {
     return x;
 }
 
-void serial::selectBaudRate(int baud) {
+void Serial::selectBaudRate(int baud) {
     switch (baud) {
         case 57600:
         default:

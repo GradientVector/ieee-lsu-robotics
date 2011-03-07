@@ -1,28 +1,30 @@
-/**
-Filename:	execution.cpp
+#include "mci.h"
 
-This, along with execution.h, contain a way of interfacing with the motor controllers.
+MCI::MCI(){}
 
-LOG:
-	2011 Feb 24 - blank document created by Andrew Elias
+MCI::MCI(const char *portName,int baudRate){}
 
-TODO list:
-	
+MCI::~MCI(){}
 
- */
+void MCI::reset(){}
 
-#ifndef _EXECUTION_CPP_
-#define _EXECUTION_CPP_
+void MCI::resetEncoders(){}
 
-void setVel(double vel) {
-	//TODO
-}
+void MCI::getEncVal(int &left,int &right){}
 
-void setRotVel(double rotVel) {
-	//TODO
-}
+void MCI::setPIDVal(float P, float I, float D){}
 
+void MCI::getPIDVal(float &P, float &I, float &D){}
 
+void MCI::setLoopStatus(int status){}
 
+int MCI::getLoopStatus(){}
 
-#endif
+void MCI::setModeStatus(int status){}
+
+int MCI::getModeStatus(){}
+
+void MCI::setVelocity(int a, int b){}
+
+void MCI::getVelocity(int &a, int &b){}
+
