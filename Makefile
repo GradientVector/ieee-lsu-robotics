@@ -22,5 +22,9 @@ descend:
 		make -C $$x; \
 	done;
 
+clean:
+	rm lib/*; 
+	rm include/*
+
 %.o: %.cpp
 	$(CXX) $(INCLUDES) $(CXXFLAGS) -c $< -o $@

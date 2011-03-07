@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cv.h>
 #include <highgui.h>
+#include <unistd.h>
 
 using namespace std;
 using namespace cv;
@@ -18,16 +19,17 @@ int main(int argv, char **argc) {
           return -1;
       }
   }
-  namedWindow("BEER",CV_WINDOW_NORMAL);
+  //namedWindow("BEER",CV_WINDOW_NORMAL);
   namedWindow("ICECHEST",CV_WINDOW_NORMAL);
-  cvResizeWindow("BEER",640,480);
+  //cvResizeWindow("BEER",640,480);
   cvResizeWindow("ICECHEST",640,480);
   if (argv == 1) cap >> img;
   while (cvWaitKey(10)!=27){
       if (argv == 1) cap >> img;
-    red = getRedPixels(img,150);
+    //red = getRedPixels(img,150);
     imshow("ICECHEST", img);
-    imshow("BEER", red);
+    //imshow("BEER", red);
+    sleep(1);
   }
   return 0;
 }
