@@ -1,7 +1,7 @@
 /**
 Filename:	main.cpp
 
-This is the main program that will be run by the robot.
+This is the main program that will be run by the robot. It calls upon all of the code in /src.
 
 LOG:
 	2011 Feb 24 - created by Andrew Elias
@@ -22,7 +22,7 @@ const double TOUCH_DIST = 0;		//distance from our camera to the object when we a
 
 int main() {
 	//create objects to be used
-	Bot me = new Bot();
+	Bot me = new Bot();			//this includes the sensors
 	Cylinder blueCyl   = new Cylinder(BLUE);
 	Cylinder greenCyl  = new Cylinder(GREEN);
 	Cylinder redCyl    = new Cylinder(RED);

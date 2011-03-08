@@ -14,6 +14,8 @@ TODO list:
 #ifndef _NAVIGATION_CPP_
 #define _NAVIGATION_CPP_
 
+#include "navigation.h"
+
 void Bot::homeInOn(Cylinder, double distance) {
 	//TODO
 		//note: when going to either blue from yellow or to yellow from blue, follow the line first.
