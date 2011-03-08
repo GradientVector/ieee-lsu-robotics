@@ -14,6 +14,16 @@ TODO list:
 #ifndef _NAVIGATION_H_
 #define _NAVIGATION_H_
 
+//will only be instantiated once. represents the robot itself.
+//Holds location and angle information.
+class Bot {
+	public:
+		CartesianPoint location;
+		Angle angle;
+		void homeInOn(Cylinder, double distance);
+		void setVel(double vel);
+		void setRotVel(double rotVel);
+};
 
 
 //holds a location on a map; units are inches.
@@ -26,6 +36,7 @@ class CartesianPoint {
 				//y==0 indicates the left side of the map
 };
 
+
 //will be used to hold a relative position, in polar coordinates.
 //This will help us know what angle we need to turn to face an object.
 class PolarPoint {
@@ -37,7 +48,6 @@ class PolarPoint {
 				//note: 'th' indicates 'theta'
 };
 
-void homeInOn(Cylinder, double distance);
-}
+
 
 #endif
