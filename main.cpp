@@ -9,11 +9,11 @@ LOG:
 
 */
 
-#include "vision.h"
-#include "execution.h"
-#include "navigation.h"
-#include "variousInputs.h"
-#include "vision.h"
+#include "src/vision/vision.h"
+#include "src/mci/mci.h"
+#include "src/nav/navigation.h"
+#include "src/sensors/sensors.h"
+#include "src/vision/vision.h"
 using namespace std;
 
 const double STD_STOP_DIST = 6; 	//when navigating by homeInOn(-,-),  this is the standard stopping distance (inches) when we don't want to touch the object 
