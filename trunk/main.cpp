@@ -21,6 +21,7 @@ const double STD_STOP_DIST = 6; 	//when navigating by homeInOn(-,-),  this is th
 const double TOUCH_DIST = 0;		//distance from our camera to the object when we are touching it
 
 int main() {
+	//create objects to be used
 	Bot me = new Bot();
 	Cylinder blueCyl   = new Cylinder(BLUE);
 	Cylinder greenCyl  = new Cylinder(GREEN);
@@ -40,8 +41,5 @@ int main() {
 		me.homeInOn(yellowCyl,STD_STOP_DIST);
 		//TODO: wait and discharge
 	}
-
-	
-
 
 }
