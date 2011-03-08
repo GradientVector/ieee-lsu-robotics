@@ -1,0 +1,1 @@
+mci: (note: this used to be called 'execution' and was renamed for clarity) This is the motor controller interface class. This class should take all the MC functions and data and bind it into an easily usable and decently abstracted class.
