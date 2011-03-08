@@ -1,0 +1,1 @@
+src is where all the source code will be placed. For each class will have its own directory, in which its h,cpp and any related files will be stored. Any test programs you write for the class should be stored here as well.

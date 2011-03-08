@@ -1,0 +1,1 @@
+lib is where all compiled libraries are built once a build happens. No svn files will be placed here.
