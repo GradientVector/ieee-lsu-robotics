@@ -14,10 +14,13 @@ TODO list:
 #ifndef _NAVIGATION_H_
 #define _NAVIGATION_H_
 
+#include "../sensors/sensors.h";
+
 //will only be instantiated once. represents the robot itself.
 //Holds location and angle information.
 class Bot {
 	public:
+		SensorSet sensors;
 		CartesianPoint location;
 		Angle angle;
 		void homeInOn(Cylinder, double distance);

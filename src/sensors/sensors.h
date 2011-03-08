@@ -1,5 +1,5 @@
 /**
-Filename:	sensors.cpp
+Filename:	sensors.h
 
 This, along with sensors.cpp, will hold functionality for talking to our motor controllers.
 
