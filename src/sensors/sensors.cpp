@@ -6,9 +6,6 @@ This, along with sensors.h, contain an interface for getting input from the volt
 LOG:
 	2011 Feb 24 - blank document created by Andrew Elias
 
-TODO list:
-	
-
  */
 
 #ifndef _SENSORS_CPP_

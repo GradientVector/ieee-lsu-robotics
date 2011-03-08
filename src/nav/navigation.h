@@ -5,9 +5,6 @@ This, along with navigation.cpp, hold instructions for movement and rough geogra
 
 Log:	2011 Feb 25 - document created by Andrew Elias
 
-TODO list:
-	
-
 
 */
 
