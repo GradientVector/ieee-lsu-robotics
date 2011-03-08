@@ -14,19 +14,19 @@ TODO list:
 #ifndef _VARIOUSINPUTS_CPP_
 #define _VARIOUSINPUTS_CPP_
 
-double getVoltage() {
+double SensorSet::getVoltage() {
 	//TODO
 }
 
-bool isCharging() {
+bool SensorSet::isCharging() {
 	//TODO
 }
 
-bool isCharged() {
+bool SensorSet::isCharged() {
 	//TODO
 }
 
-double voltageDerivative() {
+double SensorSet::voltageDerivative() {
 	//TODO
 }
 
