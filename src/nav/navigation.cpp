@@ -14,8 +14,11 @@ TODO list:
 #ifndef _NAVIGATION_CPP_
 #define _NAVIGATION_CPP_
 
-void homeInOn(Cylinder, double distance) {
+void Bot::homeInOn(Cylinder, double distance) {
 	//TODO
+		//note: when going to either blue from yellow or to yellow from blue, follow the line first.
+
+	//note: first point towards it, then look for it, then move towards it.
 }
 
 
