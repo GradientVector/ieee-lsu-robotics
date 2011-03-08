@@ -6,8 +6,6 @@ This, along with navigation.h, contain all functionality necessary for moving ar
 LOG:
 	2011 Feb 24 - blank document created by Andrew Elias
 
-TODO list:
-	
 
  */
 

@@ -7,8 +7,6 @@ Log:	2011 Feb 25 - document created by Andrew Elias
 	2011 Feb 29?- screwed up by somebody? contains execution.cpp contents
 	2011 Mar 5  - fixed by Andrew Elias
 
-TODO list:
-	
 
 */
 
