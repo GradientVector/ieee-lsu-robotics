@@ -24,7 +24,7 @@ Title your source files functionNameHere.cpp and your pseudocode files functionN
   * _class PixelPoint_                          //an x and y coordinate. Can be used to represent a pixel-based location or a geographical/cartesian location.
   * _class CartesianPoint_              //will hold our location on the map
   * _class PolarPosition_               //another ordered pair, but by convention this will hold r and theta (see below) relative to our own position and direction
-  * _PolarPosition placeObject(PixelPoint)_  //interprets the findObject() output (which is a Point), translating the Point (i.e. x,y coordinates) into an ordered pair representing: r, the distance from the camera to object, and theta, the angle of of rotation we WOULD have to do to point at the object. (positive angle mean turning left)
+  * _PolarPosition placeObject(PixelPoint)_  //interprets the findObject() output (which is a Point), translating the Point (i.e. x,y coordinates) into an ordered pair representing: r, the distance from the camera to object, and theta, the angle of of rotation we WOULD have to do to point at the object. (positive angle mean turning left) * - Checked out by Harry Masson*
   * _class Cylinder_                       //contains 
 
 
