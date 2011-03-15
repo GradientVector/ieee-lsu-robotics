@@ -16,10 +16,6 @@ LOG:
 #include "src/vision/vision.h"
 using namespace std;
 
-const double STD_STOP_DIST = 6; 	//when navigating by homeInOn(-,-),  this is the standard stopping distance (inches) when we don't want to touch the object 
-
-const double TOUCH_DIST = 0;		//distance from our camera to the object when we are touching it
-
 int main() {
 	//create objects to be used
 	Bot me = new Bot();			//this includes the sensors
@@ -33,12 +29,12 @@ int main() {
 	//TODO:drive to the line
 
 	while(true) {
-		me.homeInOn(blueCyl,  STD_STOP_DIST);
-		me.homeInOn(greenCyl, STD_STOP_DIST);
-		me.homeInOn(redCyl,   TOUCH_DIST);	 
+		me.homeInOn(blueCyl,  me.STD_STOP_DIST);
+		me.homeInOn(greenCyl, me.STD_STOP_DIST);
+		me.homeInOn(redCyl,   me.TOUCH_DIST);	 
 		//TODO: wait and charge
-		me.homeInOn(greenCyl, STD_STOP_DIST);
-		me.homeInOn(yellowCyl,STD_STOP_DIST);
+		me.homeInOn(greenCyl, me.STD_STOP_DIST);
+		me.homeInOn(yellowCyl,me.STD_STOP_DIST);
 		//TODO: wait and discharge
 	}
 
