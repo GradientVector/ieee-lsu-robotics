@@ -32,7 +32,7 @@ Title your source files functionNameHere.cpp and your pseudocode files functionN
  * NAVIGATION
   * _void homeInOn(Cylinder, double distance)_          //homes in on an object until it gets to a certain distance away from the object. uses setVeloctiy(), setRotationalVel(), findObject(), placeObject()
   * _void pointTo(CartesianPoint)_              //uses our own x,y coordinates, our own angle, the the point's x,y coords to see how much we need to turn
-  * _void moveTo(Cylinder)_            //moves until it gets close enough to where the bot is almost touching the cylinder, but is still free to rotate. uses setVel(), setRotVel(), findObject(), and placeObject()
+ 
 
 
 
