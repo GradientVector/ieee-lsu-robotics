@@ -5,10 +5,10 @@ Title your source files functionNameHere.cpp and your pseudocode files functionN
 
 
 
- * EXECUTION *- Checked out by RAVI*
+ * MCI *- Checked out by RAVI*
   * _void setVel(double)_		//sets velocity. highly dependent on our motor controllers
   * _void setRotVel(double)_ 		//sets rotational velocity. highly dependent on our motor controllers
-  * _class Bot_                         //holds our x,y position as a "Point", and the angle(degrees) in which the robot is pointing in a double. instantiated only once *DONE*
+
 
 
 
@@ -30,8 +30,13 @@ Title your source files functionNameHere.cpp and your pseudocode files functionN
 
 
  * NAVIGATION
+  * _class Bot_                         //holds our x,y position as a "Point", and the angle(degrees) in which the robot is pointing in a double. instantiated only once *DONE*
+  * _void driveToMainLine() 
+  * _void followLineTo(Cylinder cyl)
   * _void homeInOn(Cylinder, double distance)_          //homes in on an object until it gets to a certain distance away from the object. uses setVeloctiy(), setRotationalVel(), findObject(), placeObject()
   * _void pointTo(CartesianPoint)_              //uses our own x,y coordinates, our own angle, the the point's x,y coords to see how much we need to turn
+  * _void chargeFor(...)
+  * _void dischargeFor(...)
  
 
 
