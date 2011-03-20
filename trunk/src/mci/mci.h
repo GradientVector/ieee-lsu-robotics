@@ -1,3 +1,12 @@
+/**
+Filename:	mci.h
+	
+Motor Controller Interface. this gives us the ability to actually perform physical actions.
+
+Log:	
+
+*/
+
 #ifndef _MCI_H_
 #define _MCI_H_
 
