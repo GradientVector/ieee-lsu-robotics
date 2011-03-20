@@ -19,12 +19,14 @@ class Bot {
 	public:
 	const double STD_STOP_DIST = 6; 	//when navigating by homeInOn(-,-),  this is the standard stopping distance(inches) when we don't want to touch the object 
 	const double TOUCH_DIST = 0;		//distance(inches) from our camera to the object when we are touching it
+	
 
 	SensorSet sensors;
 	CartesianPoint location;
 	Angle angle;
 	void driveToMainLine();
 	void followLineTo(Cylinder cyl);
+	void pointTo(Cylinder cyl);
 	void homeInOn(Cylinder, double distance);
 	void chargeFor(/*TODO*/);
 	void dischargeFor(/*TODO*/);
@@ -37,10 +39,11 @@ class Bot {
 //by convention the origin is the lower lefthand side of the map.
 class CartesianPoint {
 	public:
-		double x;	//units: inches
+	double x;	//units: inches
 				//x==0 indicates the bottom of the map
-		double y;
+	double y;
 				//y==0 indicates the left side of the map
+	CartesianPoint(double xPassed, double yPassed);
 };
 
 
@@ -48,9 +51,9 @@ class CartesianPoint {
 //This will help us know what angle we need to turn to face an object.
 class PolarPoint {
 	public:
-		double r;	//radial  coordinate. units: inches
+	double r;	//radial  coordinate. units: inches
 				//r==0 indicates our (the robot's) position
-		double th;	//angular coordinate. units: degrees
+	double th;	//angular coordinate. units: degrees
 				//th==0 indicates directly ahead of us
 				//note: 'th' indicates 'theta'
 };
