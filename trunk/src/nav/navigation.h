@@ -4,7 +4,7 @@ Filename:	navigation.h
 This, along with navigation.cpp, hold instructions for movement and rough geographical positioning.
 
 Log:	2011 Feb 25 - document created by Andrew Elias
-
+	2011 Mar 18 - driveToMainLine() added by Andrew Elias
 
 */
 
@@ -17,15 +17,19 @@ Log:	2011 Feb 25 - document created by Andrew Elias
 //Holds location and angle information.
 class Bot {
 	public:
-		const double STD_STOP_DIST = 6; 	//when navigating by homeInOn(-,-),  this is the standard stopping distance(inches) when we don't want to touch the object 
-		const double TOUCH_DIST = 0;		//distance(inches) from our camera to the object when we are touching it
+	const double STD_STOP_DIST = 6; 	//when navigating by homeInOn(-,-),  this is the standard stopping distance(inches) when we don't want to touch the object 
+	const double TOUCH_DIST = 0;		//distance(inches) from our camera to the object when we are touching it
 
-		SensorSet sensors;
-		CartesianPoint location;
-		Angle angle;
-		void homeInOn(Cylinder, double distance);
-		void setVel(double vel);
-		void setRotVel(double rotVel);
+	SensorSet sensors;
+	CartesianPoint location;
+	Angle angle;
+	void driveToMainLine();
+	void followLineTo(Cylinder cyl);
+	void homeInOn(Cylinder, double distance);
+	void chargeFor(/*TODO*/);
+	void dischargeFor(/*TODO*/);
+	void setVel(double vel);
+	void setRotVel(double rotVel);
 };
 
 
