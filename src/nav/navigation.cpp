@@ -26,7 +26,13 @@ void Bot::followLineTo(Cylinder cyl) {
 	//TODO
 }
 
-void Bot::homeInOn(Cylinder, double distance) {
+//uses our rough 'map' to point in the general direction of our destination.
+void Bot::pointTo(Cylinder cyl) {
+	//TODO
+}
+
+void Bot::homeInOn(Cylinder cyl, double distance) {
+	pointTo(cyl);
 	//TODO
 		//note: when going to either blue from yellow or to yellow from blue, follow the line first.
 
@@ -43,5 +49,10 @@ void Bot::dischargeFor(/*TODO*/) {
 	//TODO
 }
 
+
+CartesianPoint::CartesianPoint(double x, double y) {
+	x = xPassed;
+	y = yPassed;
+}
 
 #endif
