@@ -14,7 +14,6 @@ TODO notes:
 #ifndef _VISION_H_
 #define _VISION_H_
 
-
 using namespace std;
 
 //holds a location in an image; units are pixels.
@@ -48,7 +47,21 @@ class Angle {
 	public:
 	double getAngle();
 	void setAngle(double newAngle);
+                Angle();
+                Angle(double in_angle);
 };
+
+/*
+class Polar {
+    private:
+        double rho;
+        double theta;
+        complex<double> coord = polar(rho, theta);
+    public:
+
+
+};
+ */
 
 
 const int NOT_FOUND = 0; 
@@ -57,6 +70,15 @@ const int GREEN     = 2;
 const int BLUE      = 3;
 const int YELLOW    = 4;
 const int BLACK     = 5;
+
+const double VERTICAL_TILT_ANGLE = 90;   // 0 degrees is pointing perpendicular (straight at) the ground, 90 degrees is parallel to the ground
+const double CAMERA_HEIGHT = 5;          // Height (in inches) from ground. Test value of 5 was randomly chosen.
+const double VERT_FIELD_ANGLE = 45;      // 56 deg or 75 deg, probably using 75 deg
+const double HORIZ_FIELD_ANGLE = 60;
+const int IMG_WIDTH_PX = 640;
+const int IMG_HEIGHT_PX =  480;
+const double Y_SCALING_RATIO;            // How much stuff strinks while moving away
+
 
 class Cylinder {
 	public:
@@ -77,7 +99,7 @@ class Cylinder {
 PixelPoint findObject(Cylinder cyl);
 
 //converts the pixel coordinates to a real-life relative position
-PolarPosition placeObject(PixelPoint);
+PolarPoint placeObject(PixelPoint);
 
 
 
