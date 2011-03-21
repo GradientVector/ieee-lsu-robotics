@@ -20,6 +20,13 @@ LOG:
 //to the T-junction of the black lines, facing 'northward'. Then we can follow the right line. 
 void Bot::driveToMainLine() {
 	//TODO
+   
+   setVel(COMFY_SPEED);
+   wait((18/COMFY_SPEED)*1000);
+   setvel(0);
+   setRotVel(COMFY_TURN_SPEED);
+   wait((90/COMFY_TURN_SPEED));
+   setRotVel(0);
 }
 
 //Input must either be the yellow or blue cylinder. We will not line-follow to the others.
