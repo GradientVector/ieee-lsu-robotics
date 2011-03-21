@@ -18,19 +18,19 @@ using namespace std;
 
 int main() {
 	//DECLARATIONS
-	Bot me = Bot();			//this includes the sensors
-	Map map = Map();		//this is all of the cylinders
+	Bot me = Bot();		//this includes the sensors as well
+	Map map = Map();	//this is all of the cylinders
 
-	//TODO:drive to the line
+	me.driveToMainLine();
 
 	//RUN THE STANDARD 'SCRIPT'
 	while(true) {
-		me.homeInOn(blueCyl,  me.STD_STOP_DIST);
-		me.homeInOn(greenCyl, me.STD_STOP_DIST);
-		me.homeInOn(redCyl,   me.TOUCH_DIST);	 
+		me.homeInOn(map.blueCyl,  me.STD_STOP_DIST);
+		me.homeInOn(map.greenCyl, me.STD_STOP_DIST);
+		me.homeInOn(map.redCyl,   me.TOUCH_DIST);	 
 		//TODO: wait and charge
-		me.homeInOn(greenCyl, me.STD_STOP_DIST);
-		me.homeInOn(yellowCyl,me.STD_STOP_DIST);
+		me.homeInOn(map.greenCyl, me.STD_STOP_DIST);
+		me.homeInOn(map.yellowCyl,me.STD_STOP_DIST);
 		//TODO: wait and discharge
 	}
 
