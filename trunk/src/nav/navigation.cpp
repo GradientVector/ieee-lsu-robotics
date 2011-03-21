@@ -23,7 +23,7 @@ void Bot::driveToMainLine() {
 }
 
 //Input must either be the yellow or blue cylinder. We will not line-follow to the others.
-void Bot::followLineTo(Cylinder cyl) {
+void Bot::followLineTo(Cylinder cyl, double distance) {
 	//TODO
 }
 
@@ -66,10 +66,12 @@ Map::Map() {
 	yellowCyl = Cylinder(Cylinder.YELLOW, yellowPoint);
 }
 
+//units: inches/sec
 void setVel(double vel){
 	//TODO
 }
 
+//units: degrees/sec
 void setRotVel(double rotVel){
 	//TODO
 }
