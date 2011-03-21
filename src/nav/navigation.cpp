@@ -25,7 +25,7 @@ void Bot::driveToMainLine() {
    wait((18/COMFY_SPEED)*1000);
    setvel(0);
    setRotVel(COMFY_TURN_SPEED);
-   wait((90/COMFY_TURN_SPEED));
+   wait((90/COMFY_TURN_SPEED)*1000);
    setRotVel(0);
 }
 
