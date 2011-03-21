@@ -13,6 +13,7 @@ Log:	2011 Feb 25 - document created by Andrew Elias
 
 #include "../sensors/sensors.h";
 
+
 //will only be instantiated once. represents the robot itself.
 //Holds location and angle information.
 class Bot {
@@ -20,7 +21,6 @@ class Bot {
 	const double STD_STOP_DIST = 6; 	//when navigating by homeInOn(-,-),  this is the standard stopping distance(inches) when we don't want to touch the object 
 	const double TOUCH_DIST = 0;		//distance(inches) from our camera to the object when we are touching it
 	
-
 	SensorSet sensors;
 	CartesianPoint location;
 	Angle angle;
@@ -33,6 +33,17 @@ class Bot {
 	void setVel(double vel);
 	void setRotVel(double rotVel);
 };
+
+
+//a list of cylinders (and their colors/locations)
+class Map {
+	public:
+	Cylinder yellowCyl;
+	Cylinder blueCyl;
+	Cylinder greenCyl;
+	Cylinder redCyl;
+	Map();
+}
 
 
 //holds a location on a map; units are inches.

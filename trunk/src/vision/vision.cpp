@@ -25,6 +25,11 @@ void Angle::setAngle(double newAngle) {
 	angle = newAngle % 360;
 }
 
+Cylinder::Cylinder(int colorPassed, CartesianPoint locationPassed) {
+	color = colorPassed;
+	location = locationPassed;
+}
+
 PixelPoint findObject(Cylinder) {
 	//TODO John West: paste your code here
 }

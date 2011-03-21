@@ -30,10 +30,11 @@ class PixelPoint {
 //0 degrees is defined to be in the direction of the map's positive x axis (pointing to the right/east). 
 class Angle {
 	private:
-		double angle; 	//holds values from 0 to 360
+	double angle; 	//holds values from 0 to 360
+
 	public:
-		double getAngle();
-		void setAngle(double newAngle);
+	double getAngle();
+	void setAngle(double newAngle);
 };
 
 
@@ -46,8 +47,16 @@ const int BLACK     = 5;
 
 class Cylinder {
 	public:
-		CartesianPoint location;
-		int color;
+	static const int NOT_FOUND = 0; 
+	static const int RED       = 1;
+	static const int GREEN     = 2;
+	static const int BLUE      = 3;
+	static const int YELLOW    = 4;
+	static const int BLACK     = 5;
+
+	CartesianPoint location;
+	int color;
+	Cylinder(int colorPassed, CartesianPoint locationPassed);
 };
 
 
