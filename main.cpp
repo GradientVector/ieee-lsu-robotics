@@ -18,19 +18,8 @@ using namespace std;
 
 int main() {
 	//DECLARATIONS
-	Bot me = new Bot();				//this includes the sensors
-
-	CartesianPoint bluePoint   = CartesianPoint(6, 90);
-	CartesianPoint greenPoint  = CartesianPoint(90, 90);
-	CartesianPoint redPoint    = CartesianPoint(72, 12);
-	CartesianPoint yellowPoint = CartesianPoint(6, 6);
-
-	Cylinder blueCyl   = new Cylinder(BLUE,   bluePoint);
-	Cylinder greenCyl  = new Cylinder(GREEN,  greenPoint);
-	Cylinder redCyl    = new Cylinder(RED,    redPoint);
-	Cylinder yellowCyl = new Cylinder(YELLOW, yellowPoint);
-	//TODO: create one (BLACK) for the lines?
-
+	Bot me = Bot();			//this includes the sensors
+	Map map = Map();		//this is all of the cylinders
 
 	//TODO:drive to the line
 
