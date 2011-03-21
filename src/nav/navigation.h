@@ -25,7 +25,7 @@ class Bot {
 	CartesianPoint location;
 	Angle angle;
 	void driveToMainLine();
-	void followLineTo(Cylinder cyl);
+	void followLineTo(Cylinder cyl, double distance);
 	void pointTo(Cylinder cyl);
 	void homeInOn(Cylinder, double distance);
 	void chargeFor(/*TODO*/);

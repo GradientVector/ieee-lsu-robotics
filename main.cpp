@@ -25,12 +25,13 @@ int main() {
 
 	//RUN THE STANDARD 'SCRIPT'
 	while(true) {
-		me.homeInOn(map.blueCyl,  me.STD_STOP_DIST);
+		me.followLineTo(map.blueCyl,  me.STD_STOP_DIST);
 		me.homeInOn(map.greenCyl, me.STD_STOP_DIST);
 		me.homeInOn(map.redCyl,   me.TOUCH_DIST);	 
 		//TODO: wait and charge
 		me.homeInOn(map.greenCyl, me.STD_STOP_DIST);
-		me.homeInOn(map.yellowCyl,me.STD_STOP_DIST);
+		me.homeInOn(map.blueCyl,  me.STD_STOP_DIST);
+		me.followLineTo(map.yellowCyl,me.STD_STOP_DIST);
 		//TODO: wait and discharge
 	}
 
