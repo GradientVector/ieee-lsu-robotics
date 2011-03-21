@@ -51,8 +51,6 @@ void Bot::homeInOn(Cylinder cyl, double distance) {
 	//note: first point towards it, then look for it, then move towards it.
 }
 
-//These two functions will rely on our charge, our charging speed, time left on the clock, etc. 
-//I will work on what exact inputs they need. -Andrew Elias
 void Bot::chargeFor(/*TODO*/) {
 	//TODO
 }
@@ -60,6 +58,23 @@ void Bot::chargeFor(/*TODO*/) {
 void Bot::dischargeFor(/*TODO*/) {
 	//TODO
 }
+
+PolarPoint::PolarPoint(double in_r, Angle in_th){
+    r = in_r;
+    th = in_th;
+}
+PolarPoint::PolarPoint(double in_r, double in_th){
+    r = in_r;
+    th.setAngle(in_th);
+}
+
+PolarPoint::PolarPoint(){
+    r = 0.0;
+    th.setAngle(0.0);
+
+//These two functions will rely on our charge, our charging speed, time left on the clock, etc. 
+//I will work on what exact inputs they need. -Andrew Elias
+
 
 Map::Map() {
 	CartesianPoint bluePoint   = CartesianPoint(6, 90);

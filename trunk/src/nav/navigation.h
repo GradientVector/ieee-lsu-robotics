@@ -11,7 +11,8 @@ Log:	2011 Feb 25 - document created by Andrew Elias
 #ifndef _NAVIGATION_H_
 #define _NAVIGATION_H_
 
-#include "../sensors/sensors.h";
+#include "../sensors/sensors.h"
+#include "../vision/vision.h"
 
 
 //will only be instantiated once. represents the robot itself.
@@ -64,9 +65,12 @@ class PolarPoint {
 	public:
 	double r;	//radial  coordinate. units: inches
 				//r==0 indicates our (the robot's) position
-	double th;	//angular coordinate. units: degrees
+		Angle th;	//angular coordinate. units: degrees
 				//th==0 indicates directly ahead of us
 				//note: 'th' indicates 'theta'
+                PolarPoint(double in_r, Angle in_th);
+                PolarPoint(double in_r, double in_th);
+                PolarPoint();
 };
 
 

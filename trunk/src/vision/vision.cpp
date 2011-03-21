@@ -13,9 +13,21 @@ TODO list:
 
 #ifndef _VISION_CPP_
 #define _VISION_CPP_
-
+#include <math.h>
 #include "vision.h"
-using namespace std;
+#include "../nav/navigation.h"
+
+#define PI 3.14159265
+
+using namespace std; // #TODO: Remove this line - shouldn't define namespace in library file, only in actual executable.
+
+Angle::Angle(){
+    angle = 0;
+}
+
+Angle::Angle(double in_angle){
+    angle = in_angle;
+}
 
 double Angle::getAngle() {
 	return angle;
@@ -31,6 +43,33 @@ PixelPoint::PixelPoint()
   x = 0;
   y = 0;
   return 0;
+}
+
+PolarPoint placeObject(PixelPoint object) {
+
+    double middle_x = IMG_WIDTH_PX/2;     // Coordinate for middle pixel on x axis
+    double middle_y = IMG_HEIGHT_PX/2;    // Coordinate for middle pixel on y axis
+    double diff_x;                        // Horizontal difference between camera middle pixel and object pixel
+    double diff_y;                        // Vertical difference between camera middle pixel and object pixel
+    Angle vert_diff_angle;                // Angle between middle of screen and vertical position of object, + = left of middle
+    Angle horiz_diff_angle;               // Angle between middle of screen and horizontal position of object, + = above middle
+    Angle abs_vert_angle;                 // Object's angle relative to camera position on robot  #TODO: Rename variable
+    double  distance_from_robot;          // Distance between robot and object
+
+    // find angle between robot's direction and object
+    diff_x = (middle_x - object.x)/ middle_x;  // +middle_x = far left, -middle_x = far right
+    horiz_diff_angle.setAngle(diff_x * (HORIZ_FIELD_ANGLE/2));
+   
+    // calculate distance between robot and object
+    diff_y = (middle_y - object.y)/middle_y;  // +middle_y = top, -middle_y = bottom
+    vert_diff_angle.setAngle(diff_y * (VERT_FIELD_ANGLE/2));
+    abs_vert_angle.setAngle(vert_diff_angle.getAngle() + VERTICAL_TILT_ANGLE);
+    distance_from_robot = CAMERA_HEIGHT * tan(abs_vert_angle.getAngle()*(PI/180));  // based on trig function, same units as CAMERA_HEIGHT
+    // #TODO: See if this works or if tan() needs to just be Math.tan()
+
+    PolarPoint updated_position(distance_from_robot , horiz_diff_angle);
+    
+    return updated_position;
 }
 
 Cylinder::Cylinder(int colorPassed, CartesianPoint locationPassed) {
@@ -50,9 +89,7 @@ PixelPoint::PixelPoint(int ix, int iy)
 
 int color(Mat, int, int) //this returns a color at a point
 
-PixelPoint findObject(cyl)
-
-{
+PixelPoint findObject(cyl) {
     int clrLmt = 225; //color intensity minimum
     Mat gryClr = grayImage.getGI(cyl.color);
     PixelPoint cylPt(0, 0);
@@ -126,10 +163,6 @@ bool checkArea(int cx, int cy, Mat gry, Point &Pt)//checks the average number of
 	return true;
     }
     else return false;
-}
-
-PolarPosition placeObject(PixelPoint) {
-	//TODO
 }
 
 Mat GrayImage::getGI(int color)
