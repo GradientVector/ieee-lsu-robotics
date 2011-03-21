@@ -23,9 +23,22 @@ class PixelPoint {
 	public:
 		int x;	//x pixel coordinate, defining x=0 to be the ?top? of image
 		int y; 	//y pixel coordinate, defining y=0 to be the left of image
+		PixelPoint(int ix, int iy);
+		PixelPoint();
 };
 
-
+class GrayImage
+{
+  public:
+    Mat getGI(int color);
+  private:
+    Mat getRedPixels();
+    Mat getBluePixels();
+    Mat getYellowPixels();
+    Mat getGreenPixels();
+    Mat getLines();
+    vector<Mat> planes;
+};
 //holds an absolute direction. the value is protected, so that it never leaves the range 0-360 (degrees).
 //0 degrees is defined to be in the direction of the map's positive x axis (pointing to the right/east). 
 class Angle {
