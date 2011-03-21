@@ -13,6 +13,7 @@ LOG:
 #ifndef _NAVIGATION_CPP_
 #define _NAVIGATION_CPP_
 
+#include <math.h>
 #include "navigation.h"
 
 //Will only be used once. Gets us from the starting point (facing 'eastward') 
@@ -28,7 +29,11 @@ void Bot::followLineTo(Cylinder cyl) {
 
 //uses our rough 'map' to point in the general direction of our destination.
 void Bot::pointTo(Cylinder cyl) {
-	//TODO
+	double deltaX = cyl.location.x - me.location.x;
+	double deltaY = cyl.location.y - me.location.y;
+	double direction = atan(deltaY/deltaX);		//the direction we want to point
+	if(deltaY < 0) direction = 180 - direction;
+	//TODO use setRotVel(...) to do the physical motion
 }
 
 void Bot::homeInOn(Cylinder cyl, double distance) {
