@@ -6,8 +6,8 @@ Title your source files functionNameHere.cpp and your pseudocode files functionN
 
 
  * MCI *- Checked out by RAVI*
-  * _void setVel(double)_		//sets velocity. highly dependent on our motor controllers
-  * _void setRotVel(double)_ 		//sets rotational velocity. highly dependent on our motor controllers
+  * _void setVel(double)_		//sets velocity. highly dependent on our motor controllers * - checked out by Andrew*
+  * _void setRotVel(double)_ 		//sets rotational velocity. highly dependent on our motor controllers * - checked out by Andrew*
 
 
 
