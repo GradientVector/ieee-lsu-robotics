@@ -14,6 +14,7 @@ LOG:
 #define _NAVIGATION_CPP_
 
 #include <math.h>
+#include "mci.h"
 #include "navigation.h"
 
 //Will only be used once. Gets us from the starting point (facing 'eastward') 
@@ -38,7 +39,7 @@ void Bot::followLineTo(Cylinder cyl, double distance) {
 void Bot::pointTo(Cylinder cyl) {
 	double deltaX = cyl.location.x - me.location.x;
 	double deltaY = cyl.location.y - me.location.y;
-	double direction = atan(deltaY/deltaX);		//the direction we want to point
+	double direction = (180/3.1415926)*atan(deltaY/deltaX);		//the direction we want to point TODO note may have to do math.atan? also: converted from rad to degrees
 	if(deltaY < 0) direction = 180 - direction;
 	//TODO use setRotVel(...) to do the physical motion
 }
@@ -88,14 +89,36 @@ Map::Map() {
 	yellowCyl = Cylinder(Cylinder.YELLOW, yellowPoint);
 }
 
+double Bot::getVel() {
+	return velocity;
+}
+
 //units: inches/sec
-void setVel(double vel){
+void Bot::setVel(double newVelocity){
+	double SCALING_FACTOR = 2; //multiply by this to convert from in/sec to MCI-units TODO this is wrong; email Del
+	double dV =   ; //change in velocity due to this function
+	double
+	
 	//TODO
+	mci.setVelocity(/*blank until we know units*/);  //TODO
+	velocity = newVelocity;
+}
+
+double Bot::getRotVel() {
+	return rotVel;
 }
 
 //units: degrees/sec
-void setRotVel(double rotVel){
-	//TODO
+void Bot::setRotVel(double newRotVel){
+	double radius = WHL_DIAM/2;
+	double newRotVelInRadians = (180/3.1415926)*newRotVel;
+	velToSetEach = radius*newRotVelInRadians;		//the vel for each wheel, in in/sec
+	const double SCALING_FACTOR = 2; 		//TODO this is wrong, email Del
+	double toSet = SCALING_FACTOR*velToSetEach;		
+	//TODO set the rot vel without unsetting the vel
+
+	mci.setVelocity(/*blank until we know units*/);  //TODO
+	rotVel = newRotVel;
 }
 
 CartesianPoint::CartesianPoint(double x, double y) {
