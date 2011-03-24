@@ -23,10 +23,10 @@ void Bot::driveToMainLine() {
 	//TODO
    
    setVel(COMFY_SPEED);
-   wait((18/COMFY_SPEED)*1000);
+   wait((18/COMFY_SPEED)*1000);		//*1000, converting s to ms
    setvel(0);
    setRotVel(COMFY_TURN_SPEED);
-   wait((90/COMFY_TURN_SPEED)*1000);
+   wait((90/COMFY_TURN_SPEED)*1000);	//*1000, converting s to ms
    setRotVel(0);
 }
 
@@ -39,8 +39,8 @@ void Bot::followLineTo(Cylinder cyl, double distance) {
 void Bot::pointTo(Cylinder cyl) {
 	double deltaX = cyl.location.x - me.location.x;
 	double deltaY = cyl.location.y - me.location.y;
-	double direction = (180/3.1415926)*atan(deltaY/deltaX);		//the direction we want to point TODO note may have to do math.atan? also: converted from rad to degrees
-	if(deltaY < 0) direction = 180 - direction;
+	double direction = (180/3.1415926)*atan(deltaY/deltaX);		//the direction we want to point 
+	if(deltaY < 0) direction = 180 - direction;			//deals with quadrant problems
 	//TODO use setRotVel(...) to do the physical motion
 }
 
@@ -52,6 +52,9 @@ void Bot::homeInOn(Cylinder cyl, double distance) {
 	//note: first point towards it, then look for it, then move towards it.
 }
 
+
+//These two functions will rely on our charge, our charging speed, time left on the clock, etc. 
+//I will work on what exact inputs they need. -Andrew Elias
 void Bot::chargeFor(/*TODO*/) {
 	//TODO
 }
@@ -72,9 +75,7 @@ PolarPoint::PolarPoint(double in_r, double in_th){
 PolarPoint::PolarPoint(){
     r = 0.0;
     th.setAngle(0.0);
-
-//These two functions will rely on our charge, our charging speed, time left on the clock, etc. 
-//I will work on what exact inputs they need. -Andrew Elias
+}
 
 
 Map::Map() {
