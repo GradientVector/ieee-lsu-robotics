@@ -21,29 +21,6 @@ TODO list:
 
 using namespace std; // #TODO: Remove this line - shouldn't define namespace in library file, only in actual executable.
 
-Angle::Angle(){
-    angle = 0;
-}
-
-Angle::Angle(double in_angle){
-    angle = in_angle;
-}
-
-double Angle::getAngle() {
-	return angle;
-}
-
-void Angle::setAngle(double newAngle) {
-	angle = newAngle % 360;
-}
-
-
-PixelPoint::PixelPoint()
-{
-  x = 0;
-  y = 0;
-  return 0;
-}
 
 PolarPoint placeObject(PixelPoint object) {
 
@@ -77,17 +54,10 @@ Cylinder::Cylinder(int colorPassed, CartesianPoint locationPassed) {
 	location = locationPassed;
 }
 
-
-
-PixelPoint::PixelPoint(int ix, int iy)
-{
-  x = ix;
-  y = iy;
-  return 0;
+//this returns a color at a point
+int color(Mat, int, int) {
+	//TODO
 }
-
-
-int color(Mat, int, int) //this returns a color at a point
 
 PixelPoint findObject(cyl) {
     int clrLmt = 225; //color intensity minimum
