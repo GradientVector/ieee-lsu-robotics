@@ -47,7 +47,7 @@ PixelPoint::PixelPoint()
 
 PolarPoint placeObject(PixelPoint object) {
 
-    double middle_x = IMG_WIDTH_PX/2;     // Coordinate for middle pixel on x axis
+    double middle_x = Bot.IMG_WIDTH_PX/2;     // Coordinate for middle pixel on x axis
     double middle_y = IMG_HEIGHT_PX/2;    // Coordinate for middle pixel on y axis
     double diff_x;                        // Horizontal difference between camera middle pixel and object pixel
     double diff_y;                        // Vertical difference between camera middle pixel and object pixel
