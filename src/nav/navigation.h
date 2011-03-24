@@ -25,9 +25,13 @@ class Bot {
 	const double STD_STOP_DIST = 6; 	//when navigating by homeInOn(-,-),  this is the standard stopping distance(inches) when we don't want to touch the object 
 	const double TOUCH_DIST = 0;		//distance(inches) from our camera to the object when we are touching it
 	const double WHL_DIAM;			//separation b/t the wheels
-	//good, standard speeds that aren't too fast/slow
-	const double COMFY_SPEED = 6;		
-	const double COMFY_TURN_SPEED = 360;
+	
+	//high speeds at which things start going wrong. (temp; subj to change)
+	const double MAX_SPEED = 10;		//inches/second
+	const double MAX_ROT_SPEED = 720;	//degrees/second
+	//good, standard speeds that aren't too fast/slow. on a scale from -1 to 1, where 1 is MAX_SPEED
+	const double COMFY_SPEED = 0.5;		
+	const double COMFY_TURN_SPEED = 0.5;
 	
 	SensorSet sensors;
 	CartesianPoint location;
@@ -54,6 +58,7 @@ class Map {
 	Cylinder blueCyl;
 	Cylinder greenCyl;
 	Cylinder redCyl;
+	//TODO: line?
 	Map();
 }
 
