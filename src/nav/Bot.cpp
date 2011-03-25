@@ -1,4 +1,6 @@
+
 #include "Bot.h"
+#include <math.h>
 
 //Will only be used once. Gets us from the starting point (facing 'eastward') 
 //to the T-junction of the black lines, facing 'northward'. Then we can follow the right line. 
@@ -46,25 +48,42 @@ void Bot::dischargeFor(/*TODO*/) {
 	//TODO
 }
 
+//DONE
 double Bot::getVel() {
 	return velocity;
 }
 
+//checked out by ANDREW ELIAS
 //units: inches/sec
 void Bot::setVel(double newVelocity){
-	double SCALING_FACTOR = 2; //multiply by this to convert from in/sec to MCI-units TODO this is wrong; email Del
-	double dV =   ; //change in velocity due to this function
-	double
-	
-	//TODO
-	mci.setVelocity(/*blank until we know units*/);  //TODO
-	velocity = newVelocity;
+	double SCALING_FACTOR = 2; //number of inches/sec represented by "1" being passed to 
+	//multiply by this to convert from in/sec to MCI-units 
+	//TODO this is wrong; must determine it empirically. also, move it to .h file
+
+	double oldVel = velocity;
+	if(fabs(newVelocity) > MAX_SPEED) {	
+		velocity = MAX_SPEED;		
+	} else {
+		velocity = newVelocity;		
+	}
+
+	double dV = velocity - oldVelocity;   //change in velocity due to this function
+
+	//convert them from in/sec to a scale of -1 to 1
+	dV     = dV     / MAX_SPEED; 		      
+	oldVel = oldVel / MAX_SPEED
+
+	mci.setModeStatus(mci.MIXED_MODE);	//MIXED_MODE indicates vel/rotVel instead of L/R
+	mci.setVelocity(oldVel + dV, rotVel/MAX_SPEED);  
+	//TODO check all of this!
 }
 
+//DONE
 double Bot::getRotVel() {
 	return rotVel;
 }
 
+//checked out by ANDREW ELIAS
 //units: degrees/sec
 void Bot::setRotVel(double newRotVel){
 	double radius = WHL_DIAM/2;

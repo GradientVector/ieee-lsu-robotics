@@ -15,13 +15,13 @@ class Bot {
 	const double WHL_DIAM;			//separation b/t the wheels
 	
 	//high speeds at which things start going wrong. (temp; subj to change)
-	const double MAX_SPEED = 10;		//inches/second
+	const double MAX_SPEED = 25;		//inches/second
 	const double MAX_ROT_SPEED = 720;	//degrees/second
-	//good, standard speeds that aren't too fast/slow. on a scale from -1 to 1, where 1 is MAX_SPEED
-	const double COMFY_SPEED = 0.5;		
-	const double COMFY_TURN_SPEED = 0.5;
+	//good, standard speeds that aren't too fast/slow.
+	const double COMFY_SPEED = 0.5*MAX_SPEED;		
+	const double COMFY_TURN_SPEED = 0.5*MAX_ROT_SPEED;
 	
-	const double VERTICAL_TILT_ANGLE = 90;   // 0 degrees is pointing perpendicular (straight at) the ground, 90 degrees is parallel to the ground
+	const double VERTICAL_TILT_ANGLE = 90;   // 0 degrees is pointing perpendicular (straight at) the ground; 90 degrees is parallel to the ground
 	const double CAMERA_HEIGHT = 5;          // Height (in inches) from ground. Test value of 5 was randomly chosen.
 	const double VERT_FIELD_ANGLE = 45;      // 56 deg or 75 deg, probably using 75 deg
 	const double HORIZ_FIELD_ANGLE = 60;
