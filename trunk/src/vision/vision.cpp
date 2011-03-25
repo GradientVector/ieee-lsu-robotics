@@ -1,14 +1,5 @@
 /**
-Filename:	vision.cpp
-
-This, along with vision.h, contain all functionality necessary for using the camera.
-
-LOG:
-	2011 Feb 24 - blank document created by Andrew Elias
-
-TODO list:
-	
-
+loose vision functions not belonging to any particular class
  */
 
 #ifndef _VISION_CPP_
@@ -18,9 +9,6 @@ TODO list:
 #include "../nav/navigation.h"
 
 #define PI 3.14159265
-
-using namespace std; // #TODO: Remove this line - shouldn't define namespace in library file, only in actual executable.
-
 
 PolarPoint placeObject(PixelPoint object) {
 
@@ -55,8 +43,10 @@ Cylinder::Cylinder(int colorPassed, CartesianPoint locationPassed) {
 }
 
 //this returns a color at a point
-int color(Mat, int, int) {
-	//TODO
+int color(Mat img, int x, int y) {
+	//TODO by John West
+	int& temp = img.at<uchar>(y, x);
+	return temp;
 }
 
 PixelPoint findObject(cyl) {
@@ -135,61 +125,6 @@ bool checkArea(int cx, int cy, Mat gry, Point &Pt)//checks the average number of
     else return false;
 }
 
-Mat GrayImage::getGI(int color)
-{
-  switch (color)
-    case 1: return getRedPixels();
-    case 2: return getGreenPixels();
-    case 3: return getBluePixels();
-    case 4: return getYellowPixels();
-    case 5: return getLines();
-}
 
-Mat GrayImage::getRedPixels();
-{
-  split(img, planes);
-  Mat adj(img.rows, img.cols, CV_8UC1);
-  subtract(planes[2], planes[1], adj);
-  subtract(adj, planes[0], adj);
-  return adj;
-}
-
-Mat GrayImage::getGreenPixels();
-{
-  split(img, planes);
-  Mat adj(img.rows, img.cols, CV_8UC1);
-  subtract(planes[1], planes[2], adj);
-  subtract(adj, planes[0], adj);
-  return adj;
-}
-
-Mat GrayImage::getBluePixels();
-{
-  split(img, planes);
-  Mat adj(img.rows, img.cols, CV_8UC1);
-  subtract(planes[0], planes[1], adj);
-  subtract(adj, planes[2], adj);
-  return adj;
-}
-
-Mat GrayImage::getYellowPixels();
-{
-  split(img, planes);
-  Mat adj(img.rows, img.cols, CV_8UC1);
-  subtract(planes[1], planes[2], adj);
-  add(adj, planes[0], adj);
-  subtract(adj, planes[2], adj);
-  return adj;
-}
-
-Mat GrayImage::getLines();
-{
-  Mat adj(img.rows, img.cols, CV_8UC1);
-  Mat gray;
-  cvtColor(img, gray, CV_BGR2GRAY);
-  subtract(adj, gray, adj);
-  //line detection code here, otherwise just returns inverted grayscale
-  return adj;
-}
 
 #endif

@@ -9,20 +9,6 @@ loose functions for vision, not belonging to a class
 using namespace std;
 
 
-class GrayImage
-{
-  public:
-    Mat getGI(int color);
-  private:
-    Mat getRedPixels();
-    Mat getBluePixels();
-    Mat getYellowPixels();
-    Mat getGreenPixels();
-    Mat getLines();
-    vector<Mat> planes;
-};
-
-
 //uses the image to find the pixel coordinates of the base of a cylinder (or line)
 PixelPoint findObject(Cylinder cyl);
 
