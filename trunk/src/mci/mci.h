@@ -12,9 +12,6 @@ Log:
 
 #include "serial.h"
 
-enum { MCI_OPEN_LOOP, MCI_CLOSED_LOOP };
-enum { MCI_MIXED_MODE, MCI_STANDARD_MODE };
-
 class MCI {
 	protected:
 		Serial *io;
@@ -22,6 +19,9 @@ class MCI {
 		int loopStatus;	
 		float P,I,D;
 	public:
+		enum { OPEN_LOOP, CLOSED_LOOP };
+		enum { MIXED_MODE, STANDARD_MODE };
+
 		MCI();
 		MCI(const char *portName,int baudRate);
 		~MCI();
