@@ -5,7 +5,7 @@ Angle::Angle(){
 }
 
 Angle::Angle(double in_angle){
-    angle = in_angle;
+    angle = setAngle(in_angle);
 }
 
 double Angle::getAngle() {
@@ -13,5 +13,8 @@ double Angle::getAngle() {
 }
 
 void Angle::setAngle(double newAngle) {
+	while(newAngle < 0) {
+		newAngle += 360;	
+	}
 	angle = newAngle % 360;
 }
