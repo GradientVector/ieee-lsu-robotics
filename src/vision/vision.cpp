@@ -37,10 +37,7 @@ PolarPoint placeObject(PixelPoint object) {
     return updated_position;
 }
 
-Cylinder::Cylinder(int colorPassed, CartesianPoint locationPassed) {
-	color = colorPassed;
-	location = locationPassed;
-}
+
 
 //this returns a color at a point
 int color(Mat img, int x, int y) {
