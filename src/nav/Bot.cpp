@@ -9,7 +9,7 @@ void Bot::driveToMainLine() {
    
    setVel(COMFY_SPEED);
    wait((18/COMFY_SPEED)*1000);		//*1000, converting s to ms
-   setvel(0);
+   setVel(0);
    setRotVel(COMFY_TURN_SPEED);
    wait((90/COMFY_TURN_SPEED)*1000);	//*1000, converting s to ms
    setRotVel(0);
@@ -28,15 +28,6 @@ void Bot::pointTo(Cylinder cyl) {
 	if(deltaY < 0) direction = 180 - direction;			//deals with quadrant problems
 	//TODO use setRotVel(...) to do the physical motion
 }
-
-void Bot::homeInOn(Cylinder cyl, double distance) {
-	pointTo(cyl);
-	//TODO
-		//note: when going to either blue from yellow or to yellow from blue, follow the line first.
-
-	//note: first point towards it, then look for it, then move towards it.
-}
-
 
 //These two functions will rely on our charge, our charging speed, time left on the clock, etc. 
 //I will work on what exact inputs they need. -Andrew Elias
@@ -96,3 +87,153 @@ void Bot::setRotVel(double newRotVel){
 	mci.setVelocity(/*blank until we know units*/);  //TODO
 	rotVel = newRotVel;
 }
+
+
+/* void homeInOn(Cylinder, double distance)
+   homes in on an object until it gets to a certain distance away from the object.
+*/
+
+void Bot::homeInOn(Cylinder cyl, double distance) {
+    PolarPoint cylPolar;
+    double close_enough = 0;   // Tolerance for distance
+
+    pointTo(cyl);
+
+    cylPolar = searchFor(cyl);
+    turnTo(cylPolar.th.getAngle());
+    if (cylPolar.r > 0){
+        moveForwardTo(cylPolar.r);
+        while ((cylPolar.r - fabs(distance))> close_enough){
+            cylPolar = searchFor(cyl);
+            turnTo(cylPolar.th.getAngle());
+            moveForwardTo(cylPolar.r);
+        }
+    }
+}
+
+
+/*
+ * searchFor function
+ * Input: Cylinder object to look for
+ * Output: Returns PolarPoint object with distance from
+
+ */
+PixelPoint Bot::searchFor(Cylinder cyl){
+    PixelPoint cylPoint;                               // Cylinder base point (pixel) on image, (0,0) if not found
+    PolarPoint cylPolar;                               // Returned object, polar description of position of cylinder relative to robot
+    bool cylFound;                                     // Boolean set for loop purposes- tracks if cylinder has been found
+    int searchTimeLeft = 30000;                        // (30s) Time in ms that robot spends rotating while searching for a cylinder
+    double searchSpeed = .25 * COMFY_TURN_SPEED;       // Speed at which robot rotates while looking for a cylinder
+
+    cylPoint = findObject(cyl);
+    cylFound = (cylPoint.x != 0 && cylPoint.y != 0);
+
+    if (!cylFound){
+        turnLeft(55);                  // Starts search by turning left 55 degrees
+        startTurnRight(searchSpeed);   //change to be optimal based on current position on map?
+        while(!cylFound && searchTimeLeft){
+            cylPoint = findObject(cyl);
+            cylFound = (cylPoint.x != 0 && cylPoint.y != 0);
+            wait(angle/searchSpeed*1000);
+            searchTimeLeft -= 1000;
+        }
+        stopTurn();
+    }
+    if(cylFound){
+        placeObject(cylPoint);
+    } else {
+        cylPolar.setPolarPoint(0,0);
+    }
+    return cylPolar;
+}
+
+
+/* Begin move forward/backward functions */
+void Bot::moveTo(bool direction, double distance, double speed = COMFY_SPEED){
+    startMove(direction, speed);
+    wait((distance/Bot.getVel())*1000);
+    stopMove();
+}
+
+void Bot::startMove(bool direction, double speed = COMFY_SPEED){
+     if (direction){
+        Bot.setVel(speed);
+    } else {
+        Bot.setVel(-speed);
+    }
+}
+
+void Bot::moveForwardTo(double distance, double speed = COMFY_SPEED){
+    moveTo(Bot.FORWARD, distance, speed);
+}
+
+void Bot::moveBackwardTo(double distance, double speed = COMFY_SPEED){
+    moveTo(Bot.BACKWARD, distance, speed);
+}
+
+void Bot::startMoveForward(double speed = COMFY_SPEED){
+    startMove(Bot.FORWARD, speed);
+}
+
+void Bot::startMoveBackward(double speed = COMFY_SPEED){
+    startMove(Bot.FORWARD, speed);
+}
+
+void Bot::stopMove(){
+    setRotVel(0);
+}
+/* End move (forward/backward) functions */
+
+
+/* Begin turn (left/right) functions*/
+void Bot::turnTo(double angle, double speed = COMFY_TURN_SPEED){
+    angle -= 180;
+    if(angle < 0){
+        turn(Bot.LEFT, fabs(angle), speed);
+    } else if (angle > 0) {
+        turn(Bot.RIGHT, fabs(angle), speed);
+    }
+}
+
+void Bot::turnTo(Angle angle, double speed = COMFY_TURN_SPEED){
+    turnTo(angle.getAngle(),speed);
+}
+
+void Bot::turn(bool direction, double angle, double speed = COMFY_TURN_SPEED){
+    startTurn(direction, speed);
+    wait((angle/Bot.getRotVel())*1000);
+    stopTurn();
+}
+
+void Bot::turn(bool direction, Angle angle, double speed = COMFY_TURN_SPEED){
+    turn(direction, angle.getAngle(),speed);
+}
+
+void Bot::startTurn(bool direction, double speed = COMFY_TURN_SPEED){
+     if (direction){
+        Bot.setRotVel(speed);
+    } else {
+        Bot.setRotVel(-speed);
+    }
+}
+
+void Bot::turnLeft(double angle, double speed = COMFY_TURN_SPEED){
+    turn(Bot.LEFT, angle, speed);
+}
+
+void Bot::turnRight(double angle, double speed = COMFY_TURN_SPEED){
+    turn(Bot.RIGHT, angle, speed);
+}
+
+void Bot::startTurnLeft(double speed = COMFY_TURN_SPEED){
+    startTurn(Bot.LEFT, speed);
+}
+
+void Bot::startTurnRight(double speed = COMFY_TURN_SPEED){
+    startTurn(Bot.RIGHT, speed);
+}
+
+void Bot::stopTurn(){
+    setRotVel(0);
+}
+/* End turn (left/right) functions*/

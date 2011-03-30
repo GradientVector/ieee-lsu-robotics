@@ -10,29 +10,55 @@ loose vision functions not belonging to any particular class
 
 #define PI 3.14159265
 
+using namespace std; // #TODO: Remove this line - shouldn't define namespace in library file, only in actual executable.
+
+Angle::Angle(){
+    angle = 0;
+}
+
+Angle::Angle(double in_angle){
+    angle = in_angle % 360;
+}
+
+double Angle::getAngle() {
+	return angle;
+}
+
+void Angle::setAngle(double newAngle) {
+	angle = newAngle % 360;
+}
+
+
+PixelPoint::PixelPoint()
+{
+  x = 0;
+  y = 0;
+  return 0;
+}
+
 PolarPoint placeObject(PixelPoint object) {
 
     double middle_x = Bot.IMG_WIDTH_PX/2;     // Coordinate for middle pixel on x axis
     double middle_y = IMG_HEIGHT_PX/2;    // Coordinate for middle pixel on y axis
     double diff_x;                        // Horizontal difference between camera middle pixel and object pixel
     double diff_y;                        // Vertical difference between camera middle pixel and object pixel
-    Angle vert_diff_angle;                // Angle between middle of screen and vertical position of object, + = left of middle
-    Angle horiz_diff_angle;               // Angle between middle of screen and horizontal position of object, + = above middle
-    Angle abs_vert_angle;                 // Object's angle relative to camera position on robot  #TODO: Rename variable
-    double  distance_from_robot;          // Distance between robot and object
+    Angle vertDiffAngle;                // Angle between middle of screen and vertical position of object, + = left of middle
+    Angle horizDiffAngle;               // Angle between middle of screen and horizontal position of object, + = above middle
+    Angle absVertAngle;                 // Object's angle relative to camera position on robot  #TODO: Rename variable
+    double  distanceFromRobot;          // Distance between robot and object
 
     // find angle between robot's direction and object
     diff_x = (middle_x - object.x)/ middle_x;  // +middle_x = far left, -middle_x = far right
-    horiz_diff_angle.setAngle(diff_x * (HORIZ_FIELD_ANGLE/2));
+    horizDiffAngle.setAngle(diff_x * (HORIZ_FIELD_ANGLE/2));
    
     // calculate distance between robot and object
     diff_y = (middle_y - object.y)/middle_y;  // +middle_y = top, -middle_y = bottom
-    vert_diff_angle.setAngle(diff_y * (VERT_FIELD_ANGLE/2));
-    abs_vert_angle.setAngle(vert_diff_angle.getAngle() + VERTICAL_TILT_ANGLE);
-    distance_from_robot = CAMERA_HEIGHT * tan(abs_vert_angle.getAngle()*(PI/180));  // based on trig function, same units as CAMERA_HEIGHT
+    vertDiffAngle.setAngle(diff_y * (VERT_FIELD_ANGLE/2));
+    absVertAngle.setAngle(vertDiffAngle.getAngle() + VERTICAL_TILT_ANGLE);
+    distanceFromRobot = fabs(CAMERA_HEIGHT * tan(absVertAngle.getAngle()*(PI/180)));  // based on trig function, same units as CAMERA_HEIGHT
     // #TODO: See if this works or if tan() needs to just be Math.tan()
 
-    PolarPoint updated_position(distance_from_robot , horiz_diff_angle);
+    PolarPoint updated_position(distanceFromRobot , horizDiffAngle);
     
     return updated_position;
 }

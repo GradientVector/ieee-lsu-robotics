@@ -13,6 +13,7 @@ class PolarPoint {
         PolarPoint(double in_r, Angle in_th);
         PolarPoint(double in_r, double in_th);
         PolarPoint();
+        setPolarPoint(double in_r, double in_th);
 };
 
 #endif
