@@ -13,3 +13,7 @@ PolarPoint::PolarPoint(){
     r = 0.0;
     th.setAngle(0.0);
 }
+void PolarPoint::setPolarPoint(double in_r, double in_th){
+    r = in_r;
+    th.setAngle(in_th);
+}

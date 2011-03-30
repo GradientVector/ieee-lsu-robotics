@@ -5,8 +5,6 @@
       <df name="bin" kind="SOURCE_LOGICAL_FOLDER">
       </df>
       <df name="include" kind="SOURCE_LOGICAL_FOLDER">
-        <in>serial.h</in>
-        <in>serial_exception.h</in>
       </df>
       <df name="lib" kind="SOURCE_LOGICAL_FOLDER">
       </df>
@@ -14,18 +12,20 @@
         <df name="dist" kind="SOURCE_LOGICAL_FOLDER">
         </df>
       </df>
-      <df name="recycleBin">
-      </df>
       <df name="src" kind="SOURCE_LOGICAL_FOLDER">
         <df name="mci">
-          <in>Makefile</in>
-          <in>about</in>
           <in>mci.cpp</in>
           <in>mci.h</in>
         </df>
         <df name="nav" kind="SOURCE_LOGICAL_FOLDER">
-          <in>navigation.cpp</in>
-          <in>navigation.h</in>
+          <in>Bot.cpp</in>
+          <in>Bot.h</in>
+          <in>CartesianPoint.cpp</in>
+          <in>CartesianPoint.h</in>
+          <in>Map.cpp</in>
+          <in>Map.h</in>
+          <in>PolarPoint.cpp</in>
+          <in>PolarPoint.h</in>
         </df>
         <df name="sensors" kind="SOURCE_LOGICAL_FOLDER">
           <in>sensors.cpp</in>
@@ -38,6 +38,12 @@
           <in>serialtest.cpp</in>
         </df>
         <df name="vision" kind="SOURCE_LOGICAL_FOLDER">
+          <in>Angle.cpp</in>
+          <in>Angle.h</in>
+          <in>Cylinder.cpp</in>
+          <in>Cylinder.h</in>
+          <in>PixelPoint.cpp</in>
+          <in>PixelPoint.h</in>
           <in>cameratest.cpp</in>
           <in>vision.cpp</in>
           <in>vision.h</in>
@@ -79,10 +85,6 @@
         </makeTool>
       </makefileType>
       <item path="main.cpp" ex="true" tool="1">
-      </item>
-      <item path="src/nav/navigation.cpp" ex="true" tool="1">
-      </item>
-      <item path="src/nav/navigation.h" ex="true" tool="3">
       </item>
       <item path="src/sensors/sensors.cpp" ex="true" tool="1">
       </item>

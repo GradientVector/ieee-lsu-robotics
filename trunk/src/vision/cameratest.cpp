@@ -13,7 +13,7 @@ void grabLines(Mat &img, vector<Vec4i> &line);
 int main(int argv, char **argc) {
   Mat img,red;
   vector <Vec4i> lines;
-  VideoCapture cap(1);
+  VideoCapture cap(0);
   //cap.set(CV_CAP_PROP_FPS,60);
   cap.set(CV_CAP_PROP_FRAME_WIDTH,640);
   cap.set(CV_CAP_PROP_FRAME_HEIGHT,480);
@@ -26,20 +26,20 @@ int main(int argv, char **argc) {
           return -1;
       }
   }
-  //namedWindow("BEER",CV_WINDOW_NORMAL);
+  namedWindow("BEER",CV_WINDOW_NORMAL);
   namedWindow("ICECHEST",CV_WINDOW_NORMAL);
-  //cvResizeWindow("BEER",640,480);
+  cvResizeWindow("BEER",640,480);
   cvResizeWindow("ICECHEST",640,480);
   for (int i=0;i<50;i++) 
     if (argv == 1) cap >> img;
   while (cvWaitKey(10)!=27){
       if (argv == 1) cap >> img;
-    //red = getRedPixels(img,150);
-    grabLines(img,lines); 
-    for (unsigned int i=0;i<lines.size();i++)
-      line( img, Point(lines[i][0],lines[i][1]), Point(lines[i][2],lines[i][3]), Scalar(255,0,0), 2, 8 );
+    red = getRedPixels(img,150);
+    //grabLines(img,lines); 
+    //for (unsigned int i=0;i<lines.size();i++)
+    //  line( img, Point(lines[i][0],lines[i][1]), Point(lines[i][2],lines[i][3]), Scalar(255,0,0), 2, 8 );
     imshow("ICECHEST", img);
-    //imshow("BEER", red);
+    imshow("BEER", red);
   }
   return 0;
 }
