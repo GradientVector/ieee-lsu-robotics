@@ -23,7 +23,8 @@ class Bot {
 	//good, standard speeds that aren't too fast/slow.
 	const double COMFY_SPEED = 0.5*MAX_SPEED;		
 	const double COMFY_TURN_SPEED = 0.5*MAX_ROT_SPEED;
-	const double SCALING_FACTOR = MAX_SPEED;   //the speed, in in/sec, represented by passing "1" to the MCI's setVelocity() function; TODO: may be changed later.
+
+	const double SCALING_FACTOR = MAX_SPEED;   //the speed, in in/sec, represented by passing "1" to the MCI's setVelocity() function; TODO: may be changed later, but SCALING_FACTOR must always be <= MAX_SPEED.
 
         const bool LEFT = true;                 // Turning left uses positive velocity
 	const bool RIGHT =  !LEFT;              // Turning right uses negative velocity

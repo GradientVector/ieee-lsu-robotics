@@ -2,11 +2,6 @@
 Filename:	main.cpp
 
 This is the main program that will be run by the robot. It calls upon all of the code in /src.
-
-LOG:
-	2011 Feb 24 - created by Andrew Elias
-	2011 Mar 5  - filled in a bit; Andrew Elias
-
 */
 
 #include "src/vision/vision.h"
@@ -31,7 +26,7 @@ int main() {
 		//TODO: wait and charge
 		me.homeInOn(map.greenCyl, me.STD_STOP_DIST);
 		me.homeInOn(map.blueCyl,  me.STD_STOP_DIST);
-		me.followLineTo(map.yellowCyl,me.STD_STOP_DIST);
+		me.followLineTo(map.yellowCyl,me.TOUCH_DIST);
 		//TODO: wait and discharge
 	}
 
