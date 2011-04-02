@@ -200,7 +200,7 @@ void Bot::stopMove(){
 
 /* Begin turn (left/right) functions*/
 void Bot::turnTo(double angle, double speed = COMFY_TURN_SPEED){
-    angle -= 180;
+    angle -= 180;		//TODO 'angle' is already a Bot member variable. also, does this represent a destation angle, or an angle of turning?
     if(angle < 0){
         turn(Bot.LEFT, fabs(angle), speed);
     } else if (angle > 0) {
