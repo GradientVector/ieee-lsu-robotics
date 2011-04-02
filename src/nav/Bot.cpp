@@ -47,10 +47,6 @@ double Bot::getVel() {
 //checked out by ANDREW ELIAS
 //units: inches/sec
 void Bot::setVel(double newVelocity){
-	double SCALING_FACTOR = 2; //number of inches/sec represented by "1" being passed to 
-	//multiply by this to convert from in/sec to MCI-units 
-	//TODO this is wrong; must determine it empirically. also, move it to .h file
-
 	double oldVel = velocity;
 	if(fabs(newVelocity) > MAX_SPEED) {	
 		velocity = MAX_SPEED;		
@@ -80,7 +76,6 @@ void Bot::setRotVel(double newRotVel){
 	double radius = WHL_DIAM/2;
 	double newRotVelInRadians = (180/3.1415926)*newRotVel;
 	velToSetEach = radius*newRotVelInRadians;		//the vel for each wheel, in in/sec
-	const double SCALING_FACTOR = 2; 		//TODO this is wrong, email Del
 	double toSet = SCALING_FACTOR*velToSetEach;		
 	//TODO set the rot vel without unsetting the vel
 

@@ -19,9 +19,11 @@ class Bot {
 	//high speeds at which things start going wrong. (temp; subj to change)
 	const double MAX_SPEED = 25;		//inches/second
 	const double MAX_ROT_SPEED = 720;	//degrees/second
+
 	//good, standard speeds that aren't too fast/slow.
 	const double COMFY_SPEED = 0.5*MAX_SPEED;		
 	const double COMFY_TURN_SPEED = 0.5*MAX_ROT_SPEED;
+	const double SCALING_FACTOR = MAX_SPEED;   //the speed, in in/sec, represented by passing "1" to the MCI's setVelocity() function; TODO: may be changed later.
 
         const bool LEFT = true;                 // Turning left uses positive velocity
 	const bool RIGHT =  !LEFT;              // Turning right uses negative velocity
