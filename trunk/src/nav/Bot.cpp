@@ -2,11 +2,10 @@
 #include "Bot.h"
 #include <math.h>
 
+//DONE
 //Will only be used once. Gets us from the starting point (facing 'eastward') 
-//to the T-junction of the black lines, facing 'northward'. Then we can follow the right line. 
+//to the T-junction of the black lines, facing 'northward'. After that, we can follow the right line. 
 void Bot::driveToMainLine() {
-	//TODO
-   
    setVel(COMFY_SPEED);
    wait((18/COMFY_SPEED)*1000);		//*1000, converting s to ms
    setVel(0);
@@ -44,7 +43,7 @@ double Bot::getVel() {
 	return velocity;
 }
 
-//checked out by ANDREW ELIAS
+//checked out by Andrew Elias
 //units: inches/sec
 void Bot::setVel(double newVelocity){
 	double oldVel = velocity;
@@ -56,13 +55,13 @@ void Bot::setVel(double newVelocity){
 
 	double dV = velocity - oldVelocity;   //change in velocity due to this function
 
-	//convert them from in/sec to a scale of -1 to 1
-	dV     = dV     / MAX_SPEED; 		      
-	oldVel = oldVel / MAX_SPEED
+	//convert them from in/sec to a scale of -1 to 1, to be usable by the MCI code
+	dV     = dV     / SCALING_FACTOR; 		      
+	oldVel = oldVel / SCALING_FACTOR;
 
 	mci.setModeStatus(mci.MIXED_MODE);	//MIXED_MODE indicates vel/rotVel instead of L/R
-	mci.setVelocity(oldVel + dV, rotVel/MAX_SPEED);  
-	//TODO check all of this!
+	mci.setVelocity(oldVel + dV, rotVel/SCALING_FACTOR);  
+	//TODO convert MAX_SPEED to SCALING_FACTOR?
 }
 
 //DONE
@@ -73,21 +72,40 @@ double Bot::getRotVel() {
 //checked out by ANDREW ELIAS
 //units: degrees/sec
 void Bot::setRotVel(double newRotVel){
+	double oldRotVel = rotVel;
+	if(fabs(newRotVel) > MAX_ROT_SPEED) {	
+		rotVel = MAX_ROT_SPEED;		
+	} else {
+		rotVel = newRotVel;		
+	}
+
+	double dRV = rotVel - oldRotVel;   //change in rotational velocity due to this function
+
+	//convert them from in/sec to a scale of -1 to 1, to be usable by the MCI code
+	dRV       = dRV       / SCALING_FACTOR; 		      
+	oldRotVel = oldRotVel / SCALING_FACTOR;
+
+	mci.setModeStatus(mci.MIXED_MODE);	//MIXED_MODE indicates vel/rotVel instead of L/R
+	mci.setVelocity(velocity/SCALING_FACTOR, oldRotVel + dRV); 
+
+	//TODO: should there be a ROT_SCALING_FACTOR referring to MCI's interpretation of "1" when passed as a rotational velocity?
+
+	//TODO: this code may still be needed; keep it here for now
+	/*
 	double radius = WHL_DIAM/2;
 	double newRotVelInRadians = (180/3.1415926)*newRotVel;
 	velToSetEach = radius*newRotVelInRadians;		//the vel for each wheel, in in/sec
 	double toSet = SCALING_FACTOR*velToSetEach;		
 	//TODO set the rot vel without unsetting the vel
 
-	mci.setVelocity(/*blank until we know units*/);  //TODO
+	mci.setVelocity(  blank until we know units   );  //TODO
 	rotVel = newRotVel;
+	*/
 }
+dr
 
 
-/* void homeInOn(Cylinder, double distance)
-   homes in on an object until it gets to a certain distance away from the object.
-*/
-
+//homes in on an object until it gets to a certain distance away from the object.
 void Bot::homeInOn(Cylinder cyl, double distance) {
     PolarPoint cylPolar;
     double close_enough = 0;   // Tolerance for distance
