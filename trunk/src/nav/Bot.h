@@ -18,7 +18,7 @@ class Bot {
 	
 	//high speeds at which things start going wrong. (temp; subj to change)
 	const double MAX_SPEED = 25;		//inches/second
-	const double MAX_ROT_SPEED = 720;	//degrees/second
+	const double MAX_ROT_SPEED = 400;	//degrees/second
 
 	//good, standard speeds that aren't too fast/slow.
 	const double COMFY_SPEED = 0.5*MAX_SPEED;		

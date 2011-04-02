@@ -135,7 +135,7 @@ PixelPoint Bot::searchFor(Cylinder cyl){
     PixelPoint cylPoint;                               // Cylinder base point (pixel) on image, (0,0) if not found
     PolarPoint cylPolar;                               // Returned object, polar description of position of cylinder relative to robot
     bool cylFound;                                     // Boolean set for loop purposes- tracks if cylinder has been found
-    int searchTimeLeft = 30000;                        // (30s) Time in ms that robot spends rotating while searching for a cylinder
+    int searchTimeLeft = 20000;                        // (20s) Time in ms that robot spends rotating while searching for a cylinder
     double searchSpeed = .25 * COMFY_TURN_SPEED;       // Speed at which robot rotates while looking for a cylinder
 
     cylPoint = findObject(cyl);
@@ -144,11 +144,11 @@ PixelPoint Bot::searchFor(Cylinder cyl){
     if (!cylFound){
         turnLeft(55);                  // Starts search by turning left 55 degrees
         startTurnRight(searchSpeed);   //change to be optimal based on current position on map?
-        while(!cylFound && searchTimeLeft){
+        while(!cylFound && searchTimeLeft){  //TODO: Harry, searchTimeLeft is not a bool; compare it to something. -Andrew
             cylPoint = findObject(cyl);
             cylFound = (cylPoint.x != 0 && cylPoint.y != 0);
-            wait(angle/searchSpeed*1000);
-            searchTimeLeft -= 1000;
+            wait(angle/searchSpeed*1000);  //TODO: Harry, this line doesn't make any sense; it would turn 360 degrees each time before checking the screen again. -Andrew
+            searchTimeLeft -= 1000;  //TODO this line should be modified along with the top one
         }
         stopTurn();
     }
@@ -157,7 +157,7 @@ PixelPoint Bot::searchFor(Cylinder cyl){
     } else {
         cylPolar.setPolarPoint(0,0);
     }
-    return cylPolar;
+    return cylPolar;  //TODO why would you return the polar version when the return value must be of type PixelPoint?
 }
 
 
