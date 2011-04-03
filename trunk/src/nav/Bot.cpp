@@ -24,18 +24,18 @@ void Bot::pointTo(Cylinder cyl) {
 	double deltaX = cyl.location.x - me.location.x;
 	double deltaY = cyl.location.y - me.location.y;
 	double direction = (180/3.1415926)*atan(deltaY/deltaX);		//the direction we want to point 
-	if(deltaY < 0) direction = 180 - direction;			//deals with quadrant problems
+	if(deltaY < 0) direction = 180 - direction;					//deals with quadrant problems
 	//TODO use setRotVel(...) to do the physical motion
 }
 
 //These two functions will rely on our charge, our charging speed, time left on the clock, etc. 
 //I will work on what exact inputs they need. -Andrew Elias
-void Bot::chargeFor(/*TODO*/) {
-	//TODO
+void Bot::chargeFor(double time) {
+	wait(time*1000);		//TODO can be more complex than this
 }
 
-void Bot::dischargeFor(/*TODO*/) {
-	//TODO
+void Bot::dischargeFor(double time) {
+	wait (time*1000);
 }
 
 //DONE
@@ -168,7 +168,7 @@ void Bot::moveTo(bool direction, double distance, double speed = COMFY_SPEED){
 }
 
 void Bot::startMove(bool direction, double speed = COMFY_SPEED){
-     if (direction){
+     if (direction){		//if LEFT
         Bot.setVel(speed);
     } else {
         Bot.setVel(-speed);

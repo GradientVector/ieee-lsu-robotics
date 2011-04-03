@@ -23,11 +23,11 @@ int main() {
 		me.followLineTo(map.blueCyl,  me.STD_STOP_DIST);
 		me.homeInOn(map.greenCyl, me.STD_STOP_DIST);
 		me.homeInOn(map.redCyl,   me.TOUCH_DIST);	 
-		//TODO: wait and charge
+		chargeFor(20);			//TODO make this more sophisticated if possible
 		me.homeInOn(map.greenCyl, me.STD_STOP_DIST);
 		me.homeInOn(map.blueCyl,  me.STD_STOP_DIST);
 		me.followLineTo(map.yellowCyl,me.TOUCH_DIST);
-		//TODO: wait and discharge
+		dischargeFor(20);	   	//TODO make this more sophisticated if possible
 	}
 
 }

@@ -48,8 +48,8 @@ class Bot {
 	void followLineTo(Cylinder cyl, double distance);
 	void pointTo(Cylinder cyl);
 	void homeInOn(Cylinder, double distance);
-	void chargeFor(/*TODO*/);
-	void dischargeFor(/*TODO*/);
+	void chargeFor(double time);
+	void dischargeFor(double time);
 	void getVel();
 	void setVel(double vel);
 	void getRotVel();
