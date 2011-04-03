@@ -108,7 +108,6 @@ dr
 //homes in on an object until it gets to a certain distance away from the object.
 void Bot::homeInOn(Cylinder cyl, double distance) {
     PolarPoint cylPolar;
-    double close_enough = 0;   // Tolerance for distance
 
     pointTo(cyl);
 
@@ -116,7 +115,7 @@ void Bot::homeInOn(Cylinder cyl, double distance) {
     turnTo(cylPolar.th.getAngle());
     if (cylPolar.r > 0){
         moveForwardTo(cylPolar.r);
-        while ((cylPolar.r - fabs(distance))> close_enough){
+        while ( cylPolar.r > fabs(distance) ){
             cylPolar = searchFor(cyl);
             turnTo(cylPolar.th.getAngle());
             moveForwardTo(cylPolar.r);
