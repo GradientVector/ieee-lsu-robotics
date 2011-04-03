@@ -48,8 +48,13 @@ double Bot::getVel() {
 //units: inches/sec
 void Bot::setVel(double newVelocity){
 	double oldVel = velocity;
+
+	int newVelSign;
+	if (newVelocity > 0) newVelSign =  1;
+		else            newVelSign = -1;
+
 	if(fabs(newVelocity) > MAX_SPEED) {	
-		velocity = MAX_SPEED;		
+		velocity = MAX_SPEED * newVelSign;		
 	} else {
 		velocity = newVelocity;		
 	}
@@ -61,8 +66,7 @@ void Bot::setVel(double newVelocity){
 	oldVel = oldVel / SCALING_FACTOR;
 
 	mci.setModeStatus(mci.MIXED_MODE);	//MIXED_MODE indicates vel/rotVel instead of L/R
-	mci.setVelocity(oldVel + dV, rotVel/SCALING_FACTOR);  
-	//TODO convert MAX_SPEED to SCALING_FACTOR?
+	mci.setVelocity( (oldVel + dV)/SCALING_FACTOR, rotVel/ROT_SCALING_FACTOR );  //TODO correct rotVel value passed?
 }
 
 //DONE
@@ -74,24 +78,24 @@ double Bot::getRotVel() {
 //units: degrees/sec
 void Bot::setRotVel(double newRotVel){
 	double oldRotVel = rotVel;
+
+	int newRotVelSign;			//positive for newRotVel>0, negative otherwise
+	if (newRotVel > 0) newRotVelSign =  1;
+		else          newRotVelSign = -1;
+
 	if(fabs(newRotVel) > MAX_ROT_SPEED) {	
-		rotVel = MAX_ROT_SPEED;		
+		rotVel = MAX_ROT_SPEED * newRotVelSign;		
 	} else {
 		rotVel = newRotVel;		
 	}
 
 	double dRV = rotVel - oldRotVel;   //change in rotational velocity due to this function
 
-	//convert them from in/sec to a scale of -1 to 1, to be usable by the MCI code
-	dRV       = dRV       / SCALING_FACTOR; 		      
-	oldRotVel = oldRotVel / SCALING_FACTOR;
-
 	mci.setModeStatus(mci.MIXED_MODE);	//MIXED_MODE indicates vel/rotVel instead of L/R
-	mci.setVelocity(velocity/SCALING_FACTOR, oldRotVel + dRV); 
+	mci.setVelocity( velocity/SCALING_FACTOR, (oldRotVel + dRV)/ROT_SCALING_FACTOR ); 
 
-	//TODO: should there be a ROT_SCALING_FACTOR referring to MCI's interpretation of "1" when passed as a rotational velocity?
 
-	//TODO: this code may still be needed; keep it here for now
+	//TODO: this code may still be needed; keep it here for now  -AndrewE
 	/*
 	double radius = WHL_DIAM/2;
 	double newRotVelInRadians = (180/3.1415926)*newRotVel;
