@@ -22,12 +22,15 @@ int main() {
 	while(true) {
 		me.followLineTo(map.blueCyl,  me.STD_STOP_DIST);
 		me.homeInOn(map.greenCyl, me.STD_STOP_DIST);
-		me.homeInOn(map.redCyl,   me.TOUCH_DIST);	 
-		chargeFor(20);			//TODO make this more sophisticated if possible
+
+		me.homeInOn(map.redCyl,   me.TOUCH_DIST);	
+		me.chargeFor(20);			//TODO make this more sophisticated if possible
+
 		me.homeInOn(map.greenCyl, me.STD_STOP_DIST);
 		me.homeInOn(map.blueCyl,  me.STD_STOP_DIST);
+
 		me.followLineTo(map.yellowCyl,me.TOUCH_DIST);
-		dischargeFor(20);	   	//TODO make this more sophisticated if possible
+		me.dischargeFor(20);	   	//TODO make this more sophisticated if possible
 	}
 
 }
