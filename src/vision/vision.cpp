@@ -10,31 +10,8 @@ loose vision functions not belonging to any particular class
 
 #define PI 3.14159265
 
-using namespace std; // #TODO: Remove this line - shouldn't define namespace in library file, only in actual executable.
+//using namespace std; // #TODO: Remove this line - shouldn't define namespace in library file, only in actual executable.
 
-Angle::Angle(){
-    angle = 0;
-}
-
-Angle::Angle(double in_angle){
-    angle = in_angle % 360;
-}
-
-double Angle::getAngle() {
-	return angle;
-}
-
-void Angle::setAngle(double newAngle) {
-	angle = newAngle % 360;
-}
-
-
-PixelPoint::PixelPoint()
-{
-  x = 0;
-  y = 0;
-  return 0;
-}
 
 PolarPoint placeObject(PixelPoint object) {
 
@@ -63,6 +40,12 @@ PolarPoint placeObject(PixelPoint object) {
     return updated_position;
 }
 
+
+//finds a line on the screen
+//returns the center of the line segment found. If the line on the screen goes from (300,10) to (200,50), the return value will be (250,30).  
+PixelPoint findLine(){
+	//TODO
+}
 
 
 //this returns a color at a point
