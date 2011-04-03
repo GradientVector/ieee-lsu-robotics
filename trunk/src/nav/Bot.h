@@ -16,7 +16,7 @@ class Bot {
 	const double TOUCH_DIST = 0;		//distance(inches) from our camera to the object when we are touching it
 	const double WHL_DIAM;			//separation b/t the wheels
 	
-	//high speeds at which things start going wrong. (temp; subj to change)
+	//high speeds at which things start going wrong(i.e. slippage, popping wheelies, etc). Subj to change
 	const double MAX_SPEED = 25;		//inches/second
 	const double MAX_ROT_SPEED = 400;	//degrees/second
 
@@ -24,12 +24,13 @@ class Bot {
 	const double COMFY_SPEED = 0.5*MAX_SPEED;		
 	const double COMFY_TURN_SPEED = 0.5*MAX_ROT_SPEED;
 
-	const double SCALING_FACTOR = MAX_SPEED;   //the speed, in in/sec, represented by passing "1" to the MCI's setVelocity() function; TODO: may be changed later, but SCALING_FACTOR must always be <= MAX_SPEED.
+	const double SCALING_FACTOR = MAX_SPEED;   //the speed, in in/sec, represented by passing "1" to the MCI's setVelocity() function; SCALING_FACTOR is determined by the max PID speed possible. TODO: value may/should be changed later
+	const double ROT_SCALING_FACTOR = MAX_ROT_SPEED;		//the rotational speed, in deg/sec, represented by passing "1" to the MCI's setVelocity() function; ROT_SCALING_FACTOR is determined by the max PID speed possible, and the wheel diameter. TODO: value may/should be changed later
 
-        const bool LEFT = true;                 // Turning left uses positive velocity
+     const bool LEFT = true;                 // Turning left uses positive velocity
 	const bool RIGHT =  !LEFT;              // Turning right uses negative velocity
 
-        const bool FORWARD = true;                 // Moving forward uses positive velocity
+     const bool FORWARD = true;                 // Moving forward uses positive velocity
 	const bool BACKWARD =  !FORWARD;           // Moving backward uses negative velocity
 
 	const double VERTICAL_TILT_ANGLE = 90;   // 0 degrees is pointing perpendicular (straight at) the ground; 90 degrees is parallel to the ground
