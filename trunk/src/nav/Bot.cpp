@@ -30,12 +30,13 @@ void Bot::pointTo(Cylinder cyl) {
 
 //These two functions will rely on our charge, our charging speed, time left on the clock, etc. 
 //I will work on what exact inputs they need. -Andrew Elias
+//Input: 'time' is in seconds
 void Bot::chargeFor(double time) {
 	wait(time*1000);		//TODO can be more complex than this
 }
 
 void Bot::dischargeFor(double time) {
-	wait (time*1000);
+	wait (time*1000);		//TODO can be more complex than this
 }
 
 //DONE
