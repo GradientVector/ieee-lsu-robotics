@@ -8,7 +8,7 @@
 
 #include <ctime>  //may be necessary if we change the wait() function later
 
-void wait(double time);
+void wait(int milliseconds);
 
 
 #endif  //for UTIL_H
