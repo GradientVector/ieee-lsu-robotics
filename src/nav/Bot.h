@@ -59,12 +59,12 @@ class Bot {
         PixelPoint searchFor(Cylinder cyl);
         // Start move fuctions (forwards/backwards)
         void moveTo(bool direction, double distance, double speed);
-        void startMove(bool direction, double speed);
+        void startMoving(bool direction, double speed);
         void moveForwardTo(double distance, double speed);
         void moveBackwardTo(double distance, double speed);
-        void startMoveForward(double speed);
-        void startMoveBackward(double speed);
-        void stopMove();
+        void startMovingForward(double speed);
+        void startMovingBackward(double speed);
+        void stopMoving();
         // Start turning functions (rotate left/right)
         void turnTo(double angle, double speed);
         void turnTo(Angle angle, double speed);

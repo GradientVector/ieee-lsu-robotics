@@ -162,12 +162,12 @@ PolarPoint Bot::searchFor(Cylinder cyl){
 
 /* Begin move forward/backward functions */
 void Bot::moveTo(bool direction, double distance, double speed = COMFY_SPEED){
-    startMove(direction, speed);
+    startMoving(direction, speed);
     wait((distance/Bot.getVel())*1000);
-    stopMove();
+    stopMoving();
 }
 
-void Bot::startMove(bool direction, double speed = COMFY_SPEED){
+void Bot::startMoving(bool direction, double speed = COMFY_SPEED){
      if (direction){		//if LEFT
         Bot.setVel(speed);
     } else {
@@ -183,15 +183,15 @@ void Bot::moveBackwardTo(double distance, double speed = COMFY_SPEED){
     moveTo(Bot.BACKWARD, distance, speed);
 }
 
-void Bot::startMoveForward(double speed = COMFY_SPEED){
-    startMove(Bot.FORWARD, speed);
+void Bot::startMovingForward(double speed = COMFY_SPEED){
+    startMoving(Bot.FORWARD, speed);
 }
 
-void Bot::startMoveBackward(double speed = COMFY_SPEED){
-    startMove(Bot.FORWARD, speed);
+void Bot::startMovingBackward(double speed = COMFY_SPEED){
+    startMoving(Bot.FORWARD, speed);
 }
 
-void Bot::stopMove(){
+void Bot::stopMoving(){
     setRotVel(0);
 }
 /* End move (forward/backward) functions */
