@@ -4,6 +4,7 @@
 #include <math.h>
 #include "../vision/vision.h"
 #include "../sensors/sensors.h"
+#include "../util/util.h"
 
 //will only be instantiated once. represents the robot itself.
 //Holds location and angle information.
