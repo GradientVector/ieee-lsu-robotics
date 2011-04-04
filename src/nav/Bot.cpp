@@ -107,16 +107,13 @@ void Bot::setRotVel(double newRotVel){
 	rotVel = newRotVel;
 	*/
 }
-dr
 
 
 //homes in on an object until it gets to a certain distance away from the object.
 void Bot::homeInOn(Cylinder cyl, double distance) {
-    PolarPoint cylPolar;
-
     pointTo(cyl);
 
-    cylPolar = searchFor(cyl);
+    PolarPoint cylPolar = searchFor(cyl);
     turnTo(cylPolar.th.getAngle());
     if (cylPolar.r > 0){
         moveForwardTo(cylPolar.r);
@@ -130,38 +127,36 @@ void Bot::homeInOn(Cylinder cyl, double distance) {
 
 
 /*
- * searchFor function
  * Input: Cylinder object to look for
- * Output: Returns PolarPoint object with distance from
-
+ * Output: Returns PolarPoint object with: distance from bot itself, and angle from the bot's pointing-angle
  */
-PixelPoint Bot::searchFor(Cylinder cyl){
-    PixelPoint cylPoint;                               // Cylinder base point (pixel) on image, (0,0) if not found
-    PolarPoint cylPolar;                               // Returned object, polar description of position of cylinder relative to robot
-    bool cylFound;                                     // Boolean set for loop purposes- tracks if cylinder has been found
-    int searchTimeLeft = 20000;                        // (20s) Time in ms that robot spends rotating while searching for a cylinder
-    double searchSpeed = .25 * COMFY_TURN_SPEED;       // Speed at which robot rotates while looking for a cylinder
-
-    cylPoint = findObject(cyl);
-    cylFound = (cylPoint.x != 0 && cylPoint.y != 0);
+PolarPoint Bot::searchFor(Cylinder cyl){
+    PixelPoint cylPoint = findObject(cyl);		//TODO check: should return (0,0) if not found
+    bool cylFound = (cylPoint.x != 0 && cylPoint.y != 0);
+	
+    double searchSpeed = 0.25 * COMFY_TURN_SPEED;       // Speed at which robot rotates while looking for a cylinder
 
     if (!cylFound){
-        turnLeft(55);                  // Starts search by turning left 55 degrees
-        startTurnRight(searchSpeed);   //change to be optimal based on current position on map?
-        while(!cylFound && searchTimeLeft){  //TODO: Harry, searchTimeLeft is not a bool; compare it to something. -Andrew
+        turnLeft(30);                  // Starts search by turning left 30 degrees
+        
+        int degreesTurned = 0;		//makes sure we don't turn too much
+        int turningAmount = 15;		//degrees to turn, per re-check
+        while( !cylFound && (degreesTurned <= 360 ) )  {  
+            turnRight(turningAmount);
             cylPoint = findObject(cyl);
             cylFound = (cylPoint.x != 0 && cylPoint.y != 0);
-            wait(angle/searchSpeed*1000);  //TODO: Harry, this line doesn't make any sense; it would turn 360 degrees each time before checking the screen again. -Andrew
-            searchTimeLeft -= 1000;  //TODO this line should be modified along with the top one
+            degreesTurned += turningAmount;
         }
-        stopTurn();
     }
+
+    PolarPoint cylPolar;  //value to be returned
     if(cylFound){
-        placeObject(cylPoint);
+        cylPolar = placeObject(cylPoint);
     } else {
-        cylPolar.setPolarPoint(0,0);
+        cylPolar = PolarPoint(0,0);
     }
-    return cylPolar;  //TODO why would you return the polar version when the return value must be of type PixelPoint?
+
+    return cylPolar;  
 }
 
 
