@@ -6,7 +6,7 @@
 #define UTIL_H
 
 
-#include <ctime>
+#include <ctime>  //may be necessary if we change the wait() function later
 
 void wait(double time);
 
