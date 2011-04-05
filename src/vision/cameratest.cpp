@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
-#include <cv.h>
-#include <highgui.h>
+#include <opencv/cv.h>
+#include <opencv/highgui.h>
 #include <unistd.h>
 
 using namespace std;
