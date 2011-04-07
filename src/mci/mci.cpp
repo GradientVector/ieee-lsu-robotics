@@ -150,7 +150,7 @@ void MCI::getUpdatePeriod(const char *mode, unsigned int *T){
 }
 
 // set loop update period 
-void MCI::getUpdatePeriod(const char *mode, unsigned int *T){
+void MCI::setUpdatePeriod(const char *mode, unsigned int *T){
    char buf[255];
    sprintf(buf, "!T%c%08u", mode, T);
    io.sent(buf);
