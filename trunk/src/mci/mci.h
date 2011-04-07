@@ -11,6 +11,18 @@ Log:
 #define _MCI_H_
 
 #include "serial.h"
+#include "math.c"
+
+//communication scheme
+// se = reset ecnoders
+// ge = get encoder values
+// sp = set pid values
+// gp = get pid values
+// sv = set velocity
+// gv = get valocity
+
+// default constructor
+// default values = 0 for now
 
 class MCI {
 	protected:
@@ -28,15 +40,16 @@ class MCI {
 		void reset();
 		void resetEncoders();
 		void getEncVal(int &left,int &right);
-		void setPIDVal(float P, float I, float D);
-		void getPIDVal(float &P, float &I, float &D);
-		void setLoopStatus(int status);
-		int getLoopStatus();
-		void setModeStatus(int status);
-		int getModeStatus();
-		void setVelocity(int a, int b);
-		void getVelocity(int &a, int &b);
-		
+    void getEncVal(int &left,int &right);
+    void resetPID();
+    void getPIDVal(const char *mode, unsigned int *P, unsigned int *I, unsigned int *D, unsigned int *Q);
+    void setPIDVal(const char *mode, unsigned int *P, unsigned int *I, unsigned int *D, unsigned int *Q);
+    int getOperationMode();
+    void setOperationMode(int mode);
+    void getUpdatePeriod(const char *mode, unsigned int *T);
+    void setUpdatePeriod(const char *mode, unsigned int *T);
+    void setVelocity(int *a, int *b);
+    void getVelocity(int &a, int &b);
 };
 
 #endif
