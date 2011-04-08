@@ -23,12 +23,11 @@
 
 
 
-
-
+//The following line is not currently in use:
+//#define DEBUG
 
 // default constructor
 // default values = 0 for now
-//#define DEBUG
 
 MCI::MCI()
 { *io = new Serial();
