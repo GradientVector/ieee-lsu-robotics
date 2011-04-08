@@ -12,14 +12,24 @@ Log:
 
 #include "serial.h"
 #include "math.c"
-
 //communication scheme
-// se = reset ecnoders
-// ge = get encoder values
-// sp = set pid values
-// gp = get pid values
-// sv = set velocity
-// gv = get valocity
+//using the same scheme as last year
+/*
+  !B - turn on/off encoder monitoring (with period in MCU ticks)
+  !C - reset encoder position counters
+  !F - reset PID states
+  !G - set PID controller parameters (Kp,Ki,Kv,& Q)
+  !M - set operation mode (0-Open Loop,1-Velocity Loop,2-Position Loop)
+  !R - reset the MCU state
+  !T - set loop update period (in ticks)
+  !V - set short loop commands (for velocity loop)
+
+  ?E - get encoder values
+  ?G - get PID controller parameters (Kp,Ki,Kv,& Q)
+  ?M - get operation mode (0-Open Loop,1-Velocity Loop,2-Position Loop)
+  ?T - get loop update period (in ticks)
+  ?V - get short loop commands (for velocity loop)
+*/
 
 // default constructor
 // default values = 0 for now
