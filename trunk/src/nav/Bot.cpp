@@ -65,40 +65,33 @@ double Bot::getVel() {
 }
 
 //checked out by Andrew Elias
-//units: inches/sec
-void Bot::setVel(double newVelocity){
+//input units: inches/sec
+void Bot::setVel(double inputVelocity){
 	double oldVel = velocity;
 
-	int newVelSign;    //sign(+/-) of the velocity passed
-	if (newVelocity > 0) newVelSign =  1;
-		else            newVelSign = -1;
+	int inputVelSign;    //sign(+/-) of the velocity passed
+	if (inputVelocity > 0) inputVelSign =  1;
+		else            inputVelSign = -1;
 
 	//don't let the user set it higher than max speed
-	if(fabs(newVelocity) > MAX_SPEED) {	
-		velocity = MAX_SPEED * newVelSign;		
+	if(fabs(inputVelocity) > MAX_SPEED) {	
+		velocity = MAX_SPEED * inputVelSign;		
 	} else {
-		velocity = newVelocity;		
+		velocity = inputVelocity;		
 	}
 
-	double dV = velocity - oldVelocity;   //change in velocity due to this function
-
-	if (dV != 0) {
-		//convert them from in/sec to a scale of -9999 to 9999, to be usable by the MCI code
-		dV     = dV     / IN_PER_SEC; 		      
-		oldVel = oldVel / IN_PER_SEC;
-
-		mci.setModeStatus(mci.MIXED_MODE);	//MIXED_MODE indicates vel/rotVel instead of L/R
-			//TODO remove ^ and edit below to be in standard mode
-		mci.setVelocity( (oldVel + dV)/IN_PER_SEC, rotVel/DEG_PER_SEC );  //TODO correct rotVel value passed?
-
-	}
+	//physically set it
+	double newLeftSetting  = (velocity + getLSpeedDueToRotVel()) / IN_PER_SEC;
+	double newRightSetting = (velocity + getRSpeedDueToRotVel()) / IN_PER_SEC;
+	if (velocity != oldVel) mci.setVelocity( newLeftSetting, newRightSetting);
 }
 
 //DONE
 double Bot::getRotVel() {
 	return rotVel;
 }
-s
+
+
 //checked out by ANDREW ELIAS
 //units: degrees/sec
 void Bot::setRotVel(double newRotVel){
