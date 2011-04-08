@@ -16,6 +16,8 @@ int main() {
 	Bot me = Bot();		//this includes the sensors as well
 	Map map = Map();	//this is all of the cylinders
 
+	//TODO: wait a little while to allow the button-presser to back off from the bot
+
 	me.driveToMainLine();
 
 	//RUN THE STANDARD 'SCRIPT'
