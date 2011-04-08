@@ -21,11 +21,15 @@ void Bot::followLineTo(Cylinder cyl, double distance) {
 
 //uses our rough 'map' to point in the general direction of our destination.
 void Bot::pointTo(Cylinder cyl) {
+	setVel(0);
+	//use trig to figure the angle&distance to cyl
 	double deltaX = cyl.location.x - me.location.x;
 	double deltaY = cyl.location.y - me.location.y;
 	double direction = (180/3.1415926)*atan(deltaY/deltaX);		//the direction we want to point 
 	if(deltaY < 0) direction = 180 - direction;					//deals with quadrant problems
+
 	//TODO use setRotVel(...) to do the physical motion
+
 }
 
 //These two functions will rely on our charge, our charging speed, time left on the clock, etc. 
