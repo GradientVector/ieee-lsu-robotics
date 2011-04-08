@@ -43,6 +43,22 @@ void Bot::dischargeFor(double time) {
 	wait (time*1000);		//TODO can be more complex than this
 }
 
+double getRSpeedDueToVel() {
+	//TODO
+}
+
+double getLSpeedDueToVel() {
+	//TODO
+}
+
+double getRSpeedDueToRotVel() {
+	//TODO
+}
+
+double getLSpeedDueToRotVel() {
+	//TODO
+}
+
 //DONE
 double Bot::getVel() {
 	return velocity;
@@ -53,10 +69,11 @@ double Bot::getVel() {
 void Bot::setVel(double newVelocity){
 	double oldVel = velocity;
 
-	int newVelSign;
+	int newVelSign;    //sign(+/-) of the velocity passed
 	if (newVelocity > 0) newVelSign =  1;
 		else            newVelSign = -1;
 
+	//don't let the user set it higher than max speed
 	if(fabs(newVelocity) > MAX_SPEED) {	
 		velocity = MAX_SPEED * newVelSign;		
 	} else {
@@ -65,12 +82,16 @@ void Bot::setVel(double newVelocity){
 
 	double dV = velocity - oldVelocity;   //change in velocity due to this function
 
-	//convert them from in/sec to a scale of -1 to 1, to be usable by the MCI code
-	dV     = dV     / SCALING_FACTOR; 		      
-	oldVel = oldVel / SCALING_FACTOR;
+	if (dV != 0) {
+		//convert them from in/sec to a scale of -9999 to 9999, to be usable by the MCI code
+		dV     = dV     / IN_PER_SEC; 		      
+		oldVel = oldVel / IN_PER_SEC;
 
-	mci.setModeStatus(mci.MIXED_MODE);	//MIXED_MODE indicates vel/rotVel instead of L/R
-	mci.setVelocity( (oldVel + dV)/SCALING_FACTOR, rotVel/ROT_SCALING_FACTOR );  //TODO correct rotVel value passed?
+		mci.setModeStatus(mci.MIXED_MODE);	//MIXED_MODE indicates vel/rotVel instead of L/R
+			//TODO remove ^ and edit below to be in standard mode
+		mci.setVelocity( (oldVel + dV)/IN_PER_SEC, rotVel/DEG_PER_SEC );  //TODO correct rotVel value passed?
+
+	}
 }
 
 //DONE
@@ -81,6 +102,7 @@ s
 //checked out by ANDREW ELIAS
 //units: degrees/sec
 void Bot::setRotVel(double newRotVel){
+	//TODO change all of this to basically match setVel()
 	double oldRotVel = rotVel;
 
 	int newRotVelSign;			//positive for newRotVel>0, negative otherwise
