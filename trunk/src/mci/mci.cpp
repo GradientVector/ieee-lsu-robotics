@@ -61,7 +61,7 @@ void MCI::getEncVal(int &left,int &right){
    char pos_0[255];
    char pos_1[255];
    sprintf(buf,"?E\n");
-   io.sent(buf);
+   io.send(buf);
    io.recv(buf);
    left = atoi(pos_0);
    io.recv(buf);
@@ -121,7 +121,7 @@ int MCI::getOperationMode(){
    int mode = 0;
    
    sprintf(buf, "?M\n");
-   io.sent(buf);
+   io.send(buf);
    io.recv(buf);
    status = atoi(buf);
    if (status !=0) return -1;
@@ -135,7 +135,7 @@ int MCI::getOperationMode(){
 void MCI::setOperationMode(int mode){
    char buf[255];
    sprintf(buf, "!M%d", mode);
-   io.sent(buf);
+   io.send(buf);
    return 0;
 }
 
@@ -143,7 +143,7 @@ void MCI::setOperationMode(int mode){
 void MCI::getUpdatePeriod(const char *mode, unsigned int *T){
    char buf[255];
    sprintf(buf, "?T%c\n",mode);
-   io.sent(buf);
+   io.send(buf);
    io.recv(buf);
    *T = atoi(buf);
    return 0;
@@ -153,7 +153,7 @@ void MCI::getUpdatePeriod(const char *mode, unsigned int *T){
 void MCI::setUpdatePeriod(const char *mode, unsigned int *T){
    char buf[255];
    sprintf(buf, "!T%c%08u", mode, T);
-   io.sent(buf);
+   io.send(buf);
    return 0;
 }
 
@@ -169,7 +169,7 @@ void MCI::setVelocity(int *a, int *b){
    if(a > 0) a_sign = '+'; else a_sign = '-';
    if(b > 0) b_sign = '+'; else b_sign = '-';
    sprintf(buf, "!V%c%04d%c%04d", a_sign, abs(a), b_sign, abs(b));
-   io.sent(buf);
+   io.send(buf);
        
 
      
@@ -182,7 +182,7 @@ void MCI::getVelocity(int &a, int &b){
    char temp[4];
    int status;
    sprintf(buf, "?V\n");
-   io.sent(buf);
+   io.send(buf);
    io.recv(buf);
    status = atoi(buf);
    if (status !=0) return -1;
