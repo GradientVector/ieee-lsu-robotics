@@ -1,17 +1,7 @@
 #include "mci.h"
-#include "math.c"
+#include <math.h>
+#include <stdio.h>
 
-//communication scheme
-//using the same scheme as last year
-/*
-  !B - turn on/off encoder monitoring (with period in MCU ticks)
-  !C - reset encoder position counters
-  !F - reset PID states
-  !G - set PID controller parameters (Kp,Ki,Kv,& Q)
-  !M - set operation mode (0-Open Loop,1-Velocity Loop,2-Position Loop)
-  !R - reset the MCU state
-  !T - set loop update period (in ticks)
-  !V - set short loop commands (for velocity loop)
 
   ?E - get encoder values
   ?G - get PID controller parameters (Kp,Ki,Kv,& Q)
@@ -27,15 +17,12 @@
 
 // default constructor
 // default values = 0 for now
-#define DEBUG
+//#define DEBUG
 
 MCI::MCI()
 { *io = new Serial();
   modeStatus = 0;
   loopStatus = 0;
-  //Establish COM link
-  io.Serial(portName,baudRate);
-  if (!io.isOpen()) return -1;
 
   return 0;
 }         
@@ -70,7 +57,7 @@ void MCI::resetEncoders(){
 }
      
 // gets the values of the encoders
-void MCI::getEncVal(int &left,int &right){
+void MCI::getEncVal(double left,double right){
    char buf[255];
    char pos_0[255];
    char pos_1[255];
@@ -93,7 +80,7 @@ void MCI::resetPID(){
 // gets the current pid values
 // send command to  mc to send the pid values
 // assign the values to P I D
-void MCI::getPIDVal(const char *mode, unsigned int *P, unsigned int *I, unsigned int *D, unsigned int *Q){
+void MCI::getPIDVal(const char *mode, unsigned int P, unsigned int I, unsigned int D, unsigned int Q){
    char buf[255];
    int status = 0;
    int Q = 0;
@@ -117,6 +104,14 @@ void MCI::getPIDVal(const char *mode, unsigned int *P, unsigned int *I, unsigned
    return 0;
 }
 
+void MCI::getRealPIDVal(const char *mode, double Kp, double Ki, double Kd){
+   unsigned int P, I, D, Q;
+   getPIDVal(mode, P, I, D, Q);
+   Kp = (double) P << Q;
+   Ki = (double) I << Q;
+   Kd = (double) D << Q;
+   return 0;
+}
 // sends message to set the pid values
 void MCI::setPIDVal(const char *mode, unsigned int *P, unsigned int *I, unsigned int *D, unsigned int *Q){
   char buf[255];
@@ -129,7 +124,7 @@ void MCI::setPIDVal(const char *mode, unsigned int *P, unsigned int *I, unsigned
 // send command to mc to send the loop status
 // openloop = 0, closedloop = 1
 // return 0 or 1
-int MCI::getOperationMode(){
+void MCI::getOperationMode(int mode){
    char buf[255];
    int status = 0;
    int mode = 0;
@@ -154,12 +149,12 @@ void MCI::setOperationMode(int mode){
 }
 
 // get loop update period 
-void MCI::getUpdatePeriod(const char *mode, unsigned int *T){
+void MCI::getUpdatePeriod(const char *mode, unsigned int T){
    char buf[255];
    sprintf(buf, "?T%c\n",mode);
    io.send(buf);
    io.recv(buf);
-   *T = atoi(buf);
+   T = atoi(buf);
    return 0;
 }
 
@@ -176,22 +171,15 @@ void MCI::setUpdatePeriod(const char *mode, unsigned int *T){
 // left and right wheels (a,b)
 // inputs: max accepted values are  9999, indicating maximum speed.
 //         min accepted values are -9999, indicating maximum reverse speed.  
-void MCI::setVelocity(int *a, int *b){
+void MCI::setVelocity(double a, double b){
    char buf[255];
-   char a_sign;
-   char b_sign;
-   if(a > 0) a_sign = '+'; else a_sign = '-';
-   if(b > 0) b_sign = '+'; else b_sign = '-';
-   sprintf(buf, "!V%c%04d%c%04d", a_sign, abs(a), b_sign, abs(b));
+   sprintf(str, "!V%c%04d%c%04d\n",(a<0.0)?'-':'+',abs(a),(b<0.0)?'-':'+',abs(b));
    io.send(buf);
-       
-
-     
 }
 
 //gets the current velocity from the encoders data
 //outputs, via return parameters, #s between -9999 and 9999 
-void MCI::getVelocity(int &a, int &b){
+void MCI::getVelocity(int a, int b){
    char buf[255];
    char temp[4];
    int status;
