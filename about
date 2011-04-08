@@ -1,0 +1,4 @@
+
+'userButtonListener' will be called upon booting. It will constantly loop, 
+    waiting for a button-push event. Then it will run the main program.
+'main.cpp' is our main runtime source code for the robot
