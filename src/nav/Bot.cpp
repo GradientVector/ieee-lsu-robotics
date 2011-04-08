@@ -73,7 +73,7 @@ void Bot::setVel(double newVelocity){
 double Bot::getRotVel() {
 	return rotVel;
 }
-
+s
 //checked out by ANDREW ELIAS
 //units: degrees/sec
 void Bot::setRotVel(double newRotVel){
