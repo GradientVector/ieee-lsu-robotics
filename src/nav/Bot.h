@@ -12,7 +12,7 @@ class Bot {
 	private:
 	double velocity, rotVel;
 
-	//accessors for each wheel speed due to each type of motion
+	//accessors for each wheel speed due to each type of motion; returns value from -9999 to 9999 (mci scale)
 	double getRSpeedDueToVel();
 	double getLSpeedDueToVel();
 	double getRSpeedDueToRotVel();
@@ -32,8 +32,8 @@ class Bot {
 	const double COMFY_SPEED = 0.5*MAX_SPEED;		
 	const double COMFY_TURN_SPEED = 0.5*MAX_ROT_SPEED;
 
-	const double IN_PER_SEC = 5;   //the speed, in in/sec, represented by passing "1" to the MCI's setVelocity() function; a simple unit conversion factor. TODO: value should be changed later
-	const double DEG_PER_SEC = 5;		//the rotational speed, in deg/sec, represented by passing "1" (TODO) to the MCI's setVelocity() function; a simple unit conversion factor. TODO: value should be changed later
+	const double IN_PER_SEC = 5;   //the speed, in in/sec, represented by passing "1,1" to the MCI's setVelocity() function; a simple unit conversion factor. TODO: value should be changed later
+	const double DEG_PER_SEC = 5;		//the rotational speed, in deg/sec, represented by passing "-1,1" (TODO) to the MCI's setVelocity() function; a simple unit conversion factor. TODO: value should be changed later
 
      const bool LEFT = true;                 // Turning left uses positive velocity
 	const bool RIGHT =  !LEFT;              // Turning right uses negative velocity
