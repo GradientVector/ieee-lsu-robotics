@@ -2,7 +2,6 @@
 #
 # Read a GPIO input
 #
-#
 #This script will be called when we boot the beagleboard.
 #It will listen for a button push, and call a.out when that happens.
 #This code currently assumes main.cpp will be compiled to a.out
@@ -11,6 +10,7 @@
 #http://wh1t3s.com/2009/05/14/reading-beagleboard-gpio/
 #A lot of code is commented out.
 
+#note: $1 represents the first argument to the script call
 GPIO=$1
 
 cleanup() { # Release the GPIO port
