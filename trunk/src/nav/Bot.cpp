@@ -94,37 +94,32 @@ double Bot::getRotVel() {
 
 //checked out by ANDREW ELIAS
 //units: degrees/sec
-void Bot::setRotVel(double newRotVel){
-	//TODO change all of this to basically match setVel()
+void Bot::setRotVel(double inputRotVel) {
 	double oldRotVel = rotVel;
 
-	int newRotVelSign;			//positive for newRotVel>0, negative otherwise
-	if (newRotVel > 0) newRotVelSign =  1;
-		else          newRotVelSign = -1;
+	int inputRotVelSign;    //sign(+/-) of the rotational velocity passed
+	if (inputRotVel > 0) inputRotVelSign =  1;
+		else            inputRotVelSign = -1;
 
-	if(fabs(newRotVel) > MAX_ROT_SPEED) {	
-		rotVel = MAX_ROT_SPEED * newRotVelSign;		
+	//don't let the user set it higher than max rot speed
+	if(fabs(inputVelocity) > MAX_ROT_SPEED) {	
+		rotVel = MAX_ROT_SPEED * inputRotVelSign;		
 	} else {
-		rotVel = newRotVel;		
+		rotVel = inputRotVel;
 	}
 
-	double dRV = rotVel - oldRotVel;   //change in rotational velocity due to this function
+	//Convert rotational velocity (deg/sec) to linear wheel velocity (in/sec)
+	//note: at this point, rotVel is in degrees per second
+	double rotVelInRadPerSec = rotVel * (PI/180);    //rotVel in radians per second; PI is defined in util.h
+	double wheelVel = WHL_RADIUS * rotVelInRadPerSec;   //linear velocity of the right(?) wheel due to the rotational velocity; in inches/sec
 
-	mci.setModeStatus(mci.MIXED_MODE);	//MIXED_MODE indicates vel/rotVel instead of L/R
-	mci.setVelocity( velocity/SCALING_FACTOR, (oldRotVel + dRV)/ROT_SCALING_FACTOR ); 
+	//physically set it
+	double newLeftSetting  = (getLSpeedDueToRotVel() - wheelVel) / IN_PER_SEC;
+	double newRightSetting = (getRSpeedDueToRotVel() + wheelVel) / IN_PER_SEC;
+	if (rotVel != oldRotVel) mci.setVelocity( newLeftSetting, newRightSetting);
 
+	//TODO check all of this
 
-	//TODO: this code may still be needed; keep it here for now  -AndrewE
-	/*
-	double radius = WHL_DIAM/2;
-	double newRotVelInRadians = (180/3.1415926)*newRotVel;
-	velToSetEach = radius*newRotVelInRadians;		//the vel for each wheel, in in/sec
-	double toSet = SCALING_FACTOR*velToSetEach;		
-	//TODO set the rot vel without unsetting the vel
-
-	mci.setVelocity(  blank until we know units   );  //TODO
-	rotVel = newRotVel;
-	*/
 }
 
 
