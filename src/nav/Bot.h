@@ -10,7 +10,7 @@
 //Holds location and angle information.
 class Bot {
 	private:
-	double velocity, rotVel;
+	double velocity, rotVel;      //rotVel>0 means the bot is twisting left
 
 	//accessors for each wheel speed due to each type of motion; returns value from -9999 to 9999 (mci scale)
 	double getRSpeedDueToVel();
@@ -23,7 +23,8 @@ class Bot {
 	const double STD_STOP_DIST = 6; 	//when navigating by homeInOn(-,-),  this is the standard stopping distance(inches) when we don't want to touch the object 
 	const double TOUCH_DIST = 0;		//distance(inches) from our camera to the object when we are touching it
 	const double WHL_DIAM;			//separation b/t the wheels
-	
+	const double WHL_RADIUS = WHL_DIAM/2;	
+
 	//high speeds at which things start going wrong(i.e. slippage, popping wheelies, etc). Subj to change
 	const double MAX_SPEED = 25;		//inches/second
 	const double MAX_ROT_SPEED = 400;	//degrees/second

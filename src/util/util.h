@@ -10,5 +10,6 @@
 
 void wait(int milliseconds);
 
+const double PI = 3.1415926;
 
 #endif  //for UTIL_H
