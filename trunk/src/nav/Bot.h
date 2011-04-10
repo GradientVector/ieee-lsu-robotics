@@ -55,10 +55,16 @@ class Bot {
     Angle angle;
     MCI mci;
 
+    Bot();
+    ~Bot();
+
+    //Initialization
     void driveToMainLine();
+
+    //Line-following
     void followLineTo(Cylinder cyl, double distance);
 
-    //Cylinder Following
+    //Cylinder-Searching
     void pointTo(Cylinder cyl);
     PixelPoint searchFor(Cylinder cyl);
     void homeInOn(Cylinder, double distance);
