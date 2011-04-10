@@ -78,12 +78,12 @@ class Bot {
         void turnTo(Angle angle, double speed);
         void turn(bool direction, double angle, double speed);
         void turn(bool direction, Angle angle, double speed);
-        void startTurn(bool direction, double speed);
+        void startTurning(bool direction, double speed);
         void turnLeft(double angle, double speed);
         void turnRight(double angle, double speed);
-        void startTurnLeft(double speed);
-        void startTurnRight(double speed);
-        void stopTurn();
+        void startTurningLeft(double speed);
+        void startTurningRight(double speed);
+        void stopTurning();
 };
 
 #endif	//BOT_H
