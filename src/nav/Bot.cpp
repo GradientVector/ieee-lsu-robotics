@@ -226,16 +226,16 @@ void Bot::turnTo(Angle angle, double speed = COMFY_TURN_SPEED){
 }
 
 void Bot::turn(bool direction, double angle, double speed = COMFY_TURN_SPEED){
-    startTurn(direction, speed);
+    startTurning(direction, speed);
     wait((angle/Bot.getRotVel())*1000);
-    stopTurn();
+    stopTurning();
 }
 
 void Bot::turn(bool direction, Angle angle, double speed = COMFY_TURN_SPEED){
     turn(direction, angle.getAngle(),speed);
 }
 
-void Bot::startTurn(bool direction, double speed = COMFY_TURN_SPEED){
+void Bot::startTurning(bool direction, double speed = COMFY_TURN_SPEED){
      if (direction){
         Bot.setRotVel(speed);
     } else {
@@ -251,15 +251,15 @@ void Bot::turnRight(double angle, double speed = COMFY_TURN_SPEED){
     turn(Bot.RIGHT, angle, speed);
 }
 
-void Bot::startTurnLeft(double speed = COMFY_TURN_SPEED){
-    startTurn(Bot.LEFT, speed);
+void Bot::startTurningLeft(double speed = COMFY_TURN_SPEED){
+    startTurning(Bot.LEFT, speed);
 }
 
-void Bot::startTurnRight(double speed = COMFY_TURN_SPEED){
-    startTurn(Bot.RIGHT, speed);
+void Bot::startTurningRight(double speed = COMFY_TURN_SPEED){
+    startTurning(Bot.RIGHT, speed);
 }
 
-void Bot::stopTurn(){
+void Bot::stopTurning(){
     setRotVel(0);
 }
 /* End turn (left/right) functions*/
