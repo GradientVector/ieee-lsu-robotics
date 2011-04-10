@@ -15,10 +15,13 @@ void Bot::driveToMainLine() {
 
 //checked out by Andrew Elias
 //Input must either be the yellow, blue or green cylinder. We will not line-follow to the red.
-void Bot::goToLineAndFollowItTo(Cylinder cyl, double distance) {
+//'distanceToTravel' is the 
+void Bot::goToLineAndFollowItTo(Cylinder cyl, double distanceToTravel) {
     pointTo(cyl);
 
     //TODO: recognize line & place it in real life
+    PhysicalLine physicalLine = ??; //TODO
+
 
     if(/*TODO: "we're not on the line" */) {
         getOn(/* TODO: the line*/);  
@@ -27,8 +30,7 @@ void Bot::goToLineAndFollowItTo(Cylinder cyl, double distance) {
         pointTo(cyl); 
     }   
 	
-
-    lineFollow( , distance);
+    lineFollow(distanceToTravel);
 }
 
 //uses our rough 'map' to point in the general direction of our destination.
