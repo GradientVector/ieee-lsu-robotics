@@ -21,12 +21,14 @@ void Bot::goToLineAndFollowItTo(Cylinder cyl, double distance) {
     //TODO: recognize line & place it in real life
 
     if(/*TODO: "we're not on the line" */) {
-        getOn(/* TODO: the line*/);    
-
-
-    }    
+        getOn(/* TODO: the line*/);  
+        pointTo(cyl);   //TODO: mabye this can be somehow include in getOn(PhysicalLine). That might be more precise.  
+    } else {
+        pointTo(cyl); 
+    }   
 	
-    //TODO:
+
+    lineFollow( , distance);
 }
 
 //uses our rough 'map' to point in the general direction of our destination.
