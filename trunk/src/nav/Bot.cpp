@@ -13,9 +13,20 @@ void Bot::driveToMainLine() {
    setRotVel(0);
 }
 
-//Input must either be the yellow or blue cylinder. We will not line-follow to the others.
-void Bot::followLineTo(Cylinder cyl, double distance) {
-	//TODO
+//checked out by Andrew Elias
+//Input must either be the yellow, blue or green cylinder. We will not line-follow to the red.
+void Bot::goToLineAndFollowItTo(Cylinder cyl, double distance) {
+    pointTo(cyl);
+
+    //TODO: recognize line & place it in real life
+
+    if(/*TODO: "we're not on the line" */) {
+        getOn(/* TODO: the line*/);    
+
+
+    }    
+	
+    //TODO:
 }
 
 //uses our rough 'map' to point in the general direction of our destination.
@@ -72,7 +83,6 @@ double Bot::getVel() {
 	return velocity;
 }
 
-//checked out by Andrew Elias
 //input units: inches/sec
 void Bot::setVel(double inputVelocity){
 	double oldVel = velocity;
@@ -98,8 +108,6 @@ double Bot::getRotVel() {
 	return rotVel;
 }
 
-
-//checked out by ANDREW ELIAS
 //units: degrees/sec
 void Bot::setRotVel(double inputRotVel) {
 	double oldRotVel = rotVel;

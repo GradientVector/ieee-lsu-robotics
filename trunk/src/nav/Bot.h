@@ -62,7 +62,7 @@ class Bot {
     void driveToMainLine();
 
     //Line-following
-    void followLineTo(Cylinder cyl, double distance);
+    void goToLineAndFollowItTo(Cylinder cyl, double distance);
 
     //Cylinder-Searching
     void pointTo(Cylinder cyl);
