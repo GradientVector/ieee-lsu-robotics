@@ -40,14 +40,6 @@ PolarPoint placeObject(PixelPoint object) {
     return updated_position;
 }
 
-
-//finds a line on the screen
-//returns the center of the line segment found. If the line on the screen goes from (300,10) to (200,50), the return value will be (250,30).  
-PixelPoint findLine(){
-	//TODO
-}
-
-
 //this returns a color at a point
 int color(Mat img, int x, int y) {
 	//TODO by John West
