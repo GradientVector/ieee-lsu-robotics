@@ -25,7 +25,7 @@ void Bot::pointTo(Cylinder cyl) {
 	//use trig to figure the angle&distance to cyl
 	double deltaX = cyl.location.x - me.location.x;
 	double deltaY = cyl.location.y - me.location.y;
-	double direction = (180/3.1415926)*atan(deltaY/deltaX);		//the direction we want to point 
+	double direction = (DEGREES_PER_RADIAN)*atan(deltaY/deltaX);		//the direction we want to point 
 	if(deltaY < 0) direction = 180 - direction;					//deals with quadrant problems
 
 	//TODO use setRotVel(...) to do the physical motion
@@ -43,20 +43,30 @@ void Bot::dischargeFor(double time) {
 	wait (time*1000);		//TODO can be more complex than this
 }
 
-double getRSpeedDueToVel() {
-	//TODO
+/*
+These four functions return the component of the velocities 
+of the individual wheelsdue to 'velocity' and 'rotVel': */
+
+//returns (signed) speed of left wheel (in/sec) due to robot's velocity
+double Bot::getRSpeedDueToVel() {
+	return velocity;
 }
 
-double getLSpeedDueToVel() {
-	//TODO
+//returns (signed) speed of left wheel (in/sec) due to robot's velocity
+double Bot::getLSpeedDueToVel() {
+	return velocity;
 }
 
-double getRSpeedDueToRotVel() {
-	//TODO
+//returns (signed) speed of right wheel due to robot's rotational velocity
+double Bot::getRSpeedDueToRotVel() {
+	double rotVelInRadPerSec = rotVel * RADIANS_PER_DEGREE;   //RADIANS_PER_DEGREE defined in util.h
+	return rotVelInRadPerSec;                             //no negation
 }
 
-double getLSpeedDueToRotVel() {
-	//TODO
+//returns (signed) speed of left wheel due to robot's rotational velocity
+double Bot::getLSpeedDueToRotVel() {
+	double rotVelInRadPerSec = rotVel * RADIANS_PER_DEGREE;   //RADIANS_PER_DEGREE defined in util.h
+	return rotVelInRadPerSec * -1;                        //with negation because it's the left wheel
 }
 
 //DONE
@@ -110,7 +120,7 @@ void Bot::setRotVel(double inputRotVel) {
 
 	//Convert rotational velocity (deg/sec) to linear wheel velocity (in/sec)
 	//note: at this point, rotVel is in degrees per second
-	double rotVelInRadPerSec = rotVel * (PI/180);    //rotVel in radians per second; PI is defined in util.h
+	double rotVelInRadPerSec = rotVel * (RADIANS_PER_DEGREE);    //rotVel in radians per second;
 	double wheelVel = WHL_RADIUS * rotVelInRadPerSec;   //linear velocity of the right(?) wheel due to the rotational velocity; in inches/sec
 
 	//physically set it
