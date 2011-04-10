@@ -69,7 +69,7 @@ class Bot {
     PixelPoint searchFor(Cylinder cyl);
     void homeInOn(Cylinder, double distance);
 
-    //Chargin/Discharging
+    //Charging/Discharging
     void chargeFor(double time);
     void dischargeFor(double time);
 
