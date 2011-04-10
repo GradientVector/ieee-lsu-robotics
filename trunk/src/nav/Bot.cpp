@@ -2,7 +2,6 @@
 #include "Bot.h"
 #include <math.h>
 
-//DONE
 //Will only be used once. Gets us from the starting point (facing 'eastward') 
 //to the T-junction of the black lines, facing 'northward'. After that, we can follow the right line. 
 void Bot::driveToMainLine() {
@@ -69,7 +68,6 @@ double Bot::getLSpeedDueToRotVel() {
 	return rotVelInRadPerSec * -1;                        //with negation because it's the left wheel
 }
 
-//DONE
 double Bot::getVel() {
 	return velocity;
 }
@@ -96,7 +94,6 @@ void Bot::setVel(double inputVelocity){
 	if (velocity != oldVel) mci.setVelocity( newLeftSetting, newRightSetting);
 }
 
-//DONE
 double Bot::getRotVel() {
 	return rotVel;
 }
