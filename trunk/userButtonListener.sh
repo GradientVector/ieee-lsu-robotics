@@ -25,7 +25,6 @@ cleanup() { # Release the GPIO port
 echo "$GPIO" > /sys/class/gpio/export
 echo "in" > /sys/class/gpio/gpio${GPIO}/direction
 
-# TODO
 trap cleanup SIGINT # call cleanup on Ctrl-C
 
 THIS_VALUE=`cat /sys/class/gpio/gpio${GPIO}/value`
