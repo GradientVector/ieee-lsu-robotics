@@ -1,1 +1,0 @@
- serial This class manages the serial communication. You only need to open up a specific port and read/write your data. This will be used by the mci and sensors classes.

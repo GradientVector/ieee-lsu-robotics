@@ -1,1 +1,0 @@
-vision This class deals with grabbing frames from the camera and extracting the data we need out of it. We should consider merging this with the navigation class.
