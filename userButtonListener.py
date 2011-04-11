@@ -13,5 +13,8 @@ while event:
   (time1, time2, type, code, value) = struct.unpack(inputEventFormat, event)
   if type == 1 and code == 276 and value == 1:
     print "User button pressed!"
+    import os
+    cmd = './a.out'
+    os.system(cmd) # returns the exit status
   event = file.read(inputEventSize)
 file.close()
