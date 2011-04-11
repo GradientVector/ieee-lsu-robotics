@@ -45,7 +45,7 @@ class Bot {
 
     // Camera related variables
     const double VERTICAL_TILT_ANGLE = 90;   // 0 degrees is pointing perpendicular (straight at) the ground; 90 degrees is parallel to the ground
-    const double CAMERA_HEIGHT = 5;          // Height (in inches) from ground. Test value of 5 was randomly chosen.
+    const double CAMERA_HEIGHT = 6.3;          // Height (in inches) from ground.
     const double VERT_FIELD_ANGLE = 45;      // 56 deg or 75 deg, probably using 75 deg
     const double HORIZ_FIELD_ANGLE = 60;
     const int IMG_WIDTH_PX = 640;
