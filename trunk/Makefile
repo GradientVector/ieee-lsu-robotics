@@ -5,8 +5,8 @@ RM  := rm
 CXXFLAGS := -g -O2 -Wall
 INCLUDES := -I include/ `pkg-config --cflags opencv`
 LIBS     := -L lib/ `pkg-config --libs opencv`
-LIBDIR := ../../lib
-INCLUDEDIR := ../../include
+LIBDIR := lib
+INCLUDEDIR := include
 BINDIR := bin
 
 DIRS  := src
