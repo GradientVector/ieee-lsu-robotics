@@ -14,7 +14,7 @@ while event:
   if type == 1 and code == 276 and value == 1:
     print "User button pressed!"
     import os
-    cmd = './a.out'
-    os.system(cmd) # returns the exit status
+    cmd = './a.out' # modify this according to what we call our final executable
+    os.system(cmd)
   event = file.read(inputEventSize)
 file.close()
