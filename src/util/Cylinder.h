@@ -1,17 +1,18 @@
 #ifndef CYLINDER_H
 #define CYLINDER_H
 
-
+#include "../nav/CartesianPoint.h"
 
 class Cylinder {
 	public:
 	
-	const int NOT_FOUND = 0; 
-	const int RED       = 1;
-	const int GREEN     = 2;
-	const int BLUE      = 3;
-	const int YELLOW    = 4;
-	const int BLACK     = 5;
+    //for some reason these can't be delared&initialized as const here; they are initialized in the constructor
+    int NOT_FOUND;
+	int RED;
+	int GREEN;
+	int BLUE;
+	int YELLOW;
+	int BLACK;
 
 	CartesianPoint location;
 	int color;
