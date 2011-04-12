@@ -5,7 +5,7 @@ Angle::Angle(){
 }
 
 Angle::Angle(double in_angle){
-    angle = setAngle(in_angle);
+    setAngle(in_angle);
 }
 
 double Angle::getAngle() {
@@ -13,8 +13,13 @@ double Angle::getAngle() {
 }
 
 void Angle::setAngle(double newAngle) {
-	while(newAngle < 0) {
+    //make sure the new angle is nonnegative so that the modulus operator is more predictable	
+    while(newAngle < 0) {
 		newAngle += 360;	
 	}
-	angle = newAngle % 360;
+
+    //make sure the new angle is less than 360 (modulus operator was giving me issues -Andrew)
+    while(newAngle > 360) {
+        newAngle -= 360;
+    }
 }
