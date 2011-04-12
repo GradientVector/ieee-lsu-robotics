@@ -1,6 +1,6 @@
 #include "CartesianPoint.h"
 
-CartesianPoint::CartesianPoint(double x, double y) {
+CartesianPoint::CartesianPoint(double xPassed, double yPassed) {
 	x = xPassed;
 	y = yPassed;
 }
