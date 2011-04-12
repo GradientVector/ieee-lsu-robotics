@@ -1,6 +1,5 @@
 
 #include "Bot.h"
-#include <math.h>
 
 //Will only be used once. Gets us from the starting point (facing 'eastward') 
 //to the T-junction of the black lines, facing 'northward'. After that, we can follow the right line. 

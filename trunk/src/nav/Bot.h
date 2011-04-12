@@ -3,8 +3,11 @@
 
 #include <math.h>
 #include "../vision/vision.h"
-#include "../sensors/sensors.h"
+//#include "../sensors/sensors.h"
 #include "../util/util.h"
+#include "../util/Angle.h"
+#include "../util/PolarPoint.h"
+#include "../util/Cylinder.h"
 #include "../util/PhysicalLine.h"
 
 //will only be instantiated once. represents the robot itself.

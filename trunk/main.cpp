@@ -4,11 +4,12 @@ Filename:	main.cpp
 This is the main program that will be run by the robot. It calls upon all of the code in /src.
 */
 
-#include "src/vision/vision.h"
 #include "src/mci/mci.h"
 #include "src/nav/navigation.h"
-#include "src/sensors/sensors.h"
+#include "src/nav/Bot.h"
+#include "src/nav/Map.h"
 #include "src/vision/vision.h"
+#include "src/util/util.h"
 using namespace std;
 
 int main() {
