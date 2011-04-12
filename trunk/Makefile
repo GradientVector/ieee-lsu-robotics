@@ -11,10 +11,14 @@ BINDIR := bin
 
 DIRS  := src
 
-all: descend 
+all: descend main
 
 cameratest: cameratest.o
 	$(CXX) $< -o $(BINDIR)/$@ $(LIBS)
+	$(RM) $<
+
+main: main.o descend
+    $(CXX) $< -o $(BINDIR)/$@ $(LIBS)
 	$(RM) $<
 
 descend:
