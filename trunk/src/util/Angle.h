@@ -8,10 +8,10 @@ class Angle {
 	double angle; 	//holds values from 0 to 360
 
 	public:
-	double getAngle();
+    Angle();
+    Angle(double in_angle);
+    double getAngle();
 	void setAngle(double newAngle);
-                Angle();
-                Angle(double in_angle);
 };
 
 #endif
