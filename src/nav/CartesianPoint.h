@@ -9,6 +9,7 @@ class CartesianPoint {
 				//x==0 indicates the bottom of the map
 	double y;
 				//y==0 indicates the left side of the map
+    CartesianPoint();
 	CartesianPoint(double xPassed, double yPassed);
 };
 

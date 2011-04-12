@@ -1,13 +1,11 @@
 #include "Cylinder.h"
 
+//This was added so that Map.cpp would compile; why do we need it? it's never 'used'.  -Andrew
+Cylinder::Cylinder() {
+    //intentionally blank
+}
+
 Cylinder::Cylinder(int colorPassed, CartesianPoint locationPassed) {
 	color = colorPassed;
 	location = locationPassed;
-
-    NOT_FOUND = 0;
-    RED = 1;
-    GREEN = 2;
-    BLUE = 3;
-    YELLOW = 4;
-    BLACK = 5;
 }
