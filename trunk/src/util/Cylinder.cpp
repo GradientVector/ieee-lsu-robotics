@@ -4,7 +4,7 @@ Cylinder::Cylinder(int colorPassed, CartesianPoint locationPassed) {
 	color = colorPassed;
 	location = locationPassed;
 
-    NOT_F = 0;
+    NOT_FOUND = 0;
     RED = 1;
     GREEN = 2;
     BLUE = 3;
