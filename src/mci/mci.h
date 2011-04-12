@@ -13,7 +13,6 @@ Log:
 #include "serial.h"
 #include "math.c"
 //communication scheme
-//using the same scheme as last year
 /*
   !B - turn on/off encoder monitoring (with period in MCU ticks)
   !C - reset encoder position counters
