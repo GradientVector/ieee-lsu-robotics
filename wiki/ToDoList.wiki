@@ -7,7 +7,6 @@ Make sure our .cpp files compile. They should be checked in order from simplest/
  * PixelPoint.cpp
  * PhysicalLine.cpp (may not even be used...)
  * mci.cpp
- * serial.cpp
  * vision.cpp
 
 
