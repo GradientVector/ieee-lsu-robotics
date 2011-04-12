@@ -2,20 +2,16 @@
 #define CYLINDER_H
 
 #include "../nav/CartesianPoint.h"
+#include "../util/util.h"
 
 class Cylinder {
 	public:
 	
-    //for some reason these can't be delared&initialized as const here; they are initialized in the constructor
-    int NOT_FOUND;
-	int RED;
-	int GREEN;
-	int BLUE;
-	int YELLOW;
-	int BLACK;
+    //F it; color constants are gonna be declared in util.h/cpp
 
 	CartesianPoint location;
 	int color;
+    Cylinder();
 	Cylinder(int colorPassed, CartesianPoint locationPassed);
 };
 

@@ -1,9 +1,9 @@
 /*
 	loose utility functions
 */
-
 #ifndef UTIL_H
 #define UTIL_H
+
 
 //#include <unistd.h>
 //#include <cstdlib>
@@ -16,6 +16,13 @@ void wait(unsigned int milliseconds);
 const double PI = 3.1415926;
 const double RADIANS_PER_DEGREE = PI / 180;
 const double DEGREES_PER_RADIAN = 180 / PI;
+
+const int NOT_FOUND  = 0;
+const int RED        = 1;
+const int GREEN      = 2;
+const int BLUE       = 3;
+const int YELLOW     = 4;
+const int BLACK      = 5;
 
 
 #endif  //for UTIL_H
