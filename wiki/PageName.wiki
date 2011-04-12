@@ -1,15 +1,15 @@
 TODO list:
+----
 
 Make sure our .cpp files compile. They should be checked in order from simplest/smallest to largest/complexest. The following still need to be checked:
-Angle.cpp
-Bot.cpp
-Map.cpp
-PolarPoint.cpp
-PixelPoint.cpp
-PhysicalLine.cpp (may not even be used...)
-mci.cpp
-serial.cpp
-vision.cpp
+ * Bot.cpp
+ * Map.cpp
+ * PolarPoint.cpp
+ * PixelPoint.cpp
+ * PhysicalLine.cpp (may not even be used...)
+ * mci.cpp
+ * serial.cpp
+ * vision.cpp
 
 
 
