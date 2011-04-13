@@ -179,7 +179,7 @@ void MCI::setUpdatePeriod(const char *mode, unsigned int *T){
 // left and right wheels (a,b)
 // inputs: max accepted values are  9999, indicating maximum speed.
 //         min accepted values are -9999, indicating maximum reverse speed.  
-void MCI::setVelocity(double a, double b){
+void MCI::setVelocity(int a, int b){
    char buf[255];
    sprintf(str, "!V%c%04d%c%04d\n",(a<0.0)?'-':'+',abs(a),(b<0.0)?'-':'+',abs(b));
    io->send(buf);
