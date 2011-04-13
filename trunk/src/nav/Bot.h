@@ -78,24 +78,20 @@ class Bot {
     double getRotVel();
     void   setRotVel(double rotVel);
 
-    // Start move fuctions (forwards/backwards)
-    void moveTo(bool direction, double distance, double speed);
+    // Moving fuctions (forwards/backwards)
+    void move(bool direction, double distance);
+    void moveForward(double distance);
+    void moveBackward(double distance);
     void startMoving(bool direction, double speed);
-    void moveForwardTo(double distance, double speed);
-    void moveBackwardTo(double distance, double speed);
     void startMovingForward(double speed);
     void startMovingBackward(double speed);
     void stopMoving();
-    // Start turning functions (rotate left/right)
-    void turnTo(double angle, double speed);
-    void turnTo(Angle angle, double speed);
-    void turn(bool direction, double angle, double speed);
-    void turn(bool direction, Angle angle, double speed);
+    // Turning functions (rotate left/right)
+    void turn(double inputAngle);
+    void turn(bool direction, double inputAngle);
+    void turnLeft(double inputAngle);
+    void turnRight(double inputAngle);
     void startTurning(bool direction, double speed);
-    void turnLeft(double angle, double speed);
-    void turnRight(double angle, double speed);
-    void startTurningLeft(double speed);
-    void startTurningRight(double speed);
     void stopTurning();
 };
 

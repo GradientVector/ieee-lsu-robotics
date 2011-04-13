@@ -169,12 +169,12 @@ void Bot::homeInOn(Cylinder cyl, double distance) {
     pointTo(cyl);
 
     PolarPoint cylPolar = searchFor(cyl);
-    turnTo(cylPolar.th.getAngle());
+    turn(cylPolar.th.getAngle());
     if (cylPolar.r > 0){
         moveForwardTo(cylPolar.r);
         while ( cylPolar.r > fabs(distance) ){
             cylPolar = searchFor(cyl);
-            turnTo(cylPolar.th.getAngle());
+            turn(cylPolar.th.getAngle());
             moveForwardTo(cylPolar.r);
         }
     }
@@ -215,8 +215,8 @@ PolarPoint Bot::searchFor(Cylinder cyl){
 }
 
 
-/* Begin move forward/backward functions */
-void Bot::moveTo(bool direction, double distance, double speed = COMFY_SPEED){
+/* Simple driving command to move linearly. */
+void Bot::move(bool direction, double distance, double speed = COMFY_SPEED){
     startMoving(direction, speed);
     wait((distance/Bot.getVel())*1000);
     stopMoving();
@@ -230,12 +230,12 @@ void Bot::startMoving(bool direction, double speed = COMFY_SPEED){
     }
 }
 
-void Bot::moveForwardTo(double distance, double speed = COMFY_SPEED){
-    moveTo(Bot.FORWARD, distance, speed);
+void Bot::moveForward(double distance, double speed = COMFY_SPEED){
+    move(Bot.FORWARD, distance, speed);
 }
 
-void Bot::moveBackwardTo(double distance, double speed = COMFY_SPEED){
-    moveTo(Bot.BACKWARD, distance, speed);
+void Bot::moveBackward(double distance, double speed = COMFY_SPEED){
+    move(Bot.BACKWARD, distance, speed);
 }
 
 void Bot::startMovingForward(double speed = COMFY_SPEED){
@@ -249,31 +249,37 @@ void Bot::startMovingBackward(double speed = COMFY_SPEED){
 void Bot::stopMoving(){
     setRotVel(0);
 }
-/* End move (forward/backward) functions */
 
+//Input is in degrees, with positive being leftward. The bot refuses to turn more than 180 degrees.
+void Bot::turn(double inputAngle){
+    //any turn >180 should be rethought; going the other way may be faster
+    int inputAngleSign; // 1 or -1 depending on positivity of inputAngle
+    if (fabs(inputAngle) > 180) {
+        inputAngleSign = inputAngle / fabs(inputAngle);    
+        while(fabs(inputAngle) > 180) {
+            inputAngle -= inputAngleSign * 180;
+        }    
+    } 
 
-/* Begin turn (left/right) functions*/
-void Bot::turnTo(double angle, double speed = COMFY_TURN_SPEED){
-    angle -= 180;		//TODO 'angle' is already a Bot member variable. also, does this represent a destation angle, or an angle of turning?
-    if(angle < 0){
-        turn(Bot.LEFT, fabs(angle), speed);
-    } else if (angle > 0) {
-        turn(Bot.RIGHT, fabs(angle), speed);
-    }
+    if(inputAngle > 0) {
+        turn(Bot.LEFT, fabs(inputAngle));
+    } else if (inputAngle < 0) {
+        turn( Bot.RIGHT, fabs(inputAngle) );
+    } //and if inputAngle == 0, do nothing
 }
 
-void Bot::turnTo(Angle angle, double speed = COMFY_TURN_SPEED){
-    turnTo(angle.getAngle(),speed);
-}
-
-void Bot::turn(bool direction, double angle, double speed = COMFY_TURN_SPEED){
-    startTurning(direction, speed);
-    wait((angle/Bot.getRotVel())*1000);
+void Bot::turn(bool direction, double inputAngle){
+    startTurning(direction, COMFY_TURN_SPEED);
+    wait( (inputAngle/Bot.getRotVel())*1000 );
     stopTurning();
 }
 
-void Bot::turn(bool direction, Angle angle, double speed = COMFY_TURN_SPEED){
-    turn(direction, angle.getAngle(),speed);
+void Bot::turnLeft(double inputAngle){
+    turn(Bot.LEFT, inputAngle, COMFY_TURN_SPEED);
+}
+
+void Bot::turnRight(double inputAngle){
+    turn(Bot.RIGHT, inputAngle, COMFY_TURN_SPEED);
 }
 
 void Bot::startTurning(bool direction, double speed = COMFY_TURN_SPEED){
@@ -282,22 +288,6 @@ void Bot::startTurning(bool direction, double speed = COMFY_TURN_SPEED){
     } else {
         Bot.setRotVel(-speed);
     }
-}
-
-void Bot::turnLeft(double angle, double speed = COMFY_TURN_SPEED){
-    turn(Bot.LEFT, angle, speed);
-}
-
-void Bot::turnRight(double angle, double speed = COMFY_TURN_SPEED){
-    turn(Bot.RIGHT, angle, speed);
-}
-
-void Bot::startTurningLeft(double speed = COMFY_TURN_SPEED){
-    startTurning(Bot.LEFT, speed);
-}
-
-void Bot::startTurningRight(double speed = COMFY_TURN_SPEED){
-    startTurning(Bot.RIGHT, speed);
 }
 
 void Bot::stopTurning(){
