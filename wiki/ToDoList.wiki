@@ -23,3 +23,5 @@ Bot.h/cpp needs a function called followLineTo(Cylinder cyl)
 On approximately line 13 of vision.cpp, there is a char which has multiple characters/digits assigned to it. Compiler is complaining
 
 John West: grayImage, color, and checkArea all need to be put into versioning if they aren't already, and they need to be made accessible to Camera.h
+
+run throught all code which uses PolarPoint and make sure it uses the getTh() and getR() methods instead of accessing the variables directly
