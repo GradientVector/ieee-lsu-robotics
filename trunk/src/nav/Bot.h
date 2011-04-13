@@ -46,18 +46,11 @@ class Bot {
     const bool FORWARD = true;              // Moving forward uses positive velocity
 	const bool BACKWARD =  !FORWARD;        // Moving backward uses negative velocity
 
-    // Camera related variables
-    const double VERTICAL_TILT_ANGLE = 90;   // 0 degrees is pointing perpendicular (straight at) the ground; 90 degrees is parallel to the ground
-    const double CAMERA_HEIGHT = 6.3;          // Height (in inches) from ground.
-    const double VERT_FIELD_ANGLE = 45;      // 56 deg or 75 deg, probably using 75 deg
-    const double HORIZ_FIELD_ANGLE = 60;
-    const int IMG_WIDTH_PX = 640;
-    const int IMG_HEIGHT_PX =  480;
-
-    SensorSet sensors;
     CartesianPoint location;
     Angle angle;
     MCI mci;
+    Camera camera;
+    SensorSet sensors;
 
     Bot();
     ~Bot();
