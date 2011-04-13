@@ -24,5 +24,11 @@ const int BLUE       = 3;
 const int YELLOW     = 4;
 const int BLACK      = 5;
 
+// Movement logic
+const bool LEFT = true;                 // Turning left uses positive velocity
+const bool RIGHT =  !LEFT;              // Turning right uses negative velocity
+const bool FORWARD = true;              // Moving forward uses positive velocity
+const bool BACKWARD =  !FORWARD;        // Moving backward uses negative velocity
+
 
 #endif  //for UTIL_H

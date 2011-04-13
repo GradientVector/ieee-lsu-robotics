@@ -24,27 +24,23 @@ class Bot {
 	
 	
     public:
-    const double STD_STOP_DIST = 6;     //when navigating by homeInOn(-,-),  this is the standard stopping distance(inches) when we don't want to touch the object 
-    const double TOUCH_DIST = 0;        //distance(inches) from our camera to the object when we are touching it
+    const double STD_STOP_DIST;     //when navigating by homeInOn(-,-),  this is the standard stopping distance(inches) when we don't want to touch the object 
+    const double TOUCH_DIST;        //distance(inches) from our camera to the object when we are touching it
     const double WHL_DIAM;              //separation b/t the wheels
-    const double WHL_RADIUS = WHL_DIAM/2;	
+    const double WHL_RADIUS = WHL_DIAM/2; //TODO do this with a private getter	
 
     //high speeds at which things start going wrong(i.e. slippage, popping wheelies, etc). Subj to change
-    const double MAX_SPEED     = 25;    //inches/second
-    const double MAX_ROT_SPEED = 400;	//degrees/second
+    const double MAX_SPEED;    //inches/second
+    const double MAX_ROT_SPEED;	//degrees/second
 
     //good, standard speeds that aren't too fast/slow.
-    const double COMFY_SPEED      = 0.5 * MAX_SPEED;		
+    const double COMFY_SPEED      = 0.5 * MAX_SPEED;	//TODO use a private getter	
     const double COMFY_TURN_SPEED = 0.5 * MAX_ROT_SPEED;
 
-    const double IN_PER_SEC = 5;        //the speed, in in/sec, represented by passing "1,1" to the MCI's setVelocity() function; a simple unit conversion factor. TODO: value should be changed later
-    const double DEG_PER_SEC = 5;       //the rotational speed, in deg/sec, represented by passing "-1,1" (TODO) to the MCI's setVelocity() function; a simple unit conversion factor. TODO: value should be changed later
+    const double IN_PER_SEC;        //the speed, in in/sec, represented by passing "1,1" to the MCI's setVelocity() function; a simple unit conversion factor. TODO: value should be changed later
+    const double DEG_PER_SEC;       //the rotational speed, in deg/sec, represented by passing "-1,1" (TODO) to the MCI's setVelocity() function; a simple unit conversion factor. TODO: value should be changed later
 
-    // Movement logic
-    const bool LEFT = true;                 // Turning left uses positive velocity
-    const bool RIGHT =  !LEFT;              // Turning right uses negative velocity
-    const bool FORWARD = true;              // Moving forward uses positive velocity
-	const bool BACKWARD =  !FORWARD;        // Moving backward uses negative velocity
+    //NOTE: directional booleans have been moved to util.h
 
     CartesianPoint location;
     Angle angle;
