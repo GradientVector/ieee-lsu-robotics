@@ -48,7 +48,7 @@ MCI::~MCI(){
   resetPID();
 }
 
-//HAO: this is wrong; can't just call destructors and constructors like this
+//TODO: this is wrong; can't just call destructors and constructors like this
 void MCI::reset(){
   ~MCI();
   MCI();
