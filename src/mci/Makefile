@@ -1,4 +1,13 @@
 #TODO: document this
+#CXX = refence to the compiler, g++ in this case
+#CXXFLAGS = compiler options
+#-Wall = warn user of all potential errors
+#LIBDIR = Relative path to the directory to which archive files defined by the LIBRARY macro will be written
+#"-I.." = tells the compiler where to look for header files if they are not found in your working directory or 
+#         the standard places where [e.g.] iostream is found
+# "-L.." = directive to specify which directory to look for libraries if they arent in the standard places
+#
+
 
 CXX	:= g++
 AR  := ar
