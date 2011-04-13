@@ -12,6 +12,8 @@ This is the main program that will be run by the robot. It calls upon all of the
 #include "src/util/util.h"
 using namespace std;
 
+//there is no file called followLineTo in bot.h
+
 int main() {
 	//DECLARATIONS
 	Bot me = Bot();		//this includes the sensors as well
