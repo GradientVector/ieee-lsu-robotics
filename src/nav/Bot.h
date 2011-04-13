@@ -1,17 +1,22 @@
+/*  Will only be instantiated once. represents the robot itself.
+    Holds location and angle information.
+*/
+
 #ifndef BOT_H
 #define BOT_H
 
 #include <math.h>
 #include "../vision/vision.h"
-//#include "../sensors/sensors.h"
+//#include "../sensors/sensors.h"   //TODO: remove this if we don't have a charge sensor
 #include "../util/util.h"
 #include "../util/Angle.h"
 #include "../util/PolarPoint.h"
 #include "../util/Cylinder.h"
 //p#include "../util/PhysicalLine.h"
+#include "../vision/Camera.h"
+#include "../mci/mci.h"
 
-//will only be instantiated once. represents the robot itself.
-//Holds location and angle information.
+
 class Bot {
     private:
     double velocity, rotVel;      //rotVel>0 means the bot is twisting left
@@ -26,16 +31,17 @@ class Bot {
     public:
     const double STD_STOP_DIST;     //when navigating by homeInOn(-,-),  this is the standard stopping distance(inches) when we don't want to touch the object 
     const double TOUCH_DIST;        //distance(inches) from our camera to the object when we are touching it
+
     const double WHL_DIAM;              //separation b/t the wheels
-    const double WHL_RADIUS = WHL_DIAM/2; //TODO do this with a private getter	
+    double getWHL_RADIUS();
 
     //high speeds at which things start going wrong(i.e. slippage, popping wheelies, etc). Subj to change
     const double MAX_SPEED;    //inches/second
     const double MAX_ROT_SPEED;	//degrees/second
 
     //good, standard speeds that aren't too fast/slow.
-    const double COMFY_SPEED      = 0.5 * MAX_SPEED;	//TODO use a private getter	
-    const double COMFY_TURN_SPEED = 0.5 * MAX_ROT_SPEED;
+    double getCOMFY_SPEED();
+    double getCOMFY_TURN_SPEED();
 
     const double IN_PER_SEC;        //the speed, in in/sec, represented by passing "1,1" to the MCI's setVelocity() function; a simple unit conversion factor. TODO: value should be changed later
     const double DEG_PER_SEC;       //the rotational speed, in deg/sec, represented by passing "-1,1" (TODO) to the MCI's setVelocity() function; a simple unit conversion factor. TODO: value should be changed later
@@ -46,7 +52,7 @@ class Bot {
     Angle angle;
     MCI mci;
     Camera camera;
-    SensorSet sensors;
+    //SensorSet sensors;  //TODO: remove this if we don't have any charge sensor
 
     Bot();
     ~Bot();
@@ -59,7 +65,7 @@ class Bot {
 
     //Cylinder-Searching
     void pointTo(Cylinder cyl);
-    PixelPoint searchFor(Cylinder cyl);
+    PolarPoint searchFor(Cylinder cyl);
     void homeInOn(Cylinder, double distance);
 
     //Charging/Discharging
@@ -67,10 +73,10 @@ class Bot {
     void dischargeFor(double time);
 
     //Vel / RotVel interfacing
-    void getVel();
-    void setVel(double vel);
-    void getRotVel();
-    void setRotVel(double rotVel);
+    double getVel();
+    void   setVel(double vel);
+    double getRotVel();
+    void   setRotVel(double rotVel);
 
     // Start move fuctions (forwards/backwards)
     void moveTo(bool direction, double distance, double speed);
