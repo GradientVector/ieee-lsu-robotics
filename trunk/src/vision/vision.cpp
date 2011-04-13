@@ -5,39 +5,6 @@ loose vision functions not belonging to any particular class
 #include "vision.h"
 
 
-#define PI 3.14159265
-
-//using namespace std; // #TODO: Remove this line - shouldn't define namespace in library file, only in actual executable.
-
-
-PolarPoint placeObject(PixelPoint object) {
-
-    double middle_x = Bot.IMG_WIDTH_PX/2;     // Coordinate for middle pixel on x axis
-    double middle_y = IMG_HEIGHT_PX/2;    // Coordinate for middle pixel on y axis
-    double diff_x;                        // Horizontal difference between camera middle pixel and object pixel
-    double diff_y;                        // Vertical difference between camera middle pixel and object pixel
-    Angle vertDiffAngle;                // Angle between middle of screen and vertical position of object, + = left of middle
-    Angle horizDiffAngle;               // Angle between middle of screen and horizontal position of object, + = above middle
-    Angle absVertAngle;                 // Object's angle relative to camera position on robot  #TODO: Rename variable
-    double  distanceFromRobot;          // Distance between robot and object
-
-    // find angle between robot's direction and object
-    diff_x = (middle_x - object.x)/ middle_x;  // +middle_x = far left, -middle_x = far right
-    horizDiffAngle.setAngle(diff_x * (HORIZ_FIELD_ANGLE/2));
-   
-    // calculate distance between robot and object
-    diff_y = (middle_y - object.y)/middle_y;  // +middle_y = top, -middle_y = bottom
-    vertDiffAngle.setAngle(diff_y * (VERT_FIELD_ANGLE/2));
-    absVertAngle.setAngle(vertDiffAngle.getAngle() + VERTICAL_TILT_ANGLE);
-    distanceFromRobot = fabs(CAMERA_HEIGHT * tan(absVertAngle.getAngle()*(PI/180)));  // based on trig function, same units as CAMERA_HEIGHT
-    // #TODO: See if this works or if tan() needs to just be Math.tan()
-
-    PolarPoint updated_position(distanceFromRobot , horizDiffAngle);
-    
-    return updated_position;
-}
-
-
 //finds a line on the screen
 //returns the center of the line segment found. If the line on the screen goes from (300,10) to (200,50), the return value will be (250,30).  
 PixelPoint findLine(){
@@ -134,36 +101,7 @@ int color(Mat img, int x, int y) {
 	//TODO by John West
 	int& temp = img.at<uchar>(y, x);
 	return temp;
-}
-
-PixelPoint findObject(cyl) {
-    int clrLmt = 225; //color intensity minimum
-    Mat gryClr = grayImage.getGI(cyl.color);
-    PixelPoint cylPt(0, 0);
-    for(int i = 1; i <= viewWidth; i++)
-    {
-	if (i <= viewHeight)
-	{
-	    for (int j = i; j <= viewHeight; j++)
-	        if (color(gryClr, i - j, viewHeight - i + j) >= clrLmt)
-		    if (checkArea(i - j, viewHeight - i + j, gryClr, cylPt))
-		        return cylPt;
-	}
-	else
-	{
-	    for (int j = 1; j <= viewHeight; j++)
-		if (color(gryClr, i - viewHeight + j, j) >= clrLmt)
-		    if (checkArea(i - viewHeight + j, j, gryClr, cylPt))
-			return cylPt;
-	}
-    }
-    for (int i = viewHeight; i >= 1; i--)
-	for (int j = i; j >= 1; j--)
-	    if (color(gryClr, i - j, j) >= clrLmt)
-		if (checkArea(i - j, j, gryClr, cylPt))
-		    return cylPt;
-    return cylPt;
-}
+}g
 
 bool checkArea(int cx, int cy, Mat gry, Point &Pt)//checks the average number of pixels of the same color
 {
