@@ -1,4 +1,3 @@
-
 #include "mci.h"
 
 //communication scheme
@@ -50,7 +49,9 @@ MCI::~MCI(){
 
 //TODO: this is wrong; can't just call destructors and constructors like this
 void MCI::reset(){
-  ~MCI();
+   if(io->isOpen()) io->closePort();
+  resetEncoders();
+  resetPID();
   MCI();
 }
 
