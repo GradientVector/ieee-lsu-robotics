@@ -63,7 +63,7 @@ class MCI {
         void getUpdatePeriod(const char *mode, unsigned int *T);
         void setUpdatePeriod(const char *mode, unsigned int *T);
 
-        void setVelocity(int *a, int *b);
+        void setVelocity(int a, int b);
         void getVelocity(int &a, int &b);
 };
 

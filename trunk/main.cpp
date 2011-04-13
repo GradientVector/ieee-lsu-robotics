@@ -26,7 +26,7 @@ int main() {
 
 	//RUN THE STANDARD 'SCRIPT'
 	while(true) {
-		me.followLineTo(map.blueCyl,  me.STD_STOP_DIST);
+		me.goToLineAndfollowItTo(map.blueCyl,  me.STD_STOP_DIST);
 		me.homeInOn(map.greenCyl, me.STD_STOP_DIST);
 
 		me.homeInOn(map.redCyl,   me.TOUCH_DIST);	
@@ -35,7 +35,7 @@ int main() {
 		me.homeInOn(map.greenCyl, me.STD_STOP_DIST);
 		me.homeInOn(map.blueCyl,  me.STD_STOP_DIST);
 
-		me.followLineTo(map.yellowCyl,me.TOUCH_DIST);
+		me.goToLineAndfollowItTo(map.yellowCyl,me.TOUCH_DIST);
 		me.dischargeFor(20);	   	//TODO make this more sophisticated if possible
 	}
 
