@@ -2,7 +2,6 @@ TODO list:
 ----
 
 Make sure our .cpp files compile. They should be checked in order from simplest/smallest to largest/complexest. The following still need to be checked:
- * Bot.cpp
  * Camera.cpp
  * PhysicalLine.cpp (may not even be used...)
  * mci.cpp
