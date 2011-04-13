@@ -79,27 +79,25 @@ class Bot {
     void   setRotVel(double rotVel);
 
     // Moving fuctions (forwards/backwards)
-    void Bot::move(bool direction, double distance, double speed);
-    void Bot::move(bool direction, double distance);
-    void Bot::startMoving(bool direction, double speed);
-    void Bot::startMoving(bool direction);
-    void Bot::moveForward(double distance, double speed);
-    void Bot::moveForward(double distance);
-    void Bot::moveBackward(double distance, double speed);
-    void Bot::moveBackward(double distance);
-    void Bot::startMovingForward(double speed);
-    void Bot::startMovingForward();
-    void Bot::startMovingBackward(double speed);
-    void Bot::startMovingBackward();
-    void Bot::stopMoving();
+    void move(bool direction, double distance, double speed);
+    void move(bool direction, double distance);
+    void startMoving(bool direction, double speed);
+    void startMoving(bool direction);
+    void moveForward(double distance, double speed);
+    void moveForward(double distance);
+    void moveBackward(double distance, double speed);
+    void moveBackward(double distance);
+    void startMovingForward(double speed);
+    void startMovingForward();
+    void startMovingBackward(double speed);
+    void startMovingBackward();
+    void stopMoving();
     // Turning functions (rotate left/right)
-    void Bot::turn(double inputAngle);
-    void Bot::turn(bool direction, double inputAngle);
-    void Bot::turnLeft(double inputAngle);
-    void Bot::turnRight(double inputAngle);
-    void Bot::startTurning(bool direction, double speed);
-    void Bot::startTurning(bool direction);
-    void Bot::stopTurning();
+    void turn(double inputAngle);
+    void turn(bool direction, double inputAngle);
+    void startTurning(bool direction, double speed);
+    void startTurning(bool direction);
+    void stopTurning();
 };
 
 #endif	//BOT_H
