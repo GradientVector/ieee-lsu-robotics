@@ -1,5 +1,10 @@
 
-#include "Bot.h"pla
+#include "Bot.h"
+
+Bot::Bot() STD_STOP_DIST(6), TOUCH_DIST(0), WHL_DIAM(6.6), MAX_SPEED(25), MAX_ROT_SPEED(400), IN_PER_SEC(5), DEG_PER_SEC(5)
+{
+    //intentionally blank
+}
 
 //Will only be used once. Gets us from the starting point (facing 'eastward') 
 //to the T-junction of the black lines, facing 'northward'. After that, we can follow the right line. 
