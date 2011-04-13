@@ -70,10 +70,10 @@ void MCI::getEncVal(double left,double right){
    char pos_0[255];
    char pos_1[255];
    sprintf(buf,"?E\n");
-   io.send(buf);
-   io.recv(buf);
+   io->send(buf);
+   io->recv(buf);
    left = atoi(pos_0);
-   io.recv(buf);
+   io->recv(buf);
    right = atoi(pos_1);
    return 0;
 }
@@ -94,19 +94,19 @@ void MCI::getPIDVal(const char *mode, unsigned int P, unsigned int I, unsigned i
    int Q = 0;
 
    sprintf(buf,"?G%c\n",mode);
-   io.sent(buf);
+   io->sent(buf);
 
-   io.recv(buf);
+   io->recv(buf);
    status = atoi(buf);
    if (status != 0) return -1;
 
-   io.recv(buf);
+   io->recv(buf);
    *P = atoi(buf);
-   io.recv(buf);
+   io->recv(buf);
    *I = atoi(buf);
-   io.recv(buf);
+   io->recv(buf);
    *D = atoi(buf);
-   io.recv(buf);
+   io->recv(buf);
    *Q = atoi(buf);
 
    return 0;
@@ -125,7 +125,7 @@ void MCI::setPIDVal(const char *mode, unsigned int *P, unsigned int *I, unsigned
   char buf[255];
 
   sprintf(buf, "!G%c%08u%08u%08u%02u\n", mode, P, I, D, Q );
-  io.sent(buf);
+  io->sent(buf);
 }
 
 
@@ -138,11 +138,11 @@ void MCI::getOperationMode(int mode){
    int mode = 0;
    
    sprintf(buf, "?M\n");
-   io.send(buf);
-   io.recv(buf);
+   io->send(buf);
+   io->recv(buf);
    status = atoi(buf);
    if (status !=0) return -1;
-   io.recv(buf);
+   io->recv(buf);
    mode = atoi(buf);
    return mode;
 
@@ -152,7 +152,7 @@ void MCI::getOperationMode(int mode){
 void MCI::setOperationMode(int mode){
    char buf[255];
    sprintf(buf, "!M%d", mode);
-   io.send(buf);
+   io->send(buf);
    return 0;
 }
 
@@ -160,8 +160,8 @@ void MCI::setOperationMode(int mode){
 void MCI::getUpdatePeriod(const char *mode, unsigned int T){
    char buf[255];
    sprintf(buf, "?T%c\n",mode);
-   io.send(buf);
-   io.recv(buf);
+   io->send(buf);
+   io->recv(buf);
    T = atoi(buf);
    return 0;
 }
@@ -170,7 +170,7 @@ void MCI::getUpdatePeriod(const char *mode, unsigned int T){
 void MCI::setUpdatePeriod(const char *mode, unsigned int *T){
    char buf[255];
    sprintf(buf, "!T%c%08u", mode, T);
-   io.send(buf);
+   io->send(buf);
    return 0;
 }
 
@@ -182,7 +182,7 @@ void MCI::setUpdatePeriod(const char *mode, unsigned int *T){
 void MCI::setVelocity(double a, double b){
    char buf[255];
    sprintf(str, "!V%c%04d%c%04d\n",(a<0.0)?'-':'+',abs(a),(b<0.0)?'-':'+',abs(b));
-   io.send(buf);
+   io->send(buf);
 }
 
 //gets the current velocity from the encoders data
@@ -192,18 +192,18 @@ void MCI::getVelocity(int a, int b){
    char temp[4];
    int status;
    sprintf(buf, "?V\n");
-   io.send(buf);
-   io.recv(buf);
+   io->send(buf);
+   io->recv(buf);
    status = atoi(buf);
    if (status !=0) return -1;
-   io.recv(buf);
+   io->recv(buf);
    temp[0]=buf[1];
    temp[1]=buf[2];
    temp[2]=buf[3];
    temp[3]=buf[4];
    a = atoi(temp);
    if (buf[1] == '-') a = a *-1;
-   io.recv(buf);
+   io->recv(buf);
    temp[0]=buf[1];
    temp[1]=buf[2];
    temp[2]=buf[3];
