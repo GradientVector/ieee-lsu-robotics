@@ -17,7 +17,7 @@ Test the motor controller with a motor controller test file. Just see if the bas
 
 Put functionality into our movement functions that keeps track of our position and angle.
 
-Bot.h/cpp needs a function called followLineTo(Cylinder cyl)
+Bot.h/cpp's function called goToLineAndFollowItTo(Cylinder cyl, double distance) needs to be worked on.
 
 On approximately line 13 of vision.cpp, there is a char which has multiple characters/digits assigned to it. Compiler is complaining
 
