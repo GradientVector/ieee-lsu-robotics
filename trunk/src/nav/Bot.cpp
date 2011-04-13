@@ -192,12 +192,12 @@ PolarPoint Bot::searchFor(Cylinder cyl){
     double searchSpeed = 0.25 * getCOMFY_TURN_SPEED();       // Speed at which robot rotates while looking for a cylinder
 
     if (!cylFound){
-        turnLeft(30);                  // Starts search by turning left 30 degrees
+        turn(LEFT, 30);                  // Starts search by turning left 30 degrees
         
         int degreesTurned = 0;		//makes sure we don't turn too much
         int turningAmount = 15;		//degrees to turn, per re-check
         while( !cylFound && (degreesTurned <= 360 ) )  {  
-            turnRight(turningAmount);
+            turn(RIGHT, turningAmount);
             cylPoint = camera.findObject(cyl);
             cylFound = (cylPoint.x != 0 && cylPoint.y != 0);
             degreesTurned += turningAmount;
@@ -217,7 +217,7 @@ PolarPoint Bot::searchFor(Cylinder cyl){
 
 void Bot::move(bool direction, double distance, double speed){
     startMoving(direction, speed);
-    wait((distance/Bot.getVel())*1000);
+    wait(( distance/getVel() ) * 1000);
     stopMoving();
 }
 
@@ -227,9 +227,9 @@ void Bot::move(bool direction, double distance){
 
 void Bot::startMoving(bool direction, double speed){
      if (direction){		//if LEFT
-        Bot.setVel(speed);
+        setVel(speed);
     } else {
-        Bot.setVel(-speed);
+        setVel(-speed);
     }
 }
 
@@ -238,7 +238,7 @@ void Bot::startMoving(bool direction){
 }
 
 void Bot::moveForward(double distance, double speed){
-    move(Bot.FORWARD, distance, speed);
+    move(FORWARD, distance, speed);
 }
 
 void Bot::moveForward(double distance){
@@ -246,15 +246,15 @@ void Bot::moveForward(double distance){
 }
 
 void Bot::moveBackward(double distance, double speed){
-    move(Bot.BACKWARD, distance, speed);
+    move(BACKWARD, distance, speed);
 }
 
 void Bot::moveBackward(double distance){
-    moveBackward(distance, COMFY_SPEED);
+    moveBackward(distance, getCOMFY_SPEED() );
 }
 
 void Bot::startMovingForward(double speed){
-    startMoving(Bot.FORWARD, speed);
+    startMoving(FORWARD, speed);
 }
 
 void Bot::startMovingForward(){
@@ -262,7 +262,7 @@ void Bot::startMovingForward(){
 }
 
 void Bot::startMovingBackward(double speed){
-    startMoving(Bot.FORWARD, speed);
+    startMoving(FORWARD, speed);
 }
 
 void Bot::startMovingBackward(){
@@ -285,31 +285,23 @@ void Bot::turn(double inputAngle){
     } 
 
     if(inputAngle > 0) {
-        turn(Bot.LEFT, fabs(inputAngle));
+        turn(LEFT, fabs(inputAngle));
     } else if (inputAngle < 0) {
-        turn( Bot.RIGHT, fabs(inputAngle) );
+        turn( RIGHT, fabs(inputAngle) );
     } //and if inputAngle == 0, do nothing
 }
 
 void Bot::turn(bool direction, double inputAngle){
-    startTurning(direction, COMFY_TURN_SPEED);
-    wait( (inputAngle/Bot.getRotVel())*1000 );
+    startTurning( direction, getCOMFY_TURN_SPEED() );
+    wait( (inputAngle/getRotVel())*1000 );
     stopTurning();
-}
-
-void Bot::turnLeft(double inputAngle){
-    turn(Bot.LEFT, inputAngle, COMFY_TURN_SPEED);
-}
-
-void Bot::turnRight(double inputAngle){
-    turn(Bot.RIGHT, inputAngle, COMFY_TURN_SPEED);
 }
 
 void Bot::startTurning(bool direction, double speed){
      if (direction){
-        Bot.setRotVel(speed);
+        setRotVel(speed);
     } else {
-        Bot.setRotVel(-speed);
+        setRotVel(-speed);
     }
 }
 
