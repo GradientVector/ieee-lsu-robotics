@@ -60,7 +60,7 @@ void MCI::reset(){
 void MCI::resetEncoders(){ 
    char buf[255];
    sprintf(buf,"!C\n");
-   io.send(buf);
+   io->send(buf);
    return 0;
 }
      
