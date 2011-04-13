@@ -1,6 +1,5 @@
+
 #include "mci.h"
-#include <math.h>
-#include <stdio.h>
 
 //communication scheme
 //using the same scheme as last year
@@ -29,21 +28,27 @@
 // default constructor
 // default values = 0 for now
 
-MCI::MCI(){ 
-  *io = new Serial();
-  
-  return 0;
+MCI::MCI()
+{ io = new Serial();
+  modeStatus = 0;
+  loopStatus = 0;
 }         
+
+
+//constructor with given portname and baudrate
+MCI::MCI(const char *portName,int baudRate){
+
+}
 
 
 //destructor
 MCI::~MCI(){ 
-  if(io.isOpen()) io.closePort();
+  if(io->isOpen()) io->closePort();
   resetEncoders();
   resetPID();
 }
 
-
+//HAO: this is wrong; can't just call destructors and constructors like this
 void MCI::reset(){
   ~MCI();
   MCI();
@@ -95,13 +100,13 @@ void MCI::getPIDVal(const char *mode, unsigned int P, unsigned int I, unsigned i
    if (status != 0) return -1;
 
    io.recv(buf);
-   P = atoi(buf);
+   *P = atoi(buf);
    io.recv(buf);
-   I = atoi(buf);
+   *I = atoi(buf);
    io.recv(buf);
-   D = atoi(buf);
+   *D = atoi(buf);
    io.recv(buf);
-   Q = atoi(buf);
+   *Q = atoi(buf);
 
    return 0;
 }
@@ -114,10 +119,10 @@ void MCI::getRealPIDVal(const char *mode, double Kp, double Ki, double Kd){
    Kd = (double) D << Q;
    return 0;
 }
-
 // sends message to set the pid values
 void MCI::setPIDVal(const char *mode, unsigned int *P, unsigned int *I, unsigned int *D, unsigned int *Q){
   char buf[255];
+
   sprintf(buf, "!G%c%08u%08u%08u%02u\n", mode, P, I, D, Q );
   io.sent(buf);
 }
@@ -143,9 +148,9 @@ void MCI::getOperationMode(int mode){
 }
 
 // sends commant to mc to set the operationMode (open loop, velocity control, position control). pass '1' for our purposes
-void MCI::setOperationMode(int modeCode){
+void MCI::setOperationMode(int mode){
    char buf[255];
-   sprintf(buf, "!M%d", modeCode);
+   sprintf(buf, "!M%d", mode);
    io.send(buf);
    return 0;
 }
