@@ -1,7 +1,7 @@
 
-#include "Line.h"
+#include "PhysicalLine.h"
 
-Line::Line(PolarPoint inputClosePoint, PolarPoint inputFarPoint) {
+PhysicalLine::PhysicalLine(PolarPoint inputClosePoint, PolarPoint inputFarPoint) {
     closePoint = inputClosePoint;
     farPoint   = inputFarPoint;
 }
