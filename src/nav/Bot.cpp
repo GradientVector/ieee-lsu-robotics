@@ -1,5 +1,5 @@
 
-#include "Bot.h"
+#include "Bot.h"pla
 
 //Will only be used once. Gets us from the starting point (facing 'eastward') 
 //to the T-junction of the black lines, facing 'northward'. After that, we can follow the right line. 
@@ -12,6 +12,7 @@ void Bot::driveToMainLine() {
    setRotVel(0);
 }
 
+/*
 //checked out by Andrew Elias
 //Input must either be the yellow, blue or green cylinder. We will not line-follow to the red.
 //'distanceToTravel' is the 
@@ -25,12 +26,13 @@ void Bot::goToLineAndFollowItTo(Cylinder cyl, double distanceToTravel) {
     if(/*TODO: "we're not on the line" */) {
         getOn(/* TODO: the line*/);  
         pointTo(cyl);   //TODO: mabye this can be somehow include in getOn(PhysicalLine). That might be more precise.  
-    } else {
+/*    } else {
         pointTo(cyl); 
     }   
 	
     lineFollow(distanceToTravel);
 }
+*/
 
 //uses our rough 'map' to point in the general direction of our destination.
 void Bot::pointTo(Cylinder cyl) {

@@ -2,13 +2,8 @@
 loose vision functions not belonging to any particular class
  */
 
-#ifndef _VISION_CPP_
-#define _VISION_CPP_
-#include <math.h>
 #include "vision.h"
-#include "../nav/navigation.h"
-#include <opencv/cv.h>
-#include <opencv/highgui.h>
+
 
 #define PI 3.14159265
 
@@ -218,4 +213,3 @@ bool checkArea(int cx, int cy, Mat gry, Point &Pt)//checks the average number of
 }
 
 
-#endif

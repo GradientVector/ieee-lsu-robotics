@@ -5,6 +5,15 @@ loose functions for vision, not belonging to a class
 #ifndef _VISION_H_
 #define _VISION_H_
 
+#include <math.h>
+#include "../util/util.h"
+#include <opencv/cv.h>
+#include <opencv/highgui.h>
+#include "../util/PixelPoint.h"
+#include "../util/Cylinder.h"
+#include "../util/PolarPoint.h"
+#include "../nav/Bot.h"
+
 using namespace std;
 using namespace cv;
 
