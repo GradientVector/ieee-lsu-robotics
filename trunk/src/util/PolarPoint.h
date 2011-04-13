@@ -1,6 +1,8 @@
 #ifndef POLAR_POINT_H
 #define POLAR_POINT_H
 
+#include "Angle.h"
+
 //will be used to hold a relative position, in polar coordinates.
 //This will help us know what angle we need to turn to face an object.
 class PolarPoint {
@@ -13,7 +15,7 @@ class PolarPoint {
         PolarPoint(double in_r, Angle in_th);
         PolarPoint(double in_r, double in_th);
         PolarPoint();
-        setPolarPoint(double in_r, double in_th);
+        void setPolarPoint(double in_r, double in_th);
 };
 
 #endif
