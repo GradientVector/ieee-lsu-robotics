@@ -1,3 +1,5 @@
+#include "GrayImage.h"
+
 
 Mat GrayImage::getGI(int color)
 {
