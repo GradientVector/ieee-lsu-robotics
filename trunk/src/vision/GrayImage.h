@@ -1,3 +1,8 @@
+#include <math.h>
+#include <opencv/cv.h>
+#include <opencv/highgui.h>
+#include "../util/PixelPoint.h"
+
 class GrayImage 
 {
   public:

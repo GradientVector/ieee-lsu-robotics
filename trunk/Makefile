@@ -17,9 +17,10 @@ cameratest: cameratest.o
 	$(CXX) $< -o $(BINDIR)/$@ $(LIBS)
 	$(RM) $<
 
-main: main.o descend
-    $(CXX) $< -o $(BINDIR)/$@ $(LIBS)
-	$(RM) $<
+# main.cpp navigation.o Bot.o Map.o vision.o util.o mci.o
+
+main: 
+	g++ main.cpp -o main
 
 descend:
 	for x in $(DIRS); do \
