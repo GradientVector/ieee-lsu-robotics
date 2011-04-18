@@ -17,6 +17,10 @@ void Bot::driveToMainLine() {
    setRotVel(0);
 }
 
+void Bot::trackLine() {
+
+}
+
 /*
 //checked out by Andrew Elias
 //Input must either be the yellow, blue or green cylinder. We will not line-follow to the red.
