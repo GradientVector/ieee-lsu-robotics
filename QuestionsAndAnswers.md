@@ -1,0 +1,3 @@
+**Q**: Is there a way to have our name displayed on our posts/edits instead of our email addresses? Some of the addresses are cryptic, and I can't tell who is doing the posting.
+
+**A**: At this time there is no way to display user names instead of email addresses. Fortunately the programming team is relatively small, so it should not be too difficult to figure out who each email address belongs to.
